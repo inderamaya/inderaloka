@@ -14,36 +14,21 @@ const Seal = () => (
 
 function LanguageSwitcher() {
   const { language, setLanguage } = useLanguage();
-
   return (
-    <div className="flex items-center border border-border overflow-hidden" aria-label="Language switcher" data-testid="language-switcher">
+    <div className="flex items-center border border-border overflow-hidden flex-shrink-0" aria-label="Language switcher" data-testid="language-switcher">
       <button
         onClick={() => setLanguage("ms")}
         data-testid="lang-btn-ms"
-        className={cn(
-          "px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-colors",
-          language === "ms"
-            ? "bg-accent text-white"
-            : "text-muted-foreground hover:text-primary hover:bg-secondary"
-        )}
+        className={cn("px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-colors", language === "ms" ? "bg-accent text-white" : "text-muted-foreground hover:text-primary hover:bg-secondary")}
         aria-pressed={language === "ms"}
-      >
-        BM
-      </button>
+      >BM</button>
       <div className="w-px h-4 bg-border" />
       <button
         onClick={() => setLanguage("en")}
         data-testid="lang-btn-en"
-        className={cn(
-          "px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-colors",
-          language === "en"
-            ? "bg-accent text-white"
-            : "text-muted-foreground hover:text-primary hover:bg-secondary"
-        )}
+        className={cn("px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-colors", language === "en" ? "bg-accent text-white" : "text-muted-foreground hover:text-primary hover:bg-secondary")}
         aria-pressed={language === "en"}
-      >
-        EN
-      </button>
+      >EN</button>
     </div>
   );
 }
@@ -57,49 +42,41 @@ export function Layout({ children }: { children: React.ReactNode }) {
     { href: "/services", label: t.nav.services },
     { href: "/news", label: t.nav.news },
     { href: "/about", label: t.nav.about },
+    { href: "/royal", label: t.nav.royal },
+    { href: "/directory", label: t.nav.directory },
     { href: "/contact", label: t.nav.contact },
   ];
+
+  const isActive = (href: string) => href === "/" ? location === "/" : location.startsWith(href);
 
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background selection:bg-accent selection:text-white font-sans">
       <div className="bg-primary text-white text-xs font-mono py-1 text-center border-b border-white/10 tracking-widest uppercase">
         {t.officialBanner}
       </div>
-
       <header className="border-b border-border sticky top-0 bg-background/95 backdrop-blur z-50">
-        <div className="container mx-auto px-4 lg:px-8 py-6 flex items-center justify-between gap-6">
-          <Link href="/" className="flex items-center gap-4 group">
+        <div className="container mx-auto px-4 lg:px-8 py-5 flex items-center justify-between gap-4">
+          <Link href="/" className="flex items-center gap-4 group flex-shrink-0">
             <Seal />
             <div className="flex flex-col">
               <span className="font-serif text-xl font-semibold tracking-tight text-primary group-hover:text-accent transition-colors">{t.siteTitle}</span>
               <span className="text-[10px] uppercase font-mono tracking-widest text-muted-foreground">{t.siteDept}</span>
             </div>
           </Link>
-
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={cn(
-                  "text-sm font-medium tracking-wide uppercase transition-colors hover:text-accent border-b-2 border-transparent pb-1",
-                  location === item.href ? "border-accent text-primary" : "text-muted-foreground"
-                )}
-                data-testid={`nav-${item.href === "/" ? "home" : item.href.slice(1)}`}
-              >
-                {item.label}
-              </Link>
+                className={cn("text-xs font-medium tracking-wide uppercase transition-colors hover:text-accent border-b-2 border-transparent pb-1 whitespace-nowrap", isActive(item.href) ? "border-accent text-primary" : "text-muted-foreground")}
+                data-testid={`nav-${item.href === "/" ? "home" : item.href.slice(1).replace("/", "-")}`}
+              >{item.label}</Link>
             ))}
           </nav>
-
           <LanguageSwitcher />
         </div>
       </header>
-
-      <main className="flex-1 flex flex-col">
-        {children}
-      </main>
-
+      <main className="flex-1 flex flex-col">{children}</main>
       <footer className="bg-primary text-white pt-16 pb-8 border-t-4 border-accent">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
@@ -111,22 +88,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   <span className="text-[10px] uppercase font-mono tracking-widest text-white/60">{t.siteDept}</span>
                 </div>
               </div>
-              <p className="text-sm text-white/70 max-w-sm leading-relaxed">
-                {t.siteDesc}
-              </p>
+              <p className="text-sm text-white/70 max-w-sm leading-relaxed">{t.siteDesc}</p>
             </div>
-
             <div>
               <h3 className="font-mono uppercase text-xs tracking-widest text-white/50 mb-6">{t.footer.directory}</h3>
               <ul className="flex flex-col gap-4 text-sm">
                 {navItems.map(item => (
-                  <li key={item.href}>
-                    <Link href={item.href} className="hover:text-accent transition-colors hover:underline underline-offset-4 decoration-accent/50">{item.label}</Link>
-                  </li>
+                  <li key={item.href}><Link href={item.href} className="hover:text-accent transition-colors hover:underline underline-offset-4 decoration-accent/50">{item.label}</Link></li>
                 ))}
               </ul>
             </div>
-
             <div>
               <h3 className="font-mono uppercase text-xs tracking-widest text-white/50 mb-6">{t.footer.contact}</h3>
               <ul className="flex flex-col gap-4 text-sm text-white/80">
@@ -136,7 +107,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
               </ul>
             </div>
           </div>
-
           <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-white/50">
             <div>&copy; {new Date().getFullYear()} {t.footer.copyright}</div>
             <div className="flex gap-4">
