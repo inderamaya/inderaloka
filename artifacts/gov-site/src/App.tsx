@@ -9,6 +9,7 @@ import Services from "@/pages/services";
 import News from "@/pages/news";
 import About from "@/pages/about";
 import Contact from "@/pages/contact";
+import { LanguageProvider } from "@/i18n/LanguageContext";
 
 const queryClient = new QueryClient();
 
@@ -29,11 +30,13 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-          <Layout>
-            <Router />
-          </Layout>
-        </WouterRouter>
+        <LanguageProvider>
+          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+            <Layout>
+              <Router />
+            </Layout>
+          </WouterRouter>
+        </LanguageProvider>
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>

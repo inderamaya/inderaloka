@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "wouter";
-import { Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const Seal = () => (
   <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-accent">
@@ -12,48 +12,87 @@ const Seal = () => (
   </svg>
 );
 
+function LanguageSwitcher() {
+  const { language, setLanguage } = useLanguage();
+
+  return (
+    <div className="flex items-center border border-border overflow-hidden" aria-label="Language switcher" data-testid="language-switcher">
+      <button
+        onClick={() => setLanguage("ms")}
+        data-testid="lang-btn-ms"
+        className={cn(
+          "px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-colors",
+          language === "ms"
+            ? "bg-accent text-white"
+            : "text-muted-foreground hover:text-primary hover:bg-secondary"
+        )}
+        aria-pressed={language === "ms"}
+      >
+        BM
+      </button>
+      <div className="w-px h-4 bg-border" />
+      <button
+        onClick={() => setLanguage("en")}
+        data-testid="lang-btn-en"
+        className={cn(
+          "px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-colors",
+          language === "en"
+            ? "bg-accent text-white"
+            : "text-muted-foreground hover:text-primary hover:bg-secondary"
+        )}
+        aria-pressed={language === "en"}
+      >
+        EN
+      </button>
+    </div>
+  );
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
+  const { t } = useLanguage();
 
   const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/services", label: "Services" },
-    { href: "/news", label: "News" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
+    { href: "/", label: t.nav.home },
+    { href: "/services", label: t.nav.services },
+    { href: "/news", label: t.nav.news },
+    { href: "/about", label: t.nav.about },
+    { href: "/contact", label: t.nav.contact },
   ];
 
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background selection:bg-accent selection:text-white font-sans">
       <div className="bg-primary text-white text-xs font-mono py-1 text-center border-b border-white/10 tracking-widest uppercase">
-        Official Website of the Government
+        {t.officialBanner}
       </div>
-      
+
       <header className="border-b border-border sticky top-0 bg-background/95 backdrop-blur z-50">
-        <div className="container mx-auto px-4 lg:px-8 py-6 flex items-center justify-between">
+        <div className="container mx-auto px-4 lg:px-8 py-6 flex items-center justify-between gap-6">
           <Link href="/" className="flex items-center gap-4 group">
             <Seal />
             <div className="flex flex-col">
-              <span className="font-serif text-xl font-semibold tracking-tight text-primary group-hover:text-accent transition-colors">Republic Portal</span>
-              <span className="text-[10px] uppercase font-mono tracking-widest text-muted-foreground">Department of State</span>
+              <span className="font-serif text-xl font-semibold tracking-tight text-primary group-hover:text-accent transition-colors">{t.siteTitle}</span>
+              <span className="text-[10px] uppercase font-mono tracking-widest text-muted-foreground">{t.siteDept}</span>
             </div>
           </Link>
-          
+
           <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <Link 
-                key={item.href} 
+              <Link
+                key={item.href}
                 href={item.href}
                 className={cn(
                   "text-sm font-medium tracking-wide uppercase transition-colors hover:text-accent border-b-2 border-transparent pb-1",
                   location === item.href ? "border-accent text-primary" : "text-muted-foreground"
                 )}
-                data-testid={`nav-${item.label.toLowerCase()}`}
+                data-testid={`nav-${item.href === "/" ? "home" : item.href.slice(1)}`}
               >
                 {item.label}
               </Link>
             ))}
           </nav>
+
+          <LanguageSwitcher />
         </div>
       </header>
 
@@ -68,17 +107,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <div className="flex items-center gap-4 text-white">
                 <Seal />
                 <div className="flex flex-col">
-                  <span className="font-serif text-xl font-semibold tracking-tight">Republic Portal</span>
-                  <span className="text-[10px] uppercase font-mono tracking-widest text-white/60">Department of State</span>
+                  <span className="font-serif text-xl font-semibold tracking-tight">{t.siteTitle}</span>
+                  <span className="text-[10px] uppercase font-mono tracking-widest text-white/60">{t.siteDept}</span>
                 </div>
               </div>
               <p className="text-sm text-white/70 max-w-sm leading-relaxed">
-                The official digital presence. Providing structured, dignified, and clear information to citizens and international visitors.
+                {t.siteDesc}
               </p>
             </div>
-            
+
             <div>
-              <h3 className="font-mono uppercase text-xs tracking-widest text-white/50 mb-6">Directory</h3>
+              <h3 className="font-mono uppercase text-xs tracking-widest text-white/50 mb-6">{t.footer.directory}</h3>
               <ul className="flex flex-col gap-4 text-sm">
                 {navItems.map(item => (
                   <li key={item.href}>
@@ -87,9 +126,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 ))}
               </ul>
             </div>
-            
+
             <div>
-              <h3 className="font-mono uppercase text-xs tracking-widest text-white/50 mb-6">Contact</h3>
+              <h3 className="font-mono uppercase text-xs tracking-widest text-white/50 mb-6">{t.footer.contact}</h3>
               <ul className="flex flex-col gap-4 text-sm text-white/80">
                 <li>1 Capital Plaza<br />Government District, 10001</li>
                 <li className="font-mono text-accent">1-800-GOV-INFO</li>
@@ -97,13 +136,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
               </ul>
             </div>
           </div>
-          
+
           <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-white/50">
-            <div>&copy; {new Date().getFullYear()} Government of the Republic. All rights reserved.</div>
+            <div>&copy; {new Date().getFullYear()} {t.footer.copyright}</div>
             <div className="flex gap-4">
-              <Link href="#" className="hover:text-white">Privacy Policy</Link>
-              <Link href="#" className="hover:text-white">Accessibility</Link>
-              <Link href="#" className="hover:text-white">Terms of Service</Link>
+              <Link href="#" className="hover:text-white">{t.footer.privacy}</Link>
+              <Link href="#" className="hover:text-white">{t.footer.accessibility}</Link>
+              <Link href="#" className="hover:text-white">{t.footer.terms}</Link>
             </div>
           </div>
         </div>
