@@ -4,8 +4,8 @@ export const translations = {
   ms: {
     // Layout
     officialBanner: "Laman Web Rasmi Kerajaan",
-    siteTitle: "Portal Republik",
-    siteDept: "Jabatan Negara",
+    siteTitle: "InderaMaya",
+    siteDept: "Kerajaan inderaloka",
     siteDesc:
       "Kehadiran digital rasmi. Menyediakan maklumat yang terstruktur, bermartabat, dan jelas kepada warga dan pengunjung antarabangsa.",
     nav: {
@@ -308,8 +308,8 @@ export const translations = {
   en: {
     // Layout
     officialBanner: "Official Website of the Government",
-    siteTitle: "Republic Portal",
-    siteDept: "Department of State",
+    siteTitle: "InderaMaya",
+    siteDept: "Kerajaan inderaloka",
     siteDesc:
       "The official digital presence. Providing structured, dignified, and clear information to citizens and international visitors.",
     nav: {
