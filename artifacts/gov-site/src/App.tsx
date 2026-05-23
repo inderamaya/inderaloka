@@ -22,7 +22,26 @@ import OrdersAndDecorations from "@/pages/royal/orders-and-decorations";
 import CustomsAndRegalia from "@/pages/royal/customs-and-regalia";
 import RoyalStatement from "@/pages/royal/royal-statement";
 import Palaces from "@/pages/royal/palaces";
+import RoyalAdvisoryCouncil from "@/pages/royal/royal-advisory-council";
+import PalaceCourtiers from "@/pages/royal/palace-courtiers";
 import Directory from "@/pages/directory";
+import Government from "@/pages/government/index";
+import Executive from "@/pages/government/executive/index";
+import PrimeMinister from "@/pages/government/executive/prime-minister";
+import Cabinet from "@/pages/government/executive/cabinet";
+import PoliticalParties from "@/pages/government/executive/political-parties";
+import Legislative from "@/pages/government/legislative/index";
+import Parliament from "@/pages/government/legislative/parliament";
+import Senate from "@/pages/government/legislative/senate";
+import HouseOfRepresentatives from "@/pages/government/legislative/house-of-representatives";
+import Judiciary from "@/pages/government/judiciary/index";
+import ChiefJustice from "@/pages/government/judiciary/chief-justice";
+import SupremeCourt from "@/pages/government/judiciary/supreme-court";
+import CourtOfAppeal from "@/pages/government/judiciary/court-of-appeal";
+import SyariahCourt from "@/pages/government/judiciary/syariah-court";
+import StateOfficials from "@/pages/government/state-officials";
+import Healthcare from "@/pages/services/healthcare";
+import Education from "@/pages/services/education";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 
 const queryClient = new QueryClient();
@@ -32,6 +51,8 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/services" component={Services} />
+      <Route path="/services/healthcare" component={Healthcare} />
+      <Route path="/services/education" component={Education} />
       <Route path="/news" component={News} />
       <Route path="/about" component={About} />
       <Route path="/about/history" component={History} />
@@ -47,6 +68,23 @@ function Router() {
       <Route path="/royal/customs-and-regalia" component={CustomsAndRegalia} />
       <Route path="/royal/royal-statement" component={RoyalStatement} />
       <Route path="/royal/palaces" component={Palaces} />
+      <Route path="/royal/royal-advisory-council" component={RoyalAdvisoryCouncil} />
+      <Route path="/royal/palace-courtiers" component={PalaceCourtiers} />
+      <Route path="/government" component={Government} />
+      <Route path="/government/executive" component={Executive} />
+      <Route path="/government/executive/prime-minister" component={PrimeMinister} />
+      <Route path="/government/executive/cabinet" component={Cabinet} />
+      <Route path="/government/executive/political-parties" component={PoliticalParties} />
+      <Route path="/government/legislative" component={Legislative} />
+      <Route path="/government/legislative/parliament" component={Parliament} />
+      <Route path="/government/legislative/senate" component={Senate} />
+      <Route path="/government/legislative/house-of-representatives" component={HouseOfRepresentatives} />
+      <Route path="/government/judiciary" component={Judiciary} />
+      <Route path="/government/judiciary/chief-justice" component={ChiefJustice} />
+      <Route path="/government/judiciary/supreme-court" component={SupremeCourt} />
+      <Route path="/government/judiciary/court-of-appeal" component={CourtOfAppeal} />
+      <Route path="/government/judiciary/syariah-court" component={SyariahCourt} />
+      <Route path="/government/state-officials" component={StateOfficials} />
       <Route path="/directory" component={Directory} />
       <Route path="/contact" component={Contact} />
       <Route component={NotFound} />

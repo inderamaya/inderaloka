@@ -42,6 +42,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     { href: "/services", label: t.nav.services },
     { href: "/news", label: t.nav.news },
     { href: "/about", label: t.nav.about },
+    { href: "/government", label: t.nav.government },
     { href: "/royal", label: t.nav.royal },
     { href: "/directory", label: t.nav.directory },
     { href: "/contact", label: t.nav.contact },
