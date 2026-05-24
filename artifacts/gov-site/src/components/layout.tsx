@@ -2,6 +2,16 @@ import React from "react";
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const Seal = () => (
   <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-accent">
@@ -70,11 +80,44 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 key={item.href}
                 href={item.href}
                 className={cn("text-xs font-medium tracking-wide uppercase transition-colors hover:text-accent border-b-2 border-transparent pb-1 whitespace-nowrap", isActive(item.href) ? "border-accent text-primary" : "text-muted-foreground")}
-                data-testid={`nav-${item.href === "/" ? "home" : item.href.slice(1).replace("/", "-")}`}
+                data-testid={`nav-desktop-${item.href === "/" ? "home" : item.href.slice(1).replace("/", "-")}`}
               >{item.label}</Link>
             ))}
           </nav>
-          <LanguageSwitcher />
+          <div className="flex items-center gap-2">
+            <LanguageSwitcher />
+            <div className="lg:hidden">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon" aria-label={t.nav.openMenu} data-testid="mobile-menu-trigger">
+                    <Menu className="h-6 w-6" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                  <SheetHeader className="text-left border-b border-border pb-4 mb-4">
+                    <SheetTitle className="flex items-center gap-4">
+                      <Seal />
+                      <div className="flex flex-col">
+                        <span className="font-serif text-lg font-semibold tracking-tight text-primary">{t.siteTitle}</span>
+                        <span className="text-[10px] uppercase font-mono tracking-widest text-muted-foreground">{t.siteDept}</span>
+                      </div>
+                    </SheetTitle>
+                  </SheetHeader>
+                  <nav className="flex flex-col gap-4 mt-8">
+                    {navItems.map((item) => (
+                      <SheetClose asChild key={item.href}>
+                        <Link
+                          href={item.href}
+                          className={cn("text-sm font-medium tracking-wide uppercase transition-colors hover:text-accent pb-2 border-b border-border/50", isActive(item.href) ? "text-accent" : "text-muted-foreground")}
+                          data-testid={`nav-mobile-${item.href === "/" ? "home" : item.href.slice(1).replace("/", "-")}`}
+                        >{item.label}</Link>
+                      </SheetClose>
+                    ))}
+                  </nav>
+                </SheetContent>
+              </Sheet>
+            </div>
+          </div>
         </div>
       </header>
       <main className="flex-1 flex flex-col">{children}</main>
