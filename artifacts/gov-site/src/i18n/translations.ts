@@ -15,6 +15,8 @@ export const translations = {
       directory: "Direktori",
       government: "Kerajaan",
       contact: "Hubungi",
+      openMenu: "Buka menu",
+      closeMenu: "Tutup menu",
     },
     footer: {
       directory: "Direktori",
@@ -985,6 +987,8 @@ export const translations = {
       directory: "Directory",
       government: "Government",
       contact: "Contact",
+      openMenu: "Open menu",
+      closeMenu: "Close menu",
     },
     footer: {
       directory: "Directory",
