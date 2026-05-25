@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "wouter";
-import { Search, FileText, Landmark, Shield, Plane, Book } from "lucide-react";
+import { Search, FileText, Landmark, Shield, Plane, Book, Activity, GraduationCap } from "lucide-react";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import {
@@ -13,12 +13,14 @@ import {
 } from "@/components/ui/breadcrumb";
 import { useLanguage } from "@/i18n/LanguageContext";
 
-const iconMap: Record<string, React.ElementType> = {
+const iconMap: Record<string, React.ElementType> ={
   s1: FileText, s2: FileText,
   s3: Landmark, s4: Landmark,
   s5: Shield, s6: Shield,
   s7: Plane, s8: Plane,
   s9: Book,
+  healthcare: Activity,
+  education: GraduationCap,
 };
 
 export default function Services() {
@@ -50,15 +52,17 @@ export default function Services() {
             </BreadcrumbList>
           </Breadcrumb>
 
-          <h1 className="font-serif text-4xl lg:text-5xl text-primary mb-6">{s.pageTitle}</h1>
-          <p className="text-muted-foreground text-lg max-w-2xl font-light mb-8">
-            {s.pageDesc}
+             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-primary mb-6">{s.pageTitle}</h1>
+              <p className="text-muted-foreground text-base sm:text-lg max-w-2xl font-light mb-8">
+                {s.pageDesc}
           </p>
 
           <div className="relative max-w-xl">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <Input
               type="text"
+              id="service-search"
+              aria-label={s.searchPlaceholder}
               placeholder={s.searchPlaceholder}
               className="pl-12 h-14 rounded-none border-primary/20 focus-visible:ring-accent focus-visible:border-accent text-base bg-white"
               value={searchQuery}
@@ -78,6 +82,10 @@ export default function Services() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredServices.map((service, idx) => {
               const Icon = iconMap[service.id] ?? FileText;
+            const href = (service.id === "healthcare" || service.id === "education") 
+              ? `/services/${service.id}` 
+              : `/services/${service.id}`; // Currently they follow the same pattern but explicit check is good
+
               return (
                 <motion.div
                   key={service.id}
@@ -85,7 +93,7 @@ export default function Services() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: idx * 0.05 }}
                 >
-                  <Link href={`/services/${service.id}`} className="group block h-full border border-border p-6 lg:p-8 hover:border-accent hover:shadow-[0_0_0_1px_var(--accent)] transition-all bg-white" data-testid={`card-service-${service.id}`}>
+                    <Link href={href} className="group block h-full border border-border p-6 lg:p-8 hover:border-accent hover:shadow-[0_0_0_1px_var(--accent)] transition-all bg-white" data-testid={`card-service-${service.id}`}>
                     <div className="flex items-center gap-4 mb-6">
                       <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white transition-colors">
                         <Icon className="w-5 h-5" />

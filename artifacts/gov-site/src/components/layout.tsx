@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 import {
   Sheet,
   SheetClose,
@@ -14,30 +15,32 @@ import {
 } from "@/components/ui/sheet";
 
 const Seal = () => (
-  <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-accent">
-    <circle cx="50" cy="50" r="48" stroke="currentColor" strokeWidth="2" fill="none" />
-    <circle cx="50" cy="50" r="42" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" fill="none" />
-    <path d="M50 20 L75 35 V65 L50 80 L25 65 V35 Z" stroke="currentColor" strokeWidth="2" fill="none" />
-    <path d="M50 30 L65 42.5 V57.5 L50 70 L35 57.5 V42.5 Z" fill="currentColor" />
-  </svg>
+  <img
+    src="/Jata-Negara.png"
+    alt="Jata Negara"
+    className="w-12 h-12 object-contain"
+  />
 );
 
 function LanguageSwitcher() {
   const { language, setLanguage } = useLanguage();
   return (
-    <div className="flex items-center border border-border overflow-hidden flex-shrink-0" aria-label="Language switcher" data-testid="language-switcher">
+         <div className="flex items-center border border-border overflow-hidden flex-shrink-0" aria-label="Select Language" data-testid="language-switcher">
       <button
         onClick={() => setLanguage("ms")}
         data-testid="lang-btn-ms"
-        className={cn("px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-colors", language === "ms" ? "bg-accent text-white" : "text-muted-foreground hover:text-primary hover:bg-secondary")}
+                className={cn("px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-all focus-visible:outline-none focus-visible:bg-secondary focus-visible:text-primary", language === "ms" ? "bg-accent text-white" : "text-muted-foreground hover:text-primary hover:bg-secondary")}
         aria-pressed={language === "ms"}
+         aria-label="Tukar ke Bahasa Melayu"
       >BM</button>
       <div className="w-px h-4 bg-border" />
+      
       <button
         onClick={() => setLanguage("en")}
         data-testid="lang-btn-en"
-        className={cn("px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-colors", language === "en" ? "bg-accent text-white" : "text-muted-foreground hover:text-primary hover:bg-secondary")}
+        className={cn("px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-all focus-visible:outline-none focus-visible:bg-secondary focus-visible:text-primary", language === "en" ? "bg-accent text-white" : "text-muted-foreground hover:text-primary hover:bg-secondary")}
         aria-pressed={language === "en"}
+        aria-label="Switch to English"
       >EN</button>
     </div>
   );
@@ -74,7 +77,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <span className="text-[10px] uppercase font-mono tracking-widest text-muted-foreground">{t.siteDept}</span>
             </div>
           </Link>
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -83,9 +86,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 data-testid={`nav-desktop-${item.href === "/" ? "home" : item.href.slice(1).replace("/", "-")}`}
               >{item.label}</Link>
             ))}
+            <div className="ml-2 xl:ml-4 pl-4 xl:pl-6 border-l border-border">
+              <LanguageSwitcher />
+            </div>
           </nav>
           <div className="flex items-center gap-2">
-            <LanguageSwitcher />
+            
+            <ThemeToggle />
+            
             <div className="lg:hidden">
               <Sheet>
                 <SheetTrigger asChild>
@@ -103,7 +111,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
                       </div>
                     </SheetTitle>
                   </SheetHeader>
-                  <nav className="flex flex-col gap-4 mt-8">
+                    <div className="mt-8 mb-6 pb-6 border-b border-border flex justify-start">
+                      <LanguageSwitcher />
+                    </div>
+                    <nav className="flex flex-col gap-4">
                     {navItems.map((item) => (
                       <SheetClose asChild key={item.href}>
                         <Link

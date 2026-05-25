@@ -41,8 +41,8 @@ export default function Directory() {
               <BreadcrumbItem><BreadcrumbPage className="text-primary">{d.breadcrumbCurrent}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <h1 className="font-serif text-4xl lg:text-5xl text-primary mb-6">{d.pageTitle}</h1>
-          <p className="text-muted-foreground text-lg max-w-2xl font-light">{d.pageDesc}</p>
+        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-primary mb-6">{d.pageTitle}</h1>
+        <p className="text-muted-foreground text-base sm:text-lg max-w-2xl font-light">{d.pageDesc}</p>
         </div>
       </div>
 
@@ -50,7 +50,7 @@ export default function Directory() {
         {/* Ministries */}
         <section className="mb-20">
           <h2 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-8">{d.ministriesTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
             {d.ministries.map((ministry, idx) => (
               <motion.div
                 key={idx}
@@ -74,9 +74,9 @@ export default function Directory() {
 
         {/* Departments */}
         <section>
-          <div className="flex flex-col md:flex-row md:items-center gap-4 mb-8">
+             <div className="flex flex-col xl:flex-row xl:items-center gap-6 mb-8">
             <h2 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground flex-1">{d.deptTitle}</h2>
-            <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col md:flex-row gap-3">
               <div className="relative">
                 <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
                 <Input
@@ -84,11 +84,11 @@ export default function Directory() {
                   placeholder={d.searchPlaceholder}
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="pl-9 font-mono text-xs w-full sm:w-64"
+                   className="pl-9 font-mono text-xs w-full md:w-64"
                   data-testid="directory-search"
                 />
               </div>
-              <div className="flex gap-2">
+                <div className="flex gap-1 overflow-x-auto pb-1 sm:pb-0 scrollbar-hide">
                 {Object.entries(filterLabels).map(([key, label]) => (
                   <button
                     key={key}

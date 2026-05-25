@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ChevronRight, BookOpen, Scroll, Flag, Map, Coins } from "lucide-react";
+import { ChevronRight, BookOpen, Scroll, Flag, Map, Coins, Plane } from "lucide-react";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { useLanguage } from "@/i18n/LanguageContext";
 
-const subpageIcons = [BookOpen, Scroll, Flag, Map, Coins];
+const subpageIcons = [BookOpen, Scroll, Flag, Map, Coins, Plane];
 
 export default function About() {
   const { t } = useLanguage();
@@ -22,8 +22,8 @@ export default function About() {
               <BreadcrumbItem><BreadcrumbPage className="text-primary">{a.breadcrumbCurrent}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <h1 className="font-serif text-4xl lg:text-5xl text-primary mb-6">{a.pageTitle}</h1>
-          <p className="text-muted-foreground text-lg max-w-2xl font-light">{a.pageDesc}</p>
+        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-primary mb-6">{a.pageTitle}</h1>
+        <p className="text-muted-foreground text-base sm:text-lg max-w-2xl font-light">{a.pageDesc}</p>
         </div>
       </div>
 
@@ -34,8 +34,8 @@ export default function About() {
             <h2 className="text-[10px] font-mono tracking-[0.2em] uppercase text-muted-foreground mb-3">{a.exploreLabel}</h2>
             <p className="text-sm text-muted-foreground">{a.exploreDesc}</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px bg-border border border-border">
-            {a.subpages.map((sub, idx) => {
+      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-5 gap-px bg-border border border-border">
+        {a.subpages.map((sub, idx) => {
               const Icon = subpageIcons[idx];
               return (
                 <motion.div key={sub.href} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.08 }}>

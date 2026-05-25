@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -14,17 +16,27 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function News() {
+  const [searchQuery, setSearchQuery] = useState("");
   const { t } = useLanguage();
   const n = t.news;
 
+  const filteredNews = n.items.filter((item) =>
+    item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="flex-1 w-full bg-background pb-20">
+      {/* Hero & Search */}
       <div className="bg-primary text-white py-12">
         <div className="container mx-auto px-4 lg:px-8">
           <Breadcrumb className="mb-6 font-mono uppercase tracking-widest text-[10px]">
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/" className="text-white/60 hover:text-white">{n.breadcrumbHome}</BreadcrumbLink>
+                <BreadcrumbLink href="/" className="text-white/60 hover:text-white">
+                  {n.breadcrumbHome}
+                </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator className="text-white/40" />
               <BreadcrumbItem>
@@ -34,51 +46,94 @@ export default function News() {
           </Breadcrumb>
 
           <h1 className="font-serif text-4xl lg:text-5xl mb-4">{n.pageTitle}</h1>
-          <p className="text-white/70 font-light max-w-2xl">
-            {n.pageDesc}
-          </p>
+          <p className="text-white/70 font-light max-w-2xl mb-8">{n.pageDesc}</p>
+
+          <div className="relative max-w-xl">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
+            <Input
+              type="text"
+              placeholder="Search news..."
+              className="pl-12 h-14 rounded-none border-white/20 focus-visible:ring-accent focus-visible:border-accent text-base bg-white/10 text-white placeholder:text-white/40"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
         </div>
       </div>
 
+      {/* News List */}
       <div className="container mx-auto px-4 lg:px-8 pt-16">
         <div className="max-w-4xl mx-auto flex flex-col gap-8">
-          {n.items.map((item, idx) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
-            >
-              <Link href={`/news/${item.id}`} className="group block bg-white border border-border p-6 lg:p-8 hover:border-accent transition-colors" data-testid={`card-news-${item.id}`}>
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
-                  <span className="font-mono text-xs font-semibold text-primary px-3 py-1 bg-secondary uppercase tracking-widest">
-                    {item.category}
-                  </span>
-                  <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
-                    {item.date}
-                  </span>
-                </div>
-                <h2 className="font-serif text-2xl lg:text-3xl text-primary mb-4 group-hover:text-accent transition-colors">
-                  {item.title}
-                </h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  {item.excerpt}
-                </p>
-                <div className="mt-6 flex items-center font-mono text-xs uppercase tracking-widest text-primary group-hover:text-accent">
-                  {n.readStatement} <ArrowRight className="w-4 h-4 ml-2" />
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+          {filteredNews.length === 0 ? (
+            <div className="text-center py-20 border border-border border-dashed">
+              <p className="text-muted-foreground font-mono text-sm uppercase tracking-widest">
+                No news found matching your search.
+              </p>
+            </div>
+          ) : (
+            filteredNews.map((item, idx) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+              >
+                <Link
+                  href={`/news/${item.id}`}
+                  className="group block bg-card border border-border overflow-hidden hover:border-accent transition-colors"
+                  data-testid={`card-news-${item.id}`}
+                >
+                  <div className="flex flex-col md:flex-row">
+                    {/* Image column */}
+                    <div className="md:w-1/3 aspect-[16/10] md:aspect-auto overflow-hidden border-b md:border-b-0 md:border-r border-border">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                      />
+                    </div>
+                    {/* Content column */}
+                    <div className="md:w-2/3 p-6 lg:p-8">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
+                        <span className="font-mono text-[10px] font-semibold text-primary px-3 py-1 bg-secondary uppercase tracking-widest">
+                          {item.category}
+                        </span>
+                        <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
+                          {item.date}
+                        </span>
+                      </div>
+                      <h2 className="font-serif text-2xl lg:text-3xl text-primary mb-4 group-hover:text-accent transition-colors">
+                        {item.title}
+                      </h2>
+                      <p className="text-muted-foreground leading-relaxed text-sm lg:text-base">
+                        {item.excerpt}
+                      </p>
+                      <div className="mt-6 flex items-center font-mono text-[10px] uppercase tracking-widest text-primary group-hover:text-accent">
+                        {n.readStatement} <ArrowRight className="w-4 h-4 ml-2" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))
+          )}
 
           {/* Pagination */}
           <div className="flex items-center justify-between border-t border-border pt-8 mt-8">
-            <Button variant="outline" className="rounded-none font-mono uppercase tracking-widest text-xs" disabled>
+            <Button
+              variant="outline"
+              className="rounded-none font-mono uppercase tracking-widest text-xs"
+              disabled
+            >
               <ArrowLeft className="w-4 h-4 mr-2" /> {n.previous}
             </Button>
             <div className="font-mono text-xs text-muted-foreground">{n.pageInfo}</div>
-            <Button variant="outline" className="rounded-none font-mono uppercase tracking-widest text-xs border-primary text-primary hover:bg-primary hover:text-white" data-testid="btn-news-next">
+            <Button
+              variant="outline"
+              className="rounded-none font-mono uppercase tracking-widest text-xs border-primary text-primary hover:bg-primary hover:text-white"
+              data-testid="btn-news-next"
+            >
               {n.next} <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>

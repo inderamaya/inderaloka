@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "wouter";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { Play, Pause, Music, ChevronDown, ChevronUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 
 export default function NationalSymbols() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const ns = t.nationalSymbols;
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showLyrics, setShowLyrics] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const togglePlay = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
 
   return (
     <div className="flex-1 w-full bg-background pb-24">
@@ -50,6 +66,70 @@ export default function NationalSymbols() {
               <div className="p-6">
                 <h3 className="font-serif text-lg text-primary mb-3 group-hover:text-accent transition-colors">{symbol.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{symbol.desc}</p>
+
+                {symbol.id === "anthem" && (
+                  <div className="mt-8 border-t border-border pt-6">
+                    <div className="flex flex-col sm:flex-row items-center gap-6">
+                      <div className="w-24 h-24 bg-secondary flex items-center justify-center border border-accent/20 flex-shrink-0 relative group/cover overflow-hidden">
+                        <Music className="w-10 h-10 text-accent/40 group-hover/cover:scale-110 transition-transform" />
+                        <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover/cover:opacity-100 transition-opacity" />
+                        <span className="absolute bottom-1 left-0 right-0 text-[8px] font-mono uppercase tracking-tighter text-center text-accent/60 opacity-0 group-hover/cover:opacity-100 transition-opacity">Nusa Bertuah</span>
+                      </div>
+
+                      <div className="flex-1 w-full">
+                        <div className="flex items-center justify-between mb-4">
+                          <div>
+                            <p className="font-serif text-base text-primary">Nusa Bertuah</p>
+                            <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{ns.anthemLabel}</p>
+                          </div>
+                          <Button 
+                            variant="outline" 
+                            size="icon" 
+                            className="rounded-full w-12 h-12 border-accent text-accent hover:bg-accent hover:text-white transition-all"
+                            onClick={togglePlay}
+                          >
+                            {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5 ml-1" />}
+                          </Button>
+                        </div>
+
+                        <audio 
+                          ref={audioRef} 
+                          src="/Nusa-Bertuah.mp3" 
+                          onEnded={() => setIsPlaying(false)}
+                        />
+
+                        <button 
+                          onClick={() => setShowLyrics(!showLyrics)}
+                          className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-accent hover:text-primary transition-colors mt-2"
+                        >
+                          {showLyrics ? (
+                            <>{ns.hideLyricsLabel} <ChevronUp className="w-3 h-3" /></>
+                          ) : (
+                            <>{ns.showLyricsLabel} <ChevronDown className="w-3 h-3" /></>
+                          )}
+                        </button>
+                      </div>
+                    </div>
+
+                    <AnimatePresence>
+                      {showLyrics && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="mt-6 p-6 bg-secondary/50 border border-border italic text-sm text-primary leading-relaxed text-center font-serif">
+                            {ns.anthemLyrics.map((line, i) => (
+                              <p key={i} className={line === "" ? "h-3" : ""}>{line}</p>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}

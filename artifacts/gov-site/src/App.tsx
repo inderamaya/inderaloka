@@ -14,6 +14,7 @@ import Constitution from "@/pages/about/constitution";
 import NationalSymbols from "@/pages/about/national-symbols";
 import AdminDivision from "@/pages/about/administrative-division";
 import Currency from "@/pages/about/currency";
+import Tourism from "@/pages/about/tourism";
 import Royal from "@/pages/royal/index";
 import HisMajesty from "@/pages/royal/his-majesty";
 import CouncilOfRegency from "@/pages/royal/council-of-regency";
@@ -43,6 +44,8 @@ import StateOfficials from "@/pages/government/state-officials";
 import Healthcare from "@/pages/services/healthcare";
 import Education from "@/pages/services/education";
 import { LanguageProvider } from "@/i18n/LanguageContext";
+import ScrollToTop from "@/components/scroll-to-top";
+import { ThemeProvider } from "next-themes";
 
 const queryClient = new QueryClient();
 
@@ -60,6 +63,7 @@ function Router() {
       <Route path="/about/national-symbols" component={NationalSymbols} />
       <Route path="/about/administrative-division" component={AdminDivision} />
       <Route path="/about/currency" component={Currency} />
+      <Route path="/about/tourism" component={Tourism} />
       <Route path="/royal" component={Royal} />
       <Route path="/royal/his-majesty" component={HisMajesty} />
       <Route path="/royal/council-of-regency" component={CouncilOfRegency} />
@@ -96,13 +100,16 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <LanguageProvider>
           <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+            <ScrollToTop />
             <Layout>
               <Router />
             </Layout>
           </WouterRouter>
         </LanguageProvider>
+        </ThemeProvider>
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>
