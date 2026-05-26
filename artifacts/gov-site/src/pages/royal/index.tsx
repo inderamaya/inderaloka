@@ -7,8 +7,8 @@ import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function Royal() {
   const { t } = useLanguage();
-  const r = t.royal;
-  const l = r.landing;
+  const r = t.royal || {} as any;
+  const l = r.landing || { subpages: [] as any[] };
 
   return (
     <div className="flex-1 w-full bg-background pb-24">
@@ -35,6 +35,7 @@ export default function Royal() {
 
       <div className="container mx-auto px-4 lg:px-8 pt-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-border border border-border">
+          
           {l.subpages.map((sub, idx) => (
             <motion.div key={sub.href} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.08 }}>
               <Link href={sub.href} className="group bg-background p-8 flex flex-col h-full hover:bg-primary hover:text-white transition-colors" data-testid={`card-royal-${idx}`}>

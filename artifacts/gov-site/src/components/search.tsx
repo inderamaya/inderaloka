@@ -36,7 +36,7 @@ export function Search() {
         { title: t.nav.about, href: "/about" },
         { title: t.nav.government, href: "/government" },
         { title: t.nav.royal, href: "/royal" },
-        { title: t.nav.tourism, href: "/about/tourism" },
+        { title: t.nav.tourism, href: "/tourism" },
         { title: t.nav.directory, href: "/directory" },
         { title: t.nav.contact, href: "/contact" },
         { title: translations[language].about.subpages[0].title, href: "/about/history" },
@@ -48,7 +48,7 @@ export function Search() {
         { title: (translations[language] as any).government.landing.subpages[1].title, href: "/government/legislative" },
         { title: (translations[language] as any).government.landing.subpages[2].title, href: "/government/judiciary" },
         { title: (translations[language] as any).government.landing.subpages[3].title, href: "/government/state-officials" },
-        { title: (translations[language] as any).tourism.breadcrumbCurrent, href: "/about/tourism" },
+        { title: (translations[language] as any).tourism.breadcrumbCurrent, href: "/tourism" },
   ];
 
   return (

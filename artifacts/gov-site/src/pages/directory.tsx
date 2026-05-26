@@ -8,15 +8,16 @@ import { Input } from "@/components/ui/input";
 
 export default function Directory() {
   const { t } = useLanguage();
-  const d = t.directoryPage;
+  const d = t.directoryPage || { departments: [], filterAll: "", filterExec: "", filterLeg: "", filterJud: "", filterDept: "" } as any;
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("All");
 
   const filterLabels: Record<string, string> = {
-    All: d.filterAll,
-    Executive: d.filterExec,
-    Legislative: d.filterLeg,
-    Judicial: d.filterJud,
+    All: d.filterAll || "All",
+    Executive: d.filterExec || "Executive",
+    Legislative: d.filterLeg || "Legislative",
+    Judicial: d.filterJud || "Judicial",
+    Departments: d.filterDept || "Departments",
   };
 
   const filtered = useMemo(() => {

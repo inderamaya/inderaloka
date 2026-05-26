@@ -6,8 +6,8 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 
 export default function Government() {
   const { t } = useLanguage();
-  const g = t.government;
-  const l = g.landing;
+  const g = t.government || {} as any;
+  const l = g.landing || { subpages: [] as any[] };
 
   return (
     <div className="flex-1 w-full bg-background pb-24">
