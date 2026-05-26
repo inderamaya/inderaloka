@@ -3,6 +3,11 @@ export type Language = "ms" | "en";
 export const translations = {
   ms: {
     officialBanner: "Portal Rasmi Negara Inderaloka",
+    weatherAlert: {
+      title: "AMARAN CUACA AKTIF",
+      description: "Jabatan Meteorologi Kebangsaan telah mengeluarkan amaran ribut kuat di kawasan pesisir pantai. Sila ambil langkah berjaga-jaga.",
+      link: "Lihat Butiran",
+    },
     siteTitle: "InderaMaya.ir",
     siteDept: "Negara Inderaloka",
     siteDesc: "Kehadiran digital rasmi. Menyediakan maklumat yang terstruktur, bermartabat, dan jelas kepada warga dan pengunjung antarabangsa.",
@@ -1155,6 +1160,11 @@ export const translations = {
 
   en: {
     officialBanner: "Official Portal of the State of Inderaloka",
+    weatherAlert: {
+      title: "ACTIVE WEATHER ALERT",
+      description: "The National Meteorological Department has issued a severe storm warning for coastal regions. Please take necessary precautions.",
+      link: "View Details",
+    },
     siteTitle: "InderaMaya.ir",
     siteDept: "State of inderaloka",
     siteDesc: "The official digital presence. Providing structured, dignified, and clear information to citizens and international visitors.",

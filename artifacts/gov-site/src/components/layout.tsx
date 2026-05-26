@@ -5,6 +5,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { WeatherAlert } from "@/components/WeatherAlert";
 import {
   Sheet,
   SheetClose,
@@ -66,10 +67,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   return (
        <div className="min-h-[100dvh] flex flex-col bg-background selection:bg-accent selection:text-white font-sans overflow-x-hidden">
-      <div className="bg-primary text-white text-xs font-mono py-1 text-center border-b border-white/10 tracking-widest uppercase">
-        {t.officialBanner}
-      </div>
-      <header className="border-b border-border sticky top-0 bg-background/95 backdrop-blur z-50">
+      <WeatherAlert />
+      <header className="border-b border-border sticky top-0 bg-background/80 backdrop-blur-md z-50 shadow-sm">
         <div className="container mx-auto px-4 lg:px-8 py-5 flex items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-4 group flex-shrink-0">
             <Seal />
