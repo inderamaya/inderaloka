@@ -18,24 +18,24 @@ export default function Home() {
   return (
     <div className="flex-1 flex flex-col w-full relative">
       {/* Cinematic Hero Section */}
-      <section className="min-h-[90vh] flex items-center relative overflow-hidden pt-20">
+      <section className="min-h-[90vh] flex items-center relative overflow-hidden">
         <motion.div style={{ y: y1, opacity }} className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 via-background/20 to-background z-10" />
           <img
             src="/Pemandangan.jpg"
             alt="National Landscape"
-            className="w-full h-full object-cover scale-110 blur-[2px] opacity-40 dark:opacity-20"
+            className="w-full h-full object-cover scale-110 blur-[2px] opacity-30 dark:opacity-15"
           />
         </motion.div>
 
-        <div className="container mx-auto px-6 lg:px-8 relative z-10">
+        <div className="container mx-auto px-6 lg:px-8 relative z-10 pt-48 pb-16">
           <div className="max-w-4xl">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent font-mono text-[10px] uppercase tracking-[0.2em] mb-6 sm:mb-8 font-bold">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/60 backdrop-blur-md border border-white/20 text-white shadow-lg font-mono text-[10px] uppercase tracking-[0.2em] mb-6 sm:mb-8 font-bold">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                 {t.officialBanner}
               </div>
@@ -50,7 +50,7 @@ export default function Home() {
                 {h.heroDesc}
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-6">
+              <div className="flex flex-col sm:flex-row gap-6 pb-12 sm:pb-0">
                 <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-accent hover:text-white rounded-full h-16 px-10 text-[11px] tracking-[0.2em] uppercase font-bold shadow-2xl transition-all duration-300">
                   <Link href="/services" data-testid="btn-access-services">
                     {h.ctaServices}
@@ -98,7 +98,7 @@ export default function Home() {
       </section>
 
       {/* Modern Dashboard - Statistics */}
-      <section className="py-20 sm:py-24 relative">
+      <section className="py-20 sm:py-24 relative mt-12 sm:mt-0">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {[Users, Map, Banknote, LineChart, MapPin].map((Icon, idx) => (
