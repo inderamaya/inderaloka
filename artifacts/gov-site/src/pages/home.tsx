@@ -13,17 +13,6 @@ export default function Home() {
 
   return (
     <div className="flex-1 flex flex-col w-full">
-      {/* Alert Strip */}
-      <div className="bg-destructive text-destructive-foreground py-3">
-        <div className="container mx-auto px-4 lg:px-8 flex items-center gap-3 text-sm font-medium">
-          <AlertTriangle className="w-4 h-4 shrink-0" />
-          <span className="font-mono tracking-tight">{h.alertText}</span>
-          <Link href="/news" className="ml-auto underline underline-offset-4 hover:text-white/80 font-mono text-xs whitespace-nowrap" data-testid="link-alert-advisory">
-            {h.alertLink}
-          </Link>
-        </div>
-      </div>
-
       {/* Hero Section */}
       <section
         className="text-white py-24 lg:py-32 relative overflow-hidden border-b border-border bg-cover bg-center"
