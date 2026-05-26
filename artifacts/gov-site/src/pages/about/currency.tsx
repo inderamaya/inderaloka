@@ -3,100 +3,130 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { GlassCard } from "@/components/ui/GlassCard";
+import { Coins, Landmark, TrendingUp, History, ArrowRight, Wallet } from "lucide-react";
 
 export default function Currency() {
   const { t } = useLanguage();
   const c = t.currency;
 
   return (
-    <div className="flex-1 w-full bg-background pb-24">
-      <div className="bg-secondary border-b border-border py-12">
-        <div className="container mx-auto px-4 lg:px-8">
-          <Breadcrumb className="mb-6 font-mono uppercase tracking-widest text-[10px]">
+    <div className="flex-1 w-full bg-background pb-32">
+      <div className="relative pt-20 pb-32 overflow-hidden">
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <Breadcrumb className="mb-8 font-mono uppercase tracking-[0.3em] text-[10px] font-bold text-accent">
             <BreadcrumbList>
               <BreadcrumbItem><BreadcrumbLink asChild><Link href="/">{c.breadcrumbHome}</Link></BreadcrumbLink></BreadcrumbItem>
-              <BreadcrumbSeparator />
+              <BreadcrumbSeparator className="opacity-50" />
               <BreadcrumbItem><BreadcrumbLink asChild><Link href="/about">{c.breadcrumbParent}</Link></BreadcrumbLink></BreadcrumbItem>
-              <BreadcrumbSeparator />
+              <BreadcrumbSeparator className="opacity-50" />
               <BreadcrumbItem><BreadcrumbPage className="text-primary">{c.breadcrumbCurrent}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <h1 className="font-serif text-4xl lg:text-5xl text-primary mb-6">{c.pageTitle}</h1>
-          <p className="text-muted-foreground text-lg max-w-2xl font-light">{c.pageDesc}</p>
+          <div className="max-w-4xl">
+            <h1 className="font-serif text-5xl lg:text-7xl font-bold text-primary mb-8 leading-tight tracking-tighter">{c.pageTitle}</h1>
+            <p className="text-muted-foreground text-xl font-light max-w-3xl leading-relaxed">{c.pageDesc}</p>
+          </div>
         </div>
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-accent/5 blur-[120px] rounded-full -z-10" />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 pt-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 mb-16">
-          <div className="lg:col-span-2">
-            <h2 className="font-serif text-2xl text-primary mb-6">{c.overviewTitle}</h2>
-            <div className="grid grid-cols-2 gap-4 mb-8">
-              <div className="border border-border p-4">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground block mb-1">{c.centralBankLabel}</span>
-                <span className="font-serif text-lg text-primary">{c.centralBank}</span>
-              </div>
-              <div className="border border-border p-4">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground block mb-1">ISO Code</span>
-                <span className="font-serif text-3xl text-accent font-semibold">{c.code}</span>
+      <div className="container mx-auto px-4 lg:px-8 space-y-32">
+        {/* Overview & Exchange Rates */}
+        <section>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+            <div className="lg:col-span-7">
+              <div className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-mono text-[9px] uppercase tracking-[0.3em] font-bold mb-8 border border-primary/20">{c.overviewTitle}</div>
+              <h2 className="font-serif text-4xl text-primary font-bold mb-8">{c.fullName} ({c.code})</h2>
+              <div className="glass-effect p-10 rounded-[2.5rem] bg-white/40 dark:bg-black/20 border-white/5 mb-10">
+                <div className="flex items-start gap-6">
+                  <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent shrink-0">
+                    <Landmark className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-mono text-xs uppercase tracking-widest text-accent font-bold mb-4">{c.centralBankLabel}</h3>
+                    <p className="text-2xl font-serif text-primary font-bold mb-4">{c.centralBank}</p>
+                    <p className="text-muted-foreground leading-relaxed font-light">{c.centralBankDesc}</p>
+                  </div>
+                </div>
               </div>
             </div>
-            <p className="text-muted-foreground leading-relaxed">{c.centralBankDesc}</p>
+
+            <div className="lg:col-span-5">
+              <GlassCard className="h-full border-accent/20 bg-accent/5">
+                <h3 className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent font-bold mb-8 flex items-center gap-3">
+                  <TrendingUp className="w-4 h-4" />
+                  {c.exchangeLabel}
+                </h3>
+                <div className="space-y-6">
+                  {c.exchangeRates.map((rate, i) => (
+                    <div key={i} className="flex justify-between items-center pb-6 border-b border-white/5 last:border-0 last:pb-0">
+                      <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center font-mono text-[10px] font-bold border border-white/10">{rate.currency.split(' ')[0]}</div>
+                        <span className="text-sm font-medium text-primary">{rate.currency}</span>
+                      </div>
+                      <span className="font-mono text-lg font-bold text-accent">{rate.rate}</span>
+                    </div>
+                  ))}
+                </div>
+              </GlassCard>
+            </div>
           </div>
-          <div>
-            <h3 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">{c.exchangeLabel}</h3>
-            <div className="flex flex-col gap-2">
-              {c.exchangeRates.map((rate, idx) => (
-                <div key={idx} className="flex items-center justify-between border border-border p-3 bg-background">
-                  <span className="text-sm text-muted-foreground">{rate.currency}</span>
-                  <span className="font-mono text-sm font-semibold text-accent">{rate.rate}</span>
+        </section>
+
+        {/* Banknotes Grid */}
+        <section>
+          <div className="flex items-center gap-4 mb-12">
+            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+              <Wallet className="w-5 h-5" />
+            </div>
+            <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary font-bold">{c.banknotesTitle}</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {c.banknotes.map((note, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.05 }}
+              >
+                <GlassCard className="h-full group hover:border-accent/30 transition-all duration-500 bg-white/40 dark:bg-black/20">
+                  <div className="flex justify-between items-start mb-8">
+                    <div className="text-4xl font-serif font-bold text-primary">{note.value}</div>
+                    <div className="px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent font-mono text-[9px] font-bold uppercase tracking-widest">{note.color}</div>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed font-light">{note.desc}</p>
+                  <div className="mt-8 pt-6 border-t border-white/5 flex items-center gap-2 text-[9px] font-mono font-bold uppercase tracking-widest text-accent opacity-0 group-hover:opacity-100 transition-all">
+                    Legal Tender <ArrowRight className="w-3.5 h-3.5" />
+                  </div>
+                </GlassCard>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Currency History */}
+        <section className="relative">
+          <div className="absolute inset-0 bg-primary/5 -skew-y-3 rounded-[3rem] -z-10 border border-white/5" />
+          <div className="py-24 px-8 lg:px-20">
+            <div className="flex items-center gap-4 mb-16">
+              <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+                <History className="w-5 h-5" />
+              </div>
+              <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent font-bold">{c.historyTitle}</h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+              {c.historyEvents.map((event, i) => (
+                <div key={i} className="space-y-4">
+                  <div className="text-3xl font-serif font-bold text-primary">{event.year}</div>
+                  <div className="w-8 h-1 bg-accent rounded-full" />
+                  <p className="text-xs text-muted-foreground leading-relaxed font-light">{event.event}</p>
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-
-        <section className="mb-16">
-          <h2 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-8">{c.banknotesTitle}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {c.banknotes.map((note, idx) => (
-              <motion.div key={idx} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.07 }} className="border border-border bg-background p-5 flex gap-4 items-start">
-                <div className="w-14 h-8 bg-accent/10 border border-accent/30 flex items-center justify-center flex-shrink-0">
-                  <span className="font-mono text-xs font-bold text-accent">{note.value}</span>
-                </div>
-                <div>
-                  <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-1">{note.color}</div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{note.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mb-16">
-          <h2 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-8">{c.coinsTitle}</h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {c.coins.map((coin, idx) => (
-              <div key={idx} className="border border-border bg-background p-5 text-center">
-                <div className="w-12 h-12 rounded-full bg-secondary border-2 border-accent/30 mx-auto mb-3 flex items-center justify-center">
-                  <span className="font-mono text-xs font-bold text-accent">{coin.value}</span>
-                </div>
-                <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-1">{coin.material}</div>
-                <p className="text-xs text-muted-foreground">{coin.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section>
-          <h2 className="font-serif text-2xl text-primary mb-8">{c.historyTitle}</h2>
-          <div className="relative pl-8 border-l border-border flex flex-col gap-0">
-            {c.historyEvents.map((event, idx) => (
-              <motion.div key={idx} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.08 }} className="pb-10 relative">
-                <div className="absolute -left-[33px] top-1 w-3 h-3 rounded-full bg-accent ring-4 ring-background" />
-                <span className="font-mono text-sm font-bold text-accent block mb-2">{event.year}</span>
-                <p className="text-muted-foreground text-sm leading-relaxed">{event.event}</p>
-              </motion.div>
-            ))}
           </div>
         </section>
       </div>

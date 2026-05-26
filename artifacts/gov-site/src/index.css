@@ -51,7 +51,8 @@
 }
 
 :root {
-  --background: 0 0% 100%;
+  /* Premium Palette - Light Mode (Marble White Base) */
+  --background: 0 0% 98%;
   --foreground: 216 60% 10%;
 
   --border: 216 20% 90%;
@@ -66,16 +67,16 @@
   --popover-foreground: 216 60% 10%;
   --popover-border: 216 20% 90%;
 
-  --primary: 216 60% 10%;
+  --primary: 216 60% 10%; /* Deep Navy */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 0 0% 96%;
+  --secondary: 160 30% 96%; /* Subtle Emerald Tint */
   --secondary-foreground: 216 60% 10%;
 
   --muted: 0 0% 96%;
   --muted-foreground: 216 20% 40%;
 
-  --accent: 39 75% 48%;
+  --accent: 39 75% 48%; /* Royal Gold */
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 84% 60%;
@@ -85,32 +86,33 @@
   --app-font-serif: 'Playfair Display', serif;
   --app-font-mono: 'Space Mono', monospace;
 
-  --radius: 0rem;
+  --radius: 0.25rem; /* Slight rounding for modern feel */
 }
 
 .dark {
-  --background: 216 60% 5%;
+  /* Premium Palette - Dark Mode (Deep Navy Base) */
+  --background: 216 60% 4%;
   --foreground: 216 20% 95%;
 
-  --border: 216 20% 15%;
-  --input: 216 20% 15%;
-  --ring: 216 60% 95%;
+  --border: 216 20% 12%;
+  --input: 216 20% 12%;
+  --ring: 39 75% 48%;
 
-  --card: 216 60% 7%;
+  --card: 216 60% 6%;
   --card-foreground: 216 20% 95%;
-  --card-border: 216 20% 15%;
+  --card-border: 216 20% 12%;
 
-  --popover: 216 60% 7%;
+  --popover: 216 60% 6%;
   --popover-foreground: 216 20% 95%;
-  --popover-border: 216 20% 15%;
+  --popover-border: 216 20% 12%;
 
   --primary: 216 60% 95%;
   --primary-foreground: 216 60% 5%;
 
-  --secondary: 216 60% 10%;
+  --secondary: 160 60% 8%; /* Dark Emerald */
   --secondary-foreground: 216 20% 95%;
 
-  --muted: 216 60% 10%;
+  --muted: 216 60% 8%;
   --muted-foreground: 216 20% 60%;
 
   --accent: 39 75% 48%;
@@ -129,5 +131,35 @@
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif font-normal tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass-effect {
+    @apply bg-background/60 backdrop-blur-xl border border-white/10 shadow-xl;
+  }
+
+  .dark .glass-effect {
+    @apply bg-black/40 backdrop-blur-xl border border-white/5 shadow-2xl;
+  }
+
+  .premium-shadow {
+    box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .premium-shadow {
+    box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.5);
+  }
+
+  .gold-gradient {
+    background: linear-gradient(135deg, hsl(39, 75%, 48%) 0%, hsl(39, 75%, 60%) 100%);
+  }
+
+  .navy-gradient {
+    background: linear-gradient(135deg, hsl(216, 60%, 10%) 0%, hsl(216, 60%, 20%) 100%);
+  }
+
+  .emerald-gradient {
+    background: linear-gradient(135deg, hsl(160, 60%, 10%) 0%, hsl(160, 60%, 20%) 100%);
   }
 }

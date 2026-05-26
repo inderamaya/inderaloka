@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ChevronUp, History, Award, Users, Shield } from "lucide-react";
+import { ChevronDown, ChevronUp, History, Award, Users, Shield, User, GraduationCap, Calendar, Crown, Star } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { Badge } from "@/components/ui/badge";
+import { GlassCard } from "@/components/ui/GlassCard";
+import { cn } from "@/lib/utils";
 
 export default function HisMajesty() {
   const { t } = useLanguage();
@@ -13,221 +15,212 @@ export default function HisMajesty() {
   const [expandedMonarch, setExpandedMonarch] = useState<number | null>(null);
 
   return (
-    <div className="flex-1 w-full bg-background pb-24">
-      <div className="bg-primary border-b border-white/10 py-12">
-        <div className="container mx-auto px-4 lg:px-8">
-          <Breadcrumb className="mb-6 font-mono uppercase tracking-widest text-[10px]">
-            <BreadcrumbList className="text-white/50">
-              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/" className="text-white/60 hover:text-white">{r.breadcrumbHome}</Link></BreadcrumbLink></BreadcrumbItem>
-              <BreadcrumbSeparator className="text-white/30" />
-              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/royal" className="text-white/60 hover:text-white">{r.breadcrumbParent}</Link></BreadcrumbLink></BreadcrumbItem>
-              <BreadcrumbSeparator className="text-white/30" />
-              <BreadcrumbItem><BreadcrumbPage className="text-accent">{m.breadcrumbCurrent}</BreadcrumbPage></BreadcrumbItem>
+    <div className="flex-1 w-full bg-background pb-32">
+      <div className="relative pt-20 pb-32 overflow-hidden">
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <Breadcrumb className="mb-8 font-mono uppercase tracking-[0.3em] text-[10px] font-bold text-accent">
+            <BreadcrumbList>
+              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/">{r.breadcrumbHome}</Link></BreadcrumbLink></BreadcrumbItem>
+              <BreadcrumbSeparator className="opacity-50" />
+              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/royal">{r.breadcrumbParent}</Link></BreadcrumbLink></BreadcrumbItem>
+              <BreadcrumbSeparator className="opacity-50" />
+              <BreadcrumbItem><BreadcrumbPage className="text-primary">{m.breadcrumbCurrent}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <h1 className="font-serif text-3xl lg:text-4xl text-white mb-4">{m.pageTitle}</h1>
-          <p className="text-accent font-mono text-sm tracking-widest">{m.pageDesc}</p>
+          <div className="max-w-4xl">
+            <h1 className="font-serif text-4xl lg:text-7xl font-bold text-primary mb-8 leading-tight tracking-tighter">{m.pageTitle}</h1>
+            <p className="text-accent font-mono text-[11px] uppercase tracking-[0.4em] font-bold">{m.pageDesc}</p>
+          </div>
         </div>
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-accent/5 blur-[120px] rounded-full -z-10" />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 pt-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-24">
-          <div className="lg:col-span-4">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
-              {/* Institutional Framing for Portrait */}
-              <div className="relative p-2 border border-border bg-white shadow-xl mb-6">
-                <div className="aspect-[3/4] bg-primary/5 border border-border flex items-center justify-center relative overflow-hidden group">
-                  <div className="absolute inset-0 border-[12px] border-double border-primary/10 pointer-events-none" />
-                  <div className="absolute top-4 right-4 flex flex-col items-center gap-1 opacity-40">
-                    <Shield className="w-8 h-8 text-primary" />
-                    <span className="text-[6px] font-mono uppercase tracking-tighter text-primary">Verified State Portrait</span>
+      <div className="container mx-auto px-4 lg:px-8 space-y-32">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-5"
+          >
+            <GlassCard className="p-2 border-accent/20 bg-white/40 dark:bg-black/20 rounded-[2.5rem] mb-12">
+              <div className="aspect-[3/4] bg-primary/5 rounded-[2rem] flex items-center justify-center relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent z-10" />
+                <div className="text-center z-20">
+                  <div className="w-20 h-20 rounded-full border-2 border-accent mx-auto mb-6 flex items-center justify-center bg-white shadow-2xl">
+                    <User className="w-10 h-10 text-accent" />
                   </div>
-                  <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest text-center whitespace-pre-line z-10">{m.portraitLabel}</span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-white font-bold">{m.portraitLabel}</span>
                 </div>
               </div>
+            </GlassCard>
 
-              <div className="border border-border divide-y divide-border bg-white">
-                {[
-                  [m.officialTitleLabel, m.officialTitle],
-                  [m.bornLabel, m.born],
-                  [m.accessionLabel, m.accession],
-                  [m.mottoLabel, m.motto],
-                ].map(([label, value], idx) => (
-                  <div key={idx} className="p-4">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground block mb-1">{label}</span>
-                    <span className="text-sm text-primary font-medium">{value}</span>
+            <div className="space-y-4">
+              {[
+                { label: m.officialTitleLabel, icon: Crown, value: m.officialTitle },
+                { label: m.bornLabel, icon: Calendar, value: m.born },
+                { label: m.accessionLabel, icon: Star, value: m.accession },
+                { label: m.educationLabel, icon: GraduationCap, value: m.education },
+              ].map((item, i) => (
+                <div key={i} className="flex justify-between items-start py-5 border-b border-white/10">
+                  <div className="flex items-center gap-3">
+                    <item.icon className="w-4 h-4 text-accent" />
+                    <span className="font-mono text-[9px] uppercase tracking-widest text-accent font-bold mt-1">{item.label}</span>
                   </div>
-                ))}
-                <div className="p-4">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground block mb-1">{m.educationLabel}</span>
-                  <span className="text-sm text-primary leading-relaxed">{m.education}</span>
+                  <span className="text-sm text-primary font-medium text-right max-w-[250px] leading-relaxed">{item.value}</span>
                 </div>
+              ))}
+            </div>
+
+            <GlassCard className="mt-12 border-accent/30 bg-accent/5 p-8 italic rounded-3xl">
+               <div className="text-accent mb-4 font-mono text-[10px] uppercase tracking-widest font-bold">{m.mottoLabel}</div>
+               <p className="text-xl font-serif text-primary leading-tight font-medium">"{m.motto}"</p>
+            </GlassCard>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="lg:col-span-7 space-y-24"
+          >
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-mono text-[9px] uppercase tracking-widest mb-8 font-bold">
+                <Shield className="w-3 h-3" />
+                Constitutional Mandate
               </div>
-            </motion.div>
-          </div>
+              <h2 className="font-serif text-4xl lg:text-5xl text-primary font-bold mb-8 leading-tight">{m.roleTitle}</h2>
+              <p className="text-muted-foreground text-xl font-light leading-relaxed mb-12 italic">{m.roleBody}</p>
+            </div>
 
-          <div className="lg:col-span-8">
-            <motion.section initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="mb-12">
-              <h2 className="font-serif text-2xl text-primary mb-4 flex items-center gap-3">
-                <Award className="w-6 h-6 text-accent" />
-                {m.roleTitle}
-              </h2>
-              <div className="w-12 h-px bg-accent mb-6" />
-              <p className="text-muted-foreground leading-relaxed text-lg italic">{m.roleBody}</p>
-            </motion.section>
-
-            <motion.section initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
-              <h2 className="font-serif text-2xl text-primary mb-6 flex items-center gap-3">
-                <Shield className="w-6 h-6 text-accent" />
-                {m.dutiesTitle}
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-12">
+              <h3 className="font-serif text-3xl text-primary font-bold border-b border-white/10 pb-6">{m.dutiesTitle}</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {m.duties.map((duty, idx) => (
-                  <div key={idx} className="flex gap-4 items-start border border-border p-4 bg-secondary/30 hover:bg-secondary/50 transition-colors">
-                    <span className="font-mono text-xs text-accent font-bold flex-shrink-0 pt-1">{(idx + 1).toString().padStart(2, "0")}</span>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{duty}</p>
-                  </div>
+                  <GlassCard key={idx} className="p-8 border-transparent hover:border-accent/20 transition-all bg-white/40 dark:bg-black/20 group">
+                    <div className="flex items-start gap-6">
+                      <span className="font-mono text-xl font-bold text-accent/20 group-hover:text-accent transition-colors shrink-0">0{idx + 1}</span>
+                      <p className="text-sm text-muted-foreground leading-relaxed font-light">{duty}</p>
+                    </div>
+                  </GlassCard>
                 ))}
               </div>
-            </motion.section>
-          </div>
+            </div>
+          </motion.div>
         </div>
 
         {/* Historical Timeline Section */}
-        <div className="border-t border-border pt-24">
-          <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4 font-mono uppercase tracking-widest text-[10px] py-1 px-3">Archive & History</Badge>
-            <h2 className="font-serif text-4xl text-primary mb-4">{m.timelineTitle}</h2>
-            <div className="w-24 h-px bg-accent mx-auto mb-6" />
-            <p className="text-muted-foreground max-w-2xl mx-auto">Meneroka warisan kepimpinan dan kedaulatan melalui pemerintahan Yang di-Pertuan Agong terdahulu.</p>
+        <section className="relative pt-32">
+          <div className="text-center mb-20">
+            <h2 className="font-serif text-5xl lg:text-6xl text-primary font-bold mb-6">{m.timelineTitle}</h2>
+            <div className="w-16 h-1 bg-accent mx-auto rounded-full" />
           </div>
 
-          <div className="relative">
-            {/* Vertical Line for Timeline */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-border hidden lg:block" />
-
-            <div className="space-y-12">
-              {m.formerMonarchs.map((monarch, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className={`relative flex flex-col lg:flex-row items-center ${idx % 2 === 0 ? "lg:flex-row-reverse" : ""}`}
-                >
-                  {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full border-2 border-accent bg-background z-10 hidden lg:block" />
-
-                  <div className="w-full lg:w-1/2 px-4 lg:px-12">
-                    <div className={`p-6 border border-border bg-white shadow-sm hover:shadow-md transition-shadow ${expandedMonarch === idx ? "border-accent/50 ring-1 ring-accent/20" : ""}`}>
-                      <div className="flex justify-between items-start mb-4">
-                        <div>
-                          <span className="font-mono text-[10px] uppercase tracking-widest text-accent mb-1 block">Yang di-Pertuan Agong {monarch.order}</span>
-                          <h3 className="font-serif text-2xl text-primary">{monarch.name}</h3>
-                          <span className="text-sm text-muted-foreground font-mono">{monarch.reign}</span>
-                        </div>
-                        <button
-                          onClick={() => setExpandedMonarch(expandedMonarch === idx ? null : idx)}
-                          className="p-2 hover:bg-secondary rounded-full transition-colors"
-                        >
-                          {expandedMonarch === idx ? <ChevronUp className="w-5 h-5 text-accent" /> : <ChevronDown className="w-5 h-5 text-muted-foreground" />}
-                        </button>
+          <div className="max-w-6xl mx-auto space-y-8">
+            {m.formerMonarchs.map((monarch, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+              >
+                <GlassCard className="p-0 overflow-hidden border-transparent hover:border-accent/20 transition-all duration-300 bg-white/40 dark:bg-black/20">
+                  <button
+                    onClick={() => setExpandedMonarch(expandedMonarch === idx ? null : idx)}
+                    className="w-full text-left p-8 lg:p-10 flex items-center justify-between gap-8 group"
+                  >
+                    <div className="flex items-center gap-10 min-w-0">
+                      <div className="hidden sm:block w-16 h-16 rounded-2xl bg-primary/5 flex items-center justify-center shrink-0">
+                        <Crown className="w-8 h-8 text-accent/30 group-hover:text-accent transition-colors" />
                       </div>
-
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {monarch.honours.slice(0, 3).map((h, i) => (
-                          <Badge key={i} variant="secondary" className="text-[9px] font-mono font-normal">{h}</Badge>
-                        ))}
-                        {monarch.honours.length > 3 && <span className="text-[9px] text-muted-foreground font-mono">+{monarch.honours.length - 3}</span>}
+                      <div className="min-w-0">
+                        <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-accent font-bold mb-2">Yang di-Pertuan Agong {monarch.order}</div>
+                        <h2 className="font-serif text-2xl lg:text-3xl text-primary font-bold truncate group-hover:text-accent transition-colors">{monarch.name}</h2>
+                        <span className="text-sm text-muted-foreground font-mono font-bold tracking-widest">{monarch.reign}</span>
                       </div>
-
-                      <AnimatePresence>
-                        {expandedMonarch === idx && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="overflow-hidden"
-                          >
-                            <div className="pt-6 border-t border-border mt-6 space-y-8">
-                              <div>
-                                <h4 className="font-mono text-[10px] uppercase tracking-widest text-accent mb-3 flex items-center gap-2">
-                                  <History className="w-3 h-3" />
-                                  {m.biographyLabel}
-                                </h4>
-                                <p className="text-sm text-muted-foreground leading-relaxed">{monarch.bio}</p>
-                              </div>
-
-                              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div>
-                                  <h4 className="font-mono text-[10px] uppercase tracking-widest text-accent mb-3 flex items-center gap-2">
-                                    <Award className="w-3 h-3" />
-                                    {m.achievementsLabel}
-                                  </h4>
-                                  <ul className="space-y-2">
-                                    {monarch.achievements.map((item, i) => (
-                                      <li key={i} className="text-xs text-muted-foreground flex items-center gap-2">
-                                        <div className="w-1 h-1 bg-accent rounded-full" />
-                                        {item}
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </div>
-                                <div>
-                                  <h4 className="font-mono text-[10px] uppercase tracking-widest text-accent mb-3 flex items-center gap-2">
-                                    <Users className="w-3 h-3" />
-                                    {m.consortLabel}
-                                  </h4>
-                                  <p className="text-xs text-muted-foreground">{monarch.consort}</p>
-                                  <div className="mt-4">
-                                    <h5 className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground mb-1">Pewaris Takhta</h5>
-                                    <p className="text-xs text-primary font-medium">{monarch.heir}</p>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div>
-                                <h4 className="font-mono text-[10px] uppercase tracking-widest text-accent mb-3 flex items-center gap-2">
-                                  <History className="w-3 h-3" />
-                                  Peristiwa Penting
-                                </h4>
-                                <div className="flex flex-wrap gap-2">
-                                  {monarch.events.map((event, i) => (
-                                    <Badge key={i} variant="outline" className="text-[10px] font-normal border-border bg-secondary/20">
-                                      {event}
-                                    </Badge>
-                                  ))}
-                                </div>
-                              </div>
-
-                              <div className="grid grid-cols-2 gap-4 pt-4">
-                                <div className="p-3 bg-secondary/50 border border-border rounded-sm">
-                                  <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground block mb-1">Portrait</span>
-                                  <div className="aspect-[3/4] bg-primary/5 border border-border flex items-center justify-center text-[10px] font-mono text-muted-foreground text-center">
-                                    Institutional<br />Portrait
-                                  </div>
-                                </div>
-                                <div className="p-3 bg-secondary/50 border border-border rounded-sm">
-                                  <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground block mb-1">{m.standardLabel}</span>
-                                  <div className="aspect-[3/4] bg-primary/5 border border-border flex items-center justify-center text-[10px] font-mono text-muted-foreground text-center">
-                                    Royal<br />Standard
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
                     </div>
-                  </div>
-                  <div className="hidden lg:block w-1/2" />
-                </motion.div>
-              ))}
-            </div>
+                    <div className={cn(
+                      "w-12 h-12 rounded-full border border-primary/10 flex items-center justify-center transition-all duration-300",
+                      expandedMonarch === idx ? "bg-accent border-accent text-white rotate-180" : "group-hover:border-accent group-hover:text-accent"
+                    )}>
+                      <ChevronDown className="w-5 h-5" />
+                    </div>
+                  </button>
+
+                  <AnimatePresence>
+                    {expandedMonarch === idx && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-8 lg:px-10 pb-10 pt-4 border-t border-white/5">
+                           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                              <div className="lg:col-span-8 space-y-12">
+                                 <div>
+                                   <div className="flex items-center gap-3 mb-4">
+                                     <History className="w-4 h-4 text-accent" />
+                                     <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground font-bold">{m.biographyLabel}</span>
+                                   </div>
+                                   <p className="text-lg text-primary font-light leading-relaxed italic">"{monarch.bio}"</p>
+                                 </div>
+
+                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <div className="bg-accent/5 rounded-3xl p-8 border border-accent/10">
+                                      <div className="flex items-center gap-3 mb-6">
+                                        <Award className="w-4 h-4 text-accent" />
+                                        <span className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold">{m.achievementsLabel}</span>
+                                      </div>
+                                      <ul className="space-y-4">
+                                        {monarch.achievements.map((item, i) => (
+                                          <li key={i} className="flex items-start gap-3 text-xs text-primary font-medium">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
+                                            <span>{item}</span>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                    <div className="bg-primary/5 rounded-3xl p-8 border border-primary/10">
+                                      <div className="flex items-center gap-3 mb-6">
+                                        <Users className="w-4 h-4 text-primary" />
+                                        <span className="font-mono text-[10px] uppercase tracking-widest text-primary font-bold">{m.consortLabel}</span>
+                                      </div>
+                                      <p className="text-sm text-primary font-bold mb-6">{monarch.consort}</p>
+                                      <div className="pt-6 border-t border-primary/10">
+                                        <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground font-bold block mb-2">Pewaris Takhta</span>
+                                        <p className="text-sm font-serif text-primary font-bold">{monarch.heir}</p>
+                                      </div>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div className="lg:col-span-4 space-y-8">
+                                 <div className="aspect-[3/4] rounded-2xl bg-background border border-white/5 flex items-center justify-center p-4">
+                                    <div className="text-center">
+                                       <User className="w-12 h-12 text-accent opacity-20 mx-auto mb-4" />
+                                       <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Institutional Portrait</span>
+                                    </div>
+                                 </div>
+                                 <div className="p-6 rounded-2xl border border-white/5 bg-accent/5">
+                                    <span className="font-mono text-[9px] uppercase tracking-widest text-accent font-bold block mb-4">{m.standardLabel}</span>
+                                    <div className="aspect-video bg-white/20 rounded-lg flex items-center justify-center">
+                                       <Star className="w-8 h-8 text-accent opacity-20" />
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </GlassCard>
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );
