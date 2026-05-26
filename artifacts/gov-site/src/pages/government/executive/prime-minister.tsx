@@ -240,7 +240,7 @@ export default function PrimeMinister() {
             <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-px bg-border" />
 
             <div className="space-y-12">
-              {p.pmArchive.flatMap(pm => pm.milestones).map((m, idx) => (
+      {(p.pmArchive.flatMap(pm => [...pm.milestones] as any[]) as any[]).map((m: any, idx: number) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}

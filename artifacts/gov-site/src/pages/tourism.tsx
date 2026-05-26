@@ -19,7 +19,7 @@ const BatikPattern = () => (
 
 export default function Tourism() {
   const { t } = useLanguage();
-  const tr = t.tourismPage;
+    const tr = (t as any).tourism;
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
 
@@ -57,7 +57,7 @@ export default function Tourism() {
             className="max-w-3xl"
           >
             <h1 className="font-serif text-6xl lg:text-8xl mb-6 leading-tight">
-              {tr.pageTitle.split(' ').map((word, i) => (
+              {tr.pageTitle.split(' ').map((word : any, i : any) => (
                 <span key={i} className={i % 2 === 1 ? "italic text-accent" : ""}>{word} </span>
               ))}
             </h1>
@@ -87,7 +87,7 @@ export default function Tourism() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {tr.destinations.map((dest, idx) => (
+            {tr.destinations.map((dest: any, idx: any) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 30 }}
@@ -147,7 +147,7 @@ export default function Tourism() {
               <h2 className="font-serif text-4xl lg:text-5xl text-primary mb-12">{tr.cultureLabel}</h2>
 
               <div className="space-y-10">
-                {tr.culturalSections.map((sec, idx) => (
+                {tr.culturalSections.map((sec: any, idx: any) => (
                   <motion.div 
                     key={idx}
                     initial={{ opacity: 0, x: 20 }}

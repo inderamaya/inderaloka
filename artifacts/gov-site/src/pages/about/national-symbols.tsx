@@ -5,6 +5,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { Play, Pause, Music, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { AnthemPlayer } from "@/components/AnthemPlayer";
 
 export default function NationalSymbols() {
   const { t, language } = useLanguage();
@@ -66,6 +67,10 @@ export default function NationalSymbols() {
               <div className="p-6">
                 <h3 className="font-serif text-lg text-primary mb-3 group-hover:text-accent transition-colors">{symbol.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{symbol.desc}</p>
+                
+                {symbol.title.includes("Anthem") || symbol.title.includes("Lagu Kebangsaan") ? (
+                  <AnthemPlayer title={symbol.title} />
+                ) : null}
 
                 {symbol.id === "anthem" && (
                   <div className="mt-8 border-t border-border pt-6">

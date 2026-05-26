@@ -57,6 +57,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     { href: "/about", label: t.nav.about },
     { href: "/government", label: t.nav.government },
     { href: "/royal", label: t.nav.royal },
+    { href: "/tourism", label: t.nav.tourism },
     { href: "/directory", label: t.nav.directory },
     { href: "/contact", label: t.nav.contact },
   ];
@@ -64,7 +65,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const isActive = (href: string) => href === "/" ? location === "/" : location.startsWith(href);
 
   return (
-    <div className="min-h-[100dvh] flex flex-col bg-background selection:bg-accent selection:text-white font-sans">
+       <div className="min-h-[100dvh] flex flex-col bg-background selection:bg-accent selection:text-white font-sans overflow-x-hidden">
       <div className="bg-primary text-white text-xs font-mono py-1 text-center border-b border-white/10 tracking-widest uppercase">
         {t.officialBanner}
       </div>

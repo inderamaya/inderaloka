@@ -10,11 +10,12 @@ export const translations = {
       home: "Utama",
       services: "Perkhidmatan",
       news: "Berita",
-      about: "Mengenai",
+            about: "Mengenai",
       royal: "Institusi DiRaja",
       directory: "Direktori",
       government: "Kerajaan",
       contact: "Hubungi",
+      tourism: "Pelancongan",
       openMenu: "Buka menu",
         closeMenu: "Tutup menu",
       search: "Cari",
@@ -87,8 +88,6 @@ export const translations = {
         { id: "s7", category: "Pengangkutan", title: "Lesen Memandu", desc: "Perbaharui lesen anda atau jadualkan ujian memandu." },
         { id: "s8", category: "Pengangkutan", title: "Pendaftaran Kenderaan", desc: "Daftarkan kenderaan baharu atau pindahkan pemilikan." },
         { id: "s9", category: "Pendidikan", title: "Pinjaman Pelajar", desc: "Mohon pembiayaan pendidikan yang ditaja oleh negara." },
-        { id: "s10", category: "Kesihatan", title: "Institusi Kesihatan", desc: "Akses maklumat mengenai hospital dan klinik kerajaan di seluruh negara." },
-        { id: "s10", category: "Pendidikan", title: "Institusi Pendidikan", desc: "Maklumat mengenai universiti awam dan sekolah-sekolah kerajaan." },
         { id: "healthcare", category: "Penjagaan Kesihatan", title: "Institusi Kesihatan", desc: "Direktori hospital dan klinik kerajaan di seluruh negara." },
         { id: "education", category: "Pendidikan", title: "Institusi Pendidikan", desc: "Senarai universiti awam dan sekolah kebangsaan." },
       ],
@@ -115,6 +114,7 @@ export const translations = {
       breadcrumbCurrent: "Mengenai Kerajaan",
       pageTitle: "Mengenai Republik",
       pageDesc: "Memahami struktur, misi, dan kepimpinan negara berdaulat kami.",
+    
       exploreLabel: "Terokai Inderaloka",
       exploreDesc: "Pelajari lebih lanjut tentang sejarah, undang-undang, dan identiti negara kami.",
       subpages: [
@@ -123,7 +123,7 @@ export const translations = {
         { href: "/about/national-symbols", title: "Lambang Negara", desc: "Bendera, jata, bunga, haiwan, dan simbol-simbol kebangsaan rasmi Inderaloka." },
         { href: "/about/administrative-division", title: "Pembahagian Pentadbiran", desc: "Negeri-negeri dan wilayah persekutuan yang membentuk struktur pentadbiran Inderaloka." },
         { href: "/about/currency", title: "Mata Wang", desc: "Kencana Inderaloka — sejarah, denominasi, dan dasar monetari negara." },
-        { href: "/about/tourism", title: "Pelancongan", desc: "Terokai keindahan alam, warisan budaya, dan mercu tanda ikonik Inderaloka." },
+        { href: "/tourism", title: "Pelancongan", desc: "Terokai keindahan alam, warisan budaya, dan mercu tanda ikonik Inderaloka." },
             ],
       contentsLabel: "Kandungan",
       contents: { mission: "Sistem Kerajaan", structure: "Struktur Kerajaan", leadership: "Direktori Kepimpinan" },
@@ -347,6 +347,11 @@ export const translations = {
       sections: {
         attractions: "Tarikan Utama",
         identity: "Identiti Kebangsaan",
+        exploreLabel: "Terokai Destinasi",  // (ms) / "Explore Destinations" (en)
+          destinations: [],                    // keep empty if not needed, or add items
+          cultureLabel: "Warisan Budaya",      // (ms) / "Cultural Heritage" (en)
+          culturalSections: [],                // keep empty if not needed, or add items
+
       },
       cards: [
         { title: "Mercu Tanda Ikonik", desc: "Dari Menara Indera yang menjulang tinggi ke jambatan bersejarah yang menghubungkan masa lalu dan masa depan.", image: "https://images.unsplash.com/photo-1596422846543-75c6fc18a593?q=80&w=800&auto=format&fit=crop" },
@@ -774,7 +779,7 @@ export const translations = {
             honours: ["S.S.A.P.", "S.S.M.T.", "D.G.S.M."],
             milestones: [
               { year: "2022", event: "Pelantikan sebagai Perdana Menteri Ke-10" },
-              { year: "2023", event: "Pelancaran Kerangka Ekonomi Madani" }
+              { year: "2024", event: "Pelancaran Kerangka Ekonomi Madani" }
             ]
           },
           {
@@ -799,6 +804,8 @@ export const translations = {
         pageDesc: "Anggota-anggota Jemaah Menteri yang bertanggungjawab ke atas portfolio kementerian masing-masing.",
         lastUpdated: "Kemas Kini Terakhir",
         lastUpdatedDate: "1 Januari 2025",
+        ministerLabel: "Menteri",              // ← ADD THIS
+        deputyMinisterLabel: "Timbalan Menteri", // ← ADD THIS
         portfolioLabel: "Portfolio",
         sinceLabel: "Dilantik",
         partyLabel: "Parti",
@@ -1223,12 +1230,9 @@ export const translations = {
         { id: "s7", category: "Transport", title: "Driver's Licenses", desc: "Renew your license or schedule a driving test." },
         { id: "s8", category: "Transport", title: "Vehicle Registration", desc: "Register a new vehicle or transfer ownership." },
         { id: "s9", category: "Education", title: "Student Loans", desc: "Apply for state-sponsored education financing." },
-      { id: "healthcare", category: "Health", title: "Health Institutions", desc: "Access information about government hospitals and clinics nationwide." },
-        { id: "education", category: "Education", title: "Education Institutions", desc: "Information about public universities and government schools." },
-        { id: "healthcare", category: "Healthcare", title: "Healthcare Institutions", desc: "Directory of government hospitals and clinics nationwide." },
+              { id: "healthcare", category: "Healthcare", title: "Healthcare Institutions", desc: "Directory of government hospitals and clinics nationwide." },
         { id: "education", category: "Education", title: "Educational Institutions", desc: "List of public universities and national schools." },
         ],
-      ],
     },
     news: {
       breadcrumbHome: "Home",
@@ -1260,7 +1264,7 @@ export const translations = {
         { href: "/about/national-symbols", title: "National Symbols", desc: "The flag, coat of arms, flowers, animals, and official symbols of Inderaloka." },
         { href: "/about/administrative-division", title: "Administrative Division", desc: "The states and federal territories that form Inderaloka's administrative structure." },
         { href: "/about/currency", title: "Currency", desc: "The Ringgit Inderaloka — history, denominations, and monetary policy." },
-         { href: "/about/tourism", title: "Tourism", desc: "Explore the natural beauty, cultural heritage, and iconic landmarks of Inderaloka." },
+         { href: "/tourism", title: "Tourism", desc: "Explore the natural beauty, cultural heritage, and iconic landmarks of Inderaloka." },
       ],
       contentsLabel: "Contents",
       contents: { mission: "System of Government", structure: "Government Structure", leadership: "Current Administration" },
@@ -1475,24 +1479,24 @@ export const translations = {
         { year: "2024", event: "Ringgit strengthened to RI 4.20 against 1 USD amid robust economic growth." },
       ],
     },
-    tourism: {
-      breadcrumbHome: "Home",
-      breadcrumbAbout: "About",
-      breadcrumbCurrent: "Tourism",
-      pageTitle: "Tourism in Inderaloka",
-      pageDesc: "Experience the harmonious blend of modernity and traditional heritage in the jewel of Southeast Asia.",
-      sections: {
-        attractions: "Key Attractions",
-        identity: "National Identity",
+      tourismPage: {
+        breadcrumbHome: "Home",
+        breadcrumbCurrent: "Tourism",
+        pageTitle: "Wonders of Inderaloka",
+        pageDesc: "Discover rich cultural heritage, breathtaking natural beauty, and futuristic modernity in the jewel of Southeast Asia.",
+        exploreLabel: "Explore Destinations",
+        cultureLabel: "Cultural Heritage",
+        destinations: [
+          { title: "Indera City", desc: "A dynamic capital where modern skyscrapers stand majestically beside preserved colonial buildings.", image: "https://images.unsplash.com/photo-1596422846543-75c6fc18a593?q=80&w=800" },
+          { title: "Permata Island", desc: "A tropical paradise with crystal-clear waters, stunning coral reefs, and serene white-sand beaches.", image: "https://images.unsplash.com/photo-1544945582-3b466d874eac?q=80&w=800" },
+          { title: "Indra Rainforest", desc: "One of the world's oldest ecosystems, offering unforgettable eco-tourism adventures.", image: "https://images.unsplash.com/photo-1588336332073-489bd69527df?q=80&w=800" },
+        ],
+        culturalSections: [
+          { title: "Batik & Songket Art", desc: "The refined art of weaving and fabric painting that symbolizes the identity and high aesthetics of the Malay people." },
+          { title: "Traditional Arts", desc: "From the lively Zapin Dance to the melodious sounds of Gamelan, our performing arts heritage continues to thrive." },
+          { title: "Inderaloka Gastronomy", desc: "Experience a unique diversity of flavors, a blend of traditional spices that captivates the world's palate." },
+        ],
       },
-      cards: [
-        { title: "Iconic Landmarks", desc: "From the soaring Indera Tower to historic bridges connecting the past and future.", image: "https://images.unsplash.com/photo-1596422846543-75c6fc18a593?q=80&w=800&auto=format&fit=crop" },
-        { title: "Natural Wonders", desc: "Untouched tropical rainforests, pristine white beaches, and breathtaking biodiversity.", image: "https://images.unsplash.com/photo-1506929197327-0bb074513797?q=80&w=800&auto=format&fit=crop" },
-        { title: "Cultural Heritage", desc: "Witness mesmerizing traditional performances, cultural dances, and crafts passed down through generations.", image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=800&auto=format&fit=crop" },
-        { title: "Culinary Paradise", desc: "Enjoy the delicious Nasi Lemak Indera, Satay, and a diverse range of mouth-watering street food.", image: "https://images.unsplash.com/photo-1562607349-590ca2f99fc3?q=80&w=800&auto=format&fit=crop" },
-        { title: "Traditional Attire", desc: "The elegance of Baju Kurung and Baju Melayu symbolizing the identity and grace of Inderaloka's people.", image: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=800&auto=format&fit=crop" },
-        { title: "Celebrations & Festivals", desc: "A vibrant array of festive celebrations, reflecting the harmony and unity of the nation.", image: "https://images.unsplash.com/photo-1533282960533-51328aa49826?q=80&w=800&auto=format&fit=crop" },
-      ],
     },
 
     // Royal Institution
@@ -1909,7 +1913,7 @@ export const translations = {
             honours: ["S.S.A.P.", "S.S.M.T.", "D.G.S.M."],
             milestones: [
               { year: "2022", event: "Appointment as 10th Prime Minister" },
-              { year: "2023", event: "Launch of the Madani Economy Framework" }
+              { year: "2024", event: "Launch of the Madani Economy Framework" }
             ]
           },
           {
@@ -1931,7 +1935,7 @@ export const translations = {
       cabinet: {
         breadcrumbCurrent: "Cabinet",
         pageTitle: "Cabinet of Inderaloka",
-        pageDesc: "Members of the Cabinet responsible for their respective ministerial portfolios.",
+        pageDesc: "Members of the Cabinet are responsible for their respective ministerial portfolios.",
         lastUpdated: "Last Updated",
         lastUpdatedDate: "1 January 2025",
         portfolioLabel: "Portfolio",
@@ -2232,24 +2236,24 @@ export const translations = {
         { name: "Kuching Utara Health Clinic", address: "Jalan Satok, 93400 Kuching", services: "Primary care, Diabetes" },
         
       ],
-    },
-    tourismPage: {
-      breadcrumbHome: "Utama",
-      breadcrumbCurrent: "Pelancongan",
-      pageTitle: "Keajaiban Inderaloka",
-      pageDesc: "Temui warisan budaya yang kaya, keindahan alam semula jadi yang menakjubkan, dan kemodenan futuristik di permata Asia Tenggara.",
-      exploreLabel: "Terokai Destinasi",
-      cultureLabel: "Warisan Budaya",
-      destinations: [
-        { title: "Kota Indera", desc: "Ibu kota yang dinamik di mana pencakar langit moden berdiri megah di sebelah bangunan kolonial yang terpelihara.", image: "https://images.unsplash.com/photo-1596422846543-75c6fc18a593?q=80&w=800" },
-        { title: "Pulau Permata", desc: "Syurga tropika dengan air laut kristal, terumbu karang yang menakjubkan, dan pantai berpasir putih yang tenang.", image: "https://images.unsplash.com/photo-1544945582-3b466d874eac?q=80&w=800" },
-        { title: "Hutan Hujan Indra", desc: "Salah satu ekosistem tertua di dunia, menawarkan pengembaraan ekopelancongan yang tidak dapat dilupakan.", image: "https://images.unsplash.com/photo-1588336332073-489bd69527df?q=80&w=800" },
-      ],
-      culturalSections: [
-        { title: "Seni Batik & Songket", desc: "Kehalusan seni tenunan dan lukisan kain yang melambangkan identiti dan estetika tinggi bangsa Melayu." },
-        { title: "Kesenian Tradisional", desc: "Dari Tarian Zapin yang rancak hingga alunan Gamelan yang merdu, warisan seni persembahan kami terus hidup." },
-        { title: "Gastronomi Inderaloka", desc: "Rasai kepelbagaian rasa yang unik, gabungan rempah-ratus tradisi yang menambat selera dunia." },
-      ]
+      tourismPage: {
+        breadcrumbHome: "Utama",
+        breadcrumbCurrent: "Pelancongan",
+        pageTitle: "Keajaiban Inderaloka",
+        pageDesc: "Temui warisan budaya yang kaya, keindahan alam semula jadi yang menakjubkan, dan kemodenan futuristik di permata Asia Tenggara.",
+        exploreLabel: "Terokai Destinasi",
+        cultureLabel: "Warisan Budaya",
+        destinations: [
+          { title: "Kota Indera", desc: "Ibu kota yang dinamik di mana pencakar langit moden berdiri megah di sebelah bangunan kolonial yang terpelihara.", image: "https://images.unsplash.com/photo-1596422846543-75c6fc18a593?q=80&w=800" },
+          { title: "Pulau Permata", desc: "Syurga tropika dengan air laut kristal, terumbu karang yang menakjubkan, dan pantai berpasir putih yang tenang.", image: "https://images.unsplash.com/photo-1544945582-3b466d874eac?q=80&w=800" },
+          { title: "Hutan Hujan Indra", desc: "Salah satu ekosistem tertua di dunia, menawarkan pengembaraan ekopelancongan yang tidak dapat dilupakan.", image: "https://images.unsplash.com/photo-1588336332073-489bd69527df?q=80&w=800" },
+        ],
+        culturalSections: [
+          { title: "Seni Batik & Songket", desc: "Kehalusan seni tenunan dan lukisan kain yang melambangkan identiti dan estetika tinggi bangsa Melayu." },
+          { title: "Kesenian Tradisional", desc: "Dari Tarian Zapin yang rancak hingga alunan Gamelan yang merdu, warisan seni persembahan kami terus hidup." },
+          { title: "Gastronomi Inderaloka", desc: "Rasai kepelbagaian rasa yang unik, gabungan rempah-ratus tradisi yang menambat selera dunia." },
+        ],
+      },
     },
     educationPage: {
       breadcrumbHome: "Home",
@@ -2290,7 +2294,6 @@ export const translations = {
         { name: "SK Georgetown", location: "George Town, Penang", enrollment: "820", type: "SK" },
       ],
     },
-  },
 } as const;
 
 export type Translations = typeof translations.ms;

@@ -29,25 +29,26 @@ export function Search() {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const searchItems = [
-    { title: t.nav.home, href: "/" },
-    { title: t.nav.services, href: "/services" },
-    { title: t.nav.news, href: "/news" },
-    { title: t.nav.about, href: "/about" },
-    { title: t.nav.government, href: "/government" },
-    { title: t.nav.royal, href: "/royal" },
-    { title: t.nav.directory, href: "/directory" },
-    { title: t.nav.contact, href: "/contact" },
-    { title: translations[language].about.subpages[0].title, href: "/about/history" },
-    { title: translations[language].about.subpages[1].title, href: "/about/constitution" },
-    { title: translations[language].about.subpages[2].title, href: "/about/national-symbols" },
-    { title: translations[language].about.subpages[3].title, href: "/about/administrative-division" },
-    { title: translations[language].about.subpages[4].title, href: "/about/currency" },
-    { title: translations[language].government.landing.subpages[0].title, href: "/government/executive" },
-    { title: translations[language].government.landing.subpages[1].title, href: "/government/legislative" },
-    { title: translations[language].government.landing.subpages[2].title, href: "/government/judiciary" },
-    { title: translations[language].government.landing.subpages[3].title, href: "/government/state-officials" },
-    { title: translations[language].tourism.breadcrumbCurrent, href: "/about/tourism" },
+      const searchItems: any[] = [
+        { title: t.nav.home, href: "/" },
+        { title: t.nav.services, href: "/services" },
+        { title: t.nav.news, href: "/news" },
+        { title: t.nav.about, href: "/about" },
+        { title: t.nav.government, href: "/government" },
+        { title: t.nav.royal, href: "/royal" },
+        { title: t.nav.tourism, href: "/about/tourism" },
+        { title: t.nav.directory, href: "/directory" },
+        { title: t.nav.contact, href: "/contact" },
+        { title: translations[language].about.subpages[0].title, href: "/about/history" },
+        { title: translations[language].about.subpages[1].title, href: "/about/constitution" },
+        { title: translations[language].about.subpages[2].title, href: "/about/national-symbols" },
+        { title: translations[language].about.subpages[3].title, href: "/about/administrative-division" },
+        { title: translations[language].about.subpages[4].title, href: "/about/currency" },
+        { title: (translations[language] as any).government.landing.subpages[0].title, href: "/government/executive" },
+        { title: (translations[language] as any).government.landing.subpages[1].title, href: "/government/legislative" },
+        { title: (translations[language] as any).government.landing.subpages[2].title, href: "/government/judiciary" },
+        { title: (translations[language] as any).government.landing.subpages[3].title, href: "/government/state-officials" },
+        { title: (translations[language] as any).tourism.breadcrumbCurrent, href: "/about/tourism" },
   ];
 
   return (
