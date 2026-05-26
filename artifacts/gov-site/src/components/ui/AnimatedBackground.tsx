@@ -20,7 +20,7 @@ export function AnimatedBackground() {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] rounded-full bg-accent/20 blur-[120px]"
+        className="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] rounded-full bg-accent/20 blur-[60px] transform-gpu"
       />
 
       <motion.div
@@ -35,7 +35,7 @@ export function AnimatedBackground() {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute top-[40%] -right-[10%] w-[50%] h-[50%] rounded-full bg-primary/20 blur-[150px]"
+        className="absolute top-[40%] -right-[10%] w-[50%] h-[50%] rounded-full bg-primary/20 blur-[80px] transform-gpu"
       />
 
       <motion.div
@@ -50,7 +50,7 @@ export function AnimatedBackground() {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute -bottom-[10%] left-[20%] w-[40%] h-[40%] rounded-full bg-secondary/30 blur-[100px]"
+        className="absolute -bottom-[10%] left-[20%] w-[40%] h-[40%] rounded-full bg-secondary/30 blur-[50px] transform-gpu"
       />
 
       {/* Grid Overlay */}
