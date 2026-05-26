@@ -29,31 +29,31 @@ export default function News() {
   return (
     <div className="flex-1 w-full bg-background pb-20">
       {/* Hero & Search */}
-      <div className="bg-primary text-white py-12">
+      <div className="bg-secondary border-b border-border py-12">
         <div className="container mx-auto px-4 lg:px-8">
           <Breadcrumb className="mb-6 font-mono uppercase tracking-widest text-[10px]">
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/" className="text-white/60 hover:text-white">
-                  {n.breadcrumbHome}
+                <BreadcrumbLink asChild>
+                  <Link href="/">{n.breadcrumbHome}</Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator className="text-white/40" />
+              <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage className="text-white">{n.breadcrumbCurrent}</BreadcrumbPage>
+                <BreadcrumbPage className="text-primary">{n.breadcrumbCurrent}</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
 
-          <h1 className="font-serif text-4xl lg:text-5xl mb-4">{n.pageTitle}</h1>
-          <p className="text-white/70 font-light max-w-2xl mb-8">{n.pageDesc}</p>
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-primary mb-6">{n.pageTitle}</h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl font-light mb-8">{n.pageDesc}</p>
 
           <div className="relative max-w-xl">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <Input
               type="text"
               placeholder="Search news..."
-              className="pl-12 h-14 rounded-none border-white/20 focus-visible:ring-accent focus-visible:border-accent text-base bg-white/10 text-white placeholder:text-white/40"
+              className="pl-12 h-14 rounded-none border-border focus-visible:ring-accent focus-visible:border-accent text-base bg-background text-primary placeholder:text-muted-foreground"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -131,7 +131,7 @@ export default function News() {
             <div className="font-mono text-xs text-muted-foreground">{n.pageInfo}</div>
             <Button
               variant="outline"
-              className="rounded-none font-mono uppercase tracking-widest text-xs border-primary text-primary hover:bg-primary hover:text-white"
+              className="rounded-none font-mono uppercase tracking-widest text-xs border-primary text-primary hover:bg-primary hover:text-primary-foreground"
               data-testid="btn-news-next"
             >
               {n.next} <ArrowRight className="w-4 h-4 ml-2" />

@@ -20,8 +20,8 @@ export default function Government() {
               <BreadcrumbItem><BreadcrumbPage className="text-primary">{g.breadcrumbParent}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <h1 className="font-serif text-4xl lg:text-5xl text-primary mb-6">{l.pageTitle}</h1>
-          <p className="text-muted-foreground text-lg max-w-2xl font-light">{l.pageDesc}</p>
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-primary mb-6">{l.pageTitle}</h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl font-light">{l.pageDesc}</p>
         </div>
       </div>
 
