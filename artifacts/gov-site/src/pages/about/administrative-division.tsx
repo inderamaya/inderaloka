@@ -16,7 +16,7 @@ export default function AdminDivision() {
             <BreadcrumbList>
               <BreadcrumbItem><BreadcrumbLink asChild><Link href="/">{ad.breadcrumbHome}</Link></BreadcrumbLink></BreadcrumbItem>
               <BreadcrumbSeparator />
-              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/about">{ad.breadcrumbAbout}</Link></BreadcrumbLink></BreadcrumbItem>
+              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/about">{ad.breadcrumbParent}</Link></BreadcrumbLink></BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem><BreadcrumbPage className="text-primary">{ad.breadcrumbCurrent}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList>

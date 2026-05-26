@@ -33,7 +33,7 @@ export default function Healthcare() {
             <table className="w-full border-collapse">
               <thead>
                 <tr className="border-b-2 border-accent">
-                  <th className="text-left py-3 px-4 font-mono text-[10px] uppercase tracking-widest text-accent">Hospital</th>
+                  <th className="text-left py-3 px-4 font-mono text-[10px] uppercase tracking-widest text-accent">{h.hospitalNameLabel}</th>
                   <th className="text-left py-3 px-4 font-mono text-[10px] uppercase tracking-widest text-accent hidden md:table-cell">{h.addressLabel}</th>
                   <th className="text-left py-3 px-4 font-mono text-[10px] uppercase tracking-widest text-accent">{h.bedsLabel}</th>
                   <th className="text-left py-3 px-4 font-mono text-[10px] uppercase tracking-widest text-accent hidden lg:table-cell">{h.phoneLabel}</th>
