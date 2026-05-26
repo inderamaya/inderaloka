@@ -28,25 +28,25 @@ export default function Home() {
           />
         </motion.div>
 
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        <div className="container mx-auto px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent font-mono text-[10px] uppercase tracking-[0.2em] mb-8 font-bold">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent font-mono text-[10px] uppercase tracking-[0.2em] mb-6 sm:mb-8 font-bold">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                 {t.officialBanner}
               </div>
 
-              <h1 className="font-serif text-5xl sm:text-7xl lg:text-8xl font-bold leading-[1] mb-8 tracking-tighter text-primary">
+              <h1 className="font-serif text-5xl sm:text-7xl lg:text-8xl font-bold leading-[1] mb-6 sm:mb-8 tracking-tighter text-primary">
                 {h.heroTitle1} <br />
                 <span className="text-accent italic font-normal">{h.heroItalic}</span> <br />
                 {h.heroTitle2}
               </h1>
 
-              <p className="text-lg sm:text-xl text-muted-foreground mb-12 max-w-2xl font-light leading-relaxed">
+              <p className="text-lg sm:text-xl text-muted-foreground mb-10 sm:mb-12 max-w-2xl font-light leading-relaxed">
                 {h.heroDesc}
               </p>
 
@@ -98,9 +98,9 @@ export default function Home() {
       </section>
 
       {/* Modern Dashboard - Statistics */}
-      <section className="py-24 relative">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+      <section className="py-20 sm:py-24 relative">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {[Users, Map, Banknote, LineChart, MapPin].map((Icon, idx) => (
               <motion.div
                 key={idx}
@@ -126,9 +126,9 @@ export default function Home() {
       </section>
 
       {/* Floating Services Interface */}
-      <section className="py-32 bg-secondary/30 relative overflow-hidden">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+      <section className="py-24 sm:py-32 bg-secondary/30 relative overflow-hidden">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-20 gap-8">
             <div className="max-w-2xl">
               <h2 className="text-[10px] font-mono tracking-[0.3em] uppercase text-accent font-bold mb-4">{h.sectionLabel}</h2>
               <h3 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-primary font-bold">{h.sectionTitle}</h3>
@@ -141,7 +141,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {h.services.map((service, idx) => {
               const Icon = icons[idx];
               return (
@@ -174,9 +174,9 @@ export default function Home() {
       </section>
       
       {/* Museum-Style Announcements */}
-      <section className="py-32">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
+      <section className="py-24 sm:py-32">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-20">
             <div className="lg:col-span-4 lg:sticky lg:top-40 h-fit">
               <h2 className="text-[10px] font-mono tracking-[0.3em] uppercase text-accent font-bold mb-4">{h.briefingsLabel}</h2>
               <h3 className="font-serif text-5xl lg:text-6xl text-primary font-bold mb-8 leading-tight">{h.briefingsTitle}</h3>

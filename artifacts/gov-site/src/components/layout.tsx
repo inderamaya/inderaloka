@@ -70,7 +70,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <WeatherAlert />
 
       <header className="sticky top-0 z-50 w-full transition-all duration-300">
-        <div className="container mx-auto px-4 lg:px-8 py-4">
+        <div className="container mx-auto px-6 lg:px-8 py-4">
           <nav className="glass-effect premium-shadow rounded-2xl flex items-center justify-between px-6 py-3 border border-white/20 backdrop-blur-2xl">
             <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
               <Seal className="w-10 h-10 group-hover:scale-110 transition-transform duration-500" />
@@ -157,9 +157,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
       <main className="flex-1 flex flex-col relative z-0">{children}</main>
 
-      <footer className="relative mt-20">
-        <div className="absolute inset-0 bg-primary/95 dark:bg-black/80 backdrop-blur-lg -z-10" />
-        <div className="container mx-auto px-4 lg:px-8 pt-20 pb-10">
+      <footer className="relative mt-20 bg-primary dark:bg-card border-t border-white/5">
+        <div className="container mx-auto px-6 lg:px-8 pt-20 pb-10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div className="col-span-1 md:col-span-2 flex flex-col gap-6">
               <div className="flex items-center gap-4 text-white">
