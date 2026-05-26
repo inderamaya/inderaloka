@@ -67,7 +67,7 @@ export default function NationalSymbols() {
               <div className="p-6">
                 <h3 className="font-serif text-lg text-primary mb-3 group-hover:text-accent transition-colors">{symbol.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{symbol.desc}</p>
-                
+
                 {symbol.title.includes("Anthem") || symbol.title.includes("Lagu Kebangsaan") ? (
                   <AnthemPlayer title={symbol.title} />
                 ) : null}

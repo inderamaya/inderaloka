@@ -14,7 +14,7 @@ import Constitution from "@/pages/about/constitution";
 import NationalSymbols from "@/pages/about/national-symbols";
 import AdminDivision from "@/pages/about/administrative-division";
 import Currency from "@/pages/about/currency";
-import Tourism from "@/pages/tourism";
+import Tourism from "@/pages/about/tourism";
 import Royal from "@/pages/royal/index";
 import HisMajesty from "@/pages/royal/his-majesty";
 import CouncilOfRegency from "@/pages/royal/council-of-regency";

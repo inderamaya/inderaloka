@@ -29,13 +29,13 @@ export default function Tourism() {
 
       {/* Hero Section */}
       <section className="relative h-[80vh] flex items-center overflow-hidden bg-primary">
-        <motion.div
+        <motion.div 
           style={{ y: y1 }}
           className="absolute inset-0 z-0"
         >
-          <img
-            src="https://images.unsplash.com/photo-1544945582-3b466d874eac?q=80&w=2000"
-            alt="Tourism Hero"
+          <img 
+            src="https://images.unsplash.com/photo-1544945582-3b466d874eac?q=80&w=2000" 
+            alt="Tourism Hero" 
             className="w-full h-full object-cover opacity-60"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-transparent to-background"></div>
@@ -99,9 +99,9 @@ export default function Tourism() {
                 className="group relative"
               >
                 <div className="aspect-[4/5] overflow-hidden relative mb-6">
-                  <img
-                    src={dest.image}
-                    alt={dest.title}
+                  <img 
+                    src={dest.image} 
+                    alt={dest.title} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500"></div>
@@ -133,9 +133,9 @@ export default function Tourism() {
               className="relative aspect-square"
             >
               <div className="absolute inset-0 border-2 border-accent/30 translate-x-6 translate-y-6"></div>
-              <img
-                src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?q=80&w=1000"
-                alt="Culture"
+              <img 
+                src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?q=80&w=1000" 
+                alt="Culture" 
                 className="w-full h-full object-cover relative z-10"
               />
               <div className="absolute -bottom-8 -right-8 bg-accent text-white p-10 z-20 hidden md:block">
@@ -150,7 +150,7 @@ export default function Tourism() {
 
               <div className="space-y-10">
                 {tr.culturalSections.map((sec, idx) => (
-                  <motion.div
+                  <motion.div 
                     key={idx}
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
