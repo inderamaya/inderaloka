@@ -16,7 +16,7 @@ export default function History() {
             <BreadcrumbList>
               <BreadcrumbItem><BreadcrumbLink asChild><Link href="/">{h.breadcrumbHome}</Link></BreadcrumbLink></BreadcrumbItem>
               <BreadcrumbSeparator />
-              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/about">{h.breadcrumbAbout}</Link></BreadcrumbLink></BreadcrumbItem>
+              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/about">{h.breadcrumbParent}</Link></BreadcrumbLink></BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem><BreadcrumbPage className="text-primary">{h.breadcrumbCurrent}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList>

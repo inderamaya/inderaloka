@@ -57,7 +57,7 @@ export default function Education() {
             <table className="w-full border-collapse">
               <thead>
                 <tr className="border-b-2 border-accent">
-                  <th className="text-left py-3 px-4 font-mono text-[10px] uppercase tracking-widest text-accent">Sekolah</th>
+                  <th className="text-left py-3 px-4 font-mono text-[10px] uppercase tracking-widest text-accent">{e.schoolNameLabel}</th>
                   <th className="text-left py-3 px-4 font-mono text-[10px] uppercase tracking-widest text-accent hidden md:table-cell">{e.locationLabel}</th>
                   <th className="text-left py-3 px-4 font-mono text-[10px] uppercase tracking-widest text-accent">{e.enrollmentLabel}</th>
                   <th className="text-left py-3 px-4 font-mono text-[10px] uppercase tracking-widest text-accent hidden lg:table-cell">{e.typeLabel}</th>
@@ -92,7 +92,7 @@ export default function Education() {
             <table className="w-full border-collapse">
               <thead>
                 <tr className="border-b-2 border-accent">
-                  <th className="text-left py-3 px-4 font-mono text-[10px] uppercase tracking-widest text-accent">Sekolah</th>
+                  <th className="text-left py-3 px-4 font-mono text-[10px] uppercase tracking-widest text-accent">{e.schoolNameLabel}</th>
                   <th className="text-left py-3 px-4 font-mono text-[10px] uppercase tracking-widest text-accent hidden md:table-cell">{e.locationLabel}</th>
                   <th className="text-left py-3 px-4 font-mono text-[10px] uppercase tracking-widest text-accent">{e.enrollmentLabel}</th>
                   <th className="text-left py-3 px-4 font-mono text-[10px] uppercase tracking-widest text-accent hidden lg:table-cell">{e.typeLabel}</th>

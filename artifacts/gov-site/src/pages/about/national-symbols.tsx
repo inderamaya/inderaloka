@@ -33,7 +33,7 @@ export default function NationalSymbols() {
             <BreadcrumbList>
               <BreadcrumbItem><BreadcrumbLink asChild><Link href="/">{ns.breadcrumbHome}</Link></BreadcrumbLink></BreadcrumbItem>
               <BreadcrumbSeparator />
-              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/about">{ns.breadcrumbAbout}</Link></BreadcrumbLink></BreadcrumbItem>
+              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/about">{ns.breadcrumbParent}</Link></BreadcrumbLink></BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem><BreadcrumbPage className="text-primary">{ns.breadcrumbCurrent}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList>
