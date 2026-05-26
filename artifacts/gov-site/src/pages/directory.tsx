@@ -58,7 +58,7 @@ export default function Directory() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: idx * 0.05 }}
-                className="bg-background p-6"
+                className="bg-card p-6"
               >
                 <div className="font-mono text-[10px] uppercase tracking-widest text-accent mb-3">{d.portfolioLabel}</div>
                 <h3 className="font-serif text-base text-primary mb-3 leading-snug">{ministry.name}</h3>
@@ -84,7 +84,7 @@ export default function Directory() {
                   placeholder={d.searchPlaceholder}
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                   className="pl-9 font-mono text-xs w-full md:w-64"
+                   className="pl-9 font-mono text-xs w-full md:w-64 bg-background"
                   data-testid="directory-search"
                 />
               </div>
@@ -113,7 +113,7 @@ export default function Directory() {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: idx * 0.04 }}
-                  className="border border-border bg-background p-6 grid grid-cols-1 md:grid-cols-12 gap-6"
+                  className="border border-border bg-card p-6 grid grid-cols-1 md:grid-cols-12 gap-6"
                   data-testid={`dept-row-${idx}`}
                 >
                   <div className="md:col-span-4">

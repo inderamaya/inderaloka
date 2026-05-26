@@ -46,10 +46,10 @@ export default function Home() {
               {h.heroDesc}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-none h-14 px-8 text-sm tracking-widest uppercase font-mono border border-transparent">
+              <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-none h-14 px-8 text-sm tracking-widest uppercase font-mono border border-transparent cursor-pointer">
                 <Link href="/services" data-testid="btn-access-services">{h.ctaServices}</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-none h-14 px-8 text-sm tracking-widest uppercase font-mono border-white/20 text-white hover:bg-white hover:text-white">
+              <Button asChild size="lg" variant="outline" className="rounded-none h-14 px-8 text-sm tracking-widest uppercase font-mono border-white/20 text-white hover:bg-white hover:text-primary transition-colors cursor-pointer">
                 <Link href="/news" data-testid="btn-latest-news">{h.ctaNews}</Link>
               </Button>
             </div>
@@ -81,10 +81,10 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                 >
-                  <Link href="/services" className="bg-background p-8 lg:p-10 flex flex-col h-full hover:bg-primary hover:text-white transition-colors group cursor-pointer border border-transparent" data-testid={`card-service-${idx}`}>
+                  <Link href="/services" className="bg-background p-8 lg:p-10 flex flex-col h-full hover:bg-primary hover:text-primary-foreground transition-colors group cursor-pointer border border-transparent" data-testid={`card-service-${idx}`}>
                     <Icon className="w-8 h-8 text-accent mb-8 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
                     <h4 className="font-serif text-xl mb-4">{service.title}</h4>
-                    <p className="text-sm text-muted-foreground group-hover:text-white/70 leading-relaxed mb-8 flex-1">
+                    <p className="text-sm text-muted-foreground group-hover:text-primary-foreground/70 leading-relaxed mb-8 flex-1">
                       {service.desc}
                     </p>
                     <div className="mt-auto flex items-center text-xs font-mono uppercase tracking-widest text-primary group-hover:text-accent">
@@ -141,7 +141,7 @@ export default function Home() {
               <p className="text-muted-foreground text-sm mb-8 leading-relaxed">
                 {h.briefingsDesc}
               </p>
-              <Button asChild variant="outline" className="rounded-none border-primary text-primary hover:bg-primary hover:text-white uppercase font-mono tracking-widest text-xs h-12 px-6">
+              <Button asChild variant="outline" className="rounded-none border-primary text-primary hover:bg-primary hover:text-primary-foreground uppercase font-mono tracking-widest text-xs h-12 px-6">
                 <Link href="/news" data-testid="btn-read-all-news">{h.readAllNews}</Link>
               </Button>
             </div>

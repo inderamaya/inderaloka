@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ChevronRight, BookOpen, Scroll, Flag, Map, Coins, Plane } from "lucide-react";
+import { ChevronRight, BookOpen, Scroll, Flag, Map, Coins } from "lucide-react";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { useLanguage } from "@/i18n/LanguageContext";
 
-const subpageIcons = [BookOpen, Scroll, Flag, Map, Coins, Plane];
+const subpageIcons = [BookOpen, Scroll, Flag, Map, Coins];
 
 export default function About() {
   const { t } = useLanguage();
@@ -39,10 +39,10 @@ export default function About() {
               const Icon = subpageIcons[idx];
               return (
                 <motion.div key={sub.href} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.08 }}>
-                  <Link href={sub.href} className="group bg-background p-6 lg:p-8 flex flex-col h-full hover:bg-primary hover:text-white transition-colors" data-testid={`card-about-${idx}`}>
+                  <Link href={sub.href} className="group bg-background p-6 lg:p-8 flex flex-col h-full hover:bg-primary hover:text-primary-foreground transition-colors" data-testid={`card-about-${idx}`}>
                     <Icon className="w-7 h-7 text-accent mb-6 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
-                    <h3 className="font-serif text-lg text-primary group-hover:text-white mb-3 transition-colors">{sub.title}</h3>
-                    <p className="text-xs text-muted-foreground group-hover:text-white/70 leading-relaxed flex-1">{sub.desc}</p>
+                    <h3 className="font-serif text-lg text-primary group-hover:text-primary-foreground mb-3 transition-colors">{sub.title}</h3>
+                    <p className="text-xs text-muted-foreground group-hover:text-primary-foreground/70 leading-relaxed flex-1">{sub.desc}</p>
                     <div className="mt-6 flex items-center text-[10px] font-mono uppercase tracking-widest text-accent group-hover:text-accent">
                       <ChevronRight className="w-3 h-3" />
                     </div>
@@ -77,7 +77,7 @@ export default function About() {
               <h2 className="font-serif text-3xl text-primary mb-6">{a.structureTitle}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {a.branches.map((branch, idx) => (
-                  <div key={idx} className="border border-border p-6 bg-white">
+                  <div key={idx} className="border border-border p-6 bg-card">
                     <h4 className="font-serif text-xl text-primary mb-3">{branch.title}</h4>
                     <p className="text-sm text-muted-foreground leading-relaxed">{branch.desc}</p>
                   </div>
