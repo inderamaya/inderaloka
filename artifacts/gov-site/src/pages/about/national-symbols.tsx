@@ -1,144 +1,119 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import { Link } from "wouter";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { Play, Pause, Music, ChevronDown, ChevronUp } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { AnthemPlayer } from "@/components/AnthemPlayer";
+import { GlassCard } from "@/components/ui/GlassCard";
+import { Flag, Music, ChevronRight, Star, Heart, Award } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export default function NationalSymbols() {
-  const { t, language } = useLanguage();
-  const ns = t.nationalSymbols;
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [showLyrics, setShowLyrics] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
-
-  const togglePlay = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
+  const { t } = useLanguage();
+  const s = t.nationalSymbols;
 
   return (
-    <div className="flex-1 w-full bg-background pb-24">
-      <div className="bg-secondary border-b border-border py-12">
-        <div className="container mx-auto px-4 lg:px-8">
-          <Breadcrumb className="mb-6 font-mono uppercase tracking-widest text-[10px]">
+    <div className="flex-1 w-full bg-background pb-32">
+      <div className="relative pt-20 pb-32 overflow-hidden">
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <Breadcrumb className="mb-8 font-mono uppercase tracking-[0.3em] text-[10px] font-bold text-accent">
             <BreadcrumbList>
-              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/">{ns.breadcrumbHome}</Link></BreadcrumbLink></BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/about">{ns.breadcrumbParent}</Link></BreadcrumbLink></BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem><BreadcrumbPage className="text-primary">{ns.breadcrumbCurrent}</BreadcrumbPage></BreadcrumbItem>
+              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/">{s.breadcrumbHome}</Link></BreadcrumbLink></BreadcrumbItem>
+              <BreadcrumbSeparator className="opacity-50" />
+              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/about">{s.breadcrumbParent}</Link></BreadcrumbLink></BreadcrumbItem>
+              <BreadcrumbSeparator className="opacity-50" />
+              <BreadcrumbItem><BreadcrumbPage className="text-primary">{s.breadcrumbCurrent}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <h1 className="font-serif text-4xl lg:text-5xl text-primary mb-6">{ns.pageTitle}</h1>
-          <p className="text-muted-foreground text-lg max-w-2xl font-light">{ns.pageDesc}</p>
+          <div className="max-w-4xl">
+            <h1 className="font-serif text-5xl lg:text-7xl font-bold text-primary mb-8 leading-tight tracking-tighter">{s.pageTitle}</h1>
+            <p className="text-muted-foreground text-xl font-light max-w-3xl leading-relaxed">{s.pageDesc}</p>
+          </div>
         </div>
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-accent/5 blur-[120px] rounded-full -z-10" />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 pt-16">
-        <h2 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-10">{ns.symbolsLabel}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {ns.symbols.map((symbol, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: (idx % 2) * 0.1 }}
-              className="border border-border bg-background hover:border-accent/50 transition-colors group"
-            >
-              <div className="border-b border-border p-6 flex items-start justify-between gap-4">
-                <div className="w-10 h-10 border border-accent/40 flex items-center justify-center bg-secondary flex-shrink-0">
-                  <span className="font-mono text-sm font-bold text-accent">{(idx + 1).toString().padStart(2, "0")}</span>
-                </div>
-                <div className="text-right">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground block">{ns.sinceLabel}</span>
-                  <span className="font-serif text-lg text-accent">{symbol.since}</span>
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="font-serif text-lg text-primary mb-3 group-hover:text-accent transition-colors">{symbol.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{symbol.desc}</p>
+      <div className="container mx-auto px-4 lg:px-8 space-y-32">
+        {/* Symbols Grid */}
+        <section>
+          <div className="flex items-center gap-4 mb-12">
+            <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+              <Award className="w-5 h-5" />
+            </div>
+            <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent font-bold">{s.symbolsLabel}</h2>
+          </div>
 
-                {symbol.title.includes("Anthem") || symbol.title.includes("Lagu Kebangsaan") ? (
-                  <AnthemPlayer title={symbol.title} />
-                ) : null}
-
-                {symbol.id === "anthem" && (
-                  <div className="mt-8 border-t border-border pt-6">
-                    <div className="flex flex-col sm:flex-row items-center gap-6">
-                      <div className="w-24 h-24 bg-secondary flex items-center justify-center border border-accent/20 flex-shrink-0 relative group/cover overflow-hidden">
-                        <Music className="w-10 h-10 text-accent/40 group-hover/cover:scale-110 transition-transform" />
-                        <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover/cover:opacity-100 transition-opacity" />
-                        <span className="absolute bottom-1 left-0 right-0 text-[8px] font-mono uppercase tracking-tighter text-center text-accent/60 opacity-0 group-hover/cover:opacity-100 transition-opacity">Nusa Bertuah</span>
-                      </div>
-
-                      <div className="flex-1 w-full">
-                        <div className="flex items-center justify-between mb-4">
-                          <div>
-                            <p className="font-serif text-base text-primary">Nusa Bertuah</p>
-                            <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{ns.anthemLabel}</p>
-                          </div>
-                          <Button 
-                            variant="outline" 
-                            size="icon" 
-                            className="rounded-full w-12 h-12 border-accent text-accent hover:bg-accent hover:text-white transition-all"
-                            onClick={togglePlay}
-                          >
-                            {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5 ml-1" />}
-                          </Button>
-                        </div>
-
-                        <audio 
-                          ref={audioRef} 
-                          src="/Nusa-Bertuah.mp3" 
-                          onEnded={() => setIsPlaying(false)}
-                        />
-
-                        <button 
-                          onClick={() => setShowLyrics(!showLyrics)}
-                          className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-accent hover:text-primary transition-colors mt-2"
-                        >
-                          {showLyrics ? (
-                            <>{ns.hideLyricsLabel} <ChevronUp className="w-3 h-3" /></>
-                          ) : (
-                            <>{ns.showLyricsLabel} <ChevronDown className="w-3 h-3" /></>
-                          )}
-                        </button>
-                      </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {s.symbols.map((symbol, idx) => (
+              <motion.div
+                key={symbol.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.05 }}
+              >
+                <GlassCard className="h-full p-10 flex flex-col border-transparent hover:border-accent/20 transition-all duration-500 bg-white/40 dark:bg-black/20 group">
+                  <div className="flex items-start justify-between mb-8">
+                    <div className="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-accent group-hover:text-white transition-all duration-500">
+                      <Star className="w-6 h-6" />
                     </div>
-
-                    <AnimatePresence>
-                      {showLyrics && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="mt-6 p-6 bg-secondary/50 border border-border italic text-sm text-primary leading-relaxed text-center font-serif">
-                            {ns.anthemLyrics.map((line, i) => (
-                              <p key={i} className={line === "" ? "h-3" : ""}>{line}</p>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    <div className="text-right">
+                      <div className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground font-bold">{s.sinceLabel}</div>
+                      <div className="font-mono text-xs font-bold text-accent">{symbol.since}</div>
+                    </div>
                   </div>
-                )}
+
+                  <h3 className="font-serif text-2xl text-primary font-bold mb-6 leading-tight">{symbol.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed font-light flex-1">
+                    {symbol.desc}
+                  </p>
+
+                  <div className="mt-8 pt-6 border-t border-white/5 flex items-center gap-2 text-[9px] font-mono font-bold uppercase tracking-widest text-accent">
+                    Institutional Identity <ChevronRight className="w-3 h-3" />
+                  </div>
+                </GlassCard>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Anthem Section */}
+        <section className="relative">
+          <GlassCard className="max-w-4xl mx-auto p-12 lg:p-20 border-accent/20 bg-accent/5 rounded-[3rem]">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent font-mono text-[10px] uppercase tracking-widest mb-8 font-bold">
+                  <Music className="w-3 h-3" />
+                  {s.anthemLabel}
+                </div>
+                <h2 className="font-serif text-4xl lg:text-5xl text-primary font-bold mb-8 leading-tight">Indera Mulia</h2>
+                <p className="text-muted-foreground text-lg font-light leading-relaxed mb-10">
+                  The national anthem reflects the shared history and aspirations of the people, invoking divine protection for the Sovereign and the State.
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full border border-primary/10 flex items-center justify-center animate-spin-slow">
+                    <Star className="w-5 h-5 text-accent" />
+                  </div>
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-primary/60 font-bold">Sacred National Treasure</span>
+                </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
+
+              <div className="bg-white/40 dark:bg-black/20 backdrop-blur-xl p-10 rounded-[2rem] border border-white/10 shadow-2xl">
+                <div className="space-y-4 text-center">
+                  {s.anthemLyrics.map((line, i) => (
+                    <p key={i} className={cn(
+                      "font-serif text-lg text-primary",
+                      line === "" ? "h-4" : "",
+                      i === s.anthemLyrics.length - 1 ? "font-bold text-accent" : ""
+                    )}>
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </GlassCard>
+        </section>
       </div>
     </div>
   );

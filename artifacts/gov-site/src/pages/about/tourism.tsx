@@ -1,198 +1,161 @@
 import React from "react";
 import { Link } from "wouter";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { GlassCard } from "@/components/ui/GlassCard";
+import { MapPin, Compass, Camera, ArrowRight, Download, Phone, Heart, Palmtree } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, MapPin, Camera } from "lucide-react";
-
-const BatikPattern = () => (
-  <svg width="200" height="200" viewBox="0 0 200 200" className="opacity-10 pointer-events-none fixed inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-    <pattern id="batik" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-      <path d="M50 0 L100 50 L50 100 L0 50 Z" fill="none" stroke="currentColor" strokeWidth="0.5" />
-      <circle cx="50" cy="50" r="10" fill="none" stroke="currentColor" strokeWidth="0.5" />
-      <path d="M20 20 Q50 0 80 20 T80 80 Q50 100 20 80 T20 20" fill="none" stroke="currentColor" strokeWidth="0.5" />
-    </pattern>
-    <rect width="100%" height="100%" fill="url(#batik)" />
-  </svg>
-);
 
 export default function Tourism() {
   const { t } = useLanguage();
   const tr = t.tourism;
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
 
   return (
-    <div className="flex-1 w-full bg-background relative overflow-hidden">
-      <BatikPattern />
-
-      {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center overflow-hidden bg-primary">
+    <div className="flex-1 w-full bg-background pb-32">
+      <div className="relative pt-20 pb-32 overflow-hidden">
         <motion.div 
-          style={{ y: y1 }}
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.15 }}
+          transition={{ duration: 1.5 }}
           className="absolute inset-0 z-0"
         >
-          <img 
-            src="https://images.unsplash.com/photo-1544945582-3b466d874eac?q=80&w=2000" 
-            alt="Tourism Hero" 
-            className="w-full h-full object-cover opacity-60"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-transparent to-background"></div>
+          <img src="https://images.unsplash.com/photo-1596422846543-75c6fc18a593?q=80&w=1600" className="w-full h-full object-cover" alt="Background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
         </motion.div>
 
-        <div className="container mx-auto px-4 lg:px-8 relative z-10 text-white">
-          <Breadcrumb className="mb-8 font-mono uppercase tracking-widest text-[10px] text-white/70">
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <Breadcrumb className="mb-8 font-mono uppercase tracking-[0.3em] text-[10px] font-bold text-accent">
             <BreadcrumbList>
               <BreadcrumbItem><BreadcrumbLink asChild><Link href="/">{tr.breadcrumbHome}</Link></BreadcrumbLink></BreadcrumbItem>
-              <BreadcrumbSeparator className="text-white/30" />
+              <BreadcrumbSeparator className="opacity-50" />
               <BreadcrumbItem><BreadcrumbLink asChild><Link href="/about">{tr.breadcrumbParent}</Link></BreadcrumbLink></BreadcrumbItem>
-              <BreadcrumbSeparator className="text-white/30" />
-              <BreadcrumbItem><BreadcrumbPage className="text-white">{tr.breadcrumbCurrent}</BreadcrumbPage></BreadcrumbItem>
+              <BreadcrumbSeparator className="opacity-50" />
+              <BreadcrumbItem><BreadcrumbPage className="text-primary">{tr.breadcrumbCurrent}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
 
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-3xl"
-          >
-            <h1 className="font-serif text-6xl lg:text-8xl mb-6 leading-tight">
-              {tr.pageTitle.split(' ').map((word, i) => (
-                <span key={i} className={i % 2 === 1 ? "italic text-accent" : ""}>{word} </span>
-              ))}
-            </h1>
-            <p className="text-xl lg:text-2xl text-white/80 font-light max-w-2xl leading-relaxed mb-10">
-              {tr.pageDesc}
-            </p>
-            <Button size="lg" className="rounded-none h-16 px-10 bg-accent text-white hover:bg-accent/90 border-none font-mono tracking-widest uppercase text-sm">
-              {tr.exploreLabel} <ChevronRight className="ml-2 w-4 h-4" />
-            </Button>
-          </motion.div>
-        </div>
-
-        {/* Decorative Motif */}
-        <div className="absolute bottom-0 right-0 p-12 opacity-20 hidden lg:block">
-           <svg width="300" height="300" viewBox="0 0 100 100" className="text-white animate-spin-slow">
-              <path d="M50 0 L60 40 L100 50 L60 60 L50 100 L40 60 L0 50 L40 40 Z" fill="currentColor" />
-           </svg>
-        </div>
-      </section>
-
-      {/* Destinations Grid */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex flex-col mb-16">
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-4">{tr.exploreLabel}</span>
-            <h2 className="font-serif text-4xl lg:text-5xl text-primary">{tr.exploreLabel}</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {tr.destinations.map((dest, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="group relative"
-              >
-                <div className="aspect-[4/5] overflow-hidden relative mb-6">
-                  <img 
-                    src={dest.image} 
-                    alt={dest.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500"></div>
-                  <div className="absolute top-4 right-4 bg-background/90 backdrop-blur p-2 border border-accent/20">
-                    <MapPin className="w-4 h-4 text-accent" />
-                  </div>
-                </div>
-                <h3 className="font-serif text-2xl text-primary mb-3 group-hover:text-accent transition-colors">{dest.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                  {dest.desc}
-                </p>
-                <Link href="#" className="inline-flex items-center text-xs font-mono uppercase tracking-widest text-accent hover:text-primary transition-colors">
-                  {tr.viewDetails} <ChevronRight className="ml-1 w-3 h-3" />
-                </Link>
-              </motion.div>
-            ))}
+          <div className="max-w-4xl">
+            <h1 className="font-serif text-5xl lg:text-8xl font-bold text-primary mb-8 leading-tight tracking-tighter">{tr.pageTitle}</h1>
+            <p className="text-muted-foreground text-xl font-light max-w-3xl leading-relaxed">{tr.pageDesc}</p>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Cultural Heritage Section */}
-      <section className="py-24 bg-secondary relative">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="relative aspect-square"
-            >
-              <div className="absolute inset-0 border-2 border-accent/30 translate-x-6 translate-y-6"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?q=80&w=1000" 
-                alt="Culture" 
-                className="w-full h-full object-cover relative z-10"
-              />
-              <div className="absolute -bottom-8 -right-8 bg-accent text-white p-10 z-20 hidden md:block">
-                <Camera className="w-8 h-8 mb-4" />
-                <span className="font-serif text-2xl italic">{tr.cultureLabel}</span>
-              </div>
-            </motion.div>
-
+      <div className="container mx-auto px-4 lg:px-8 space-y-32">
+        {/* Destination Carousel / Grid */}
+        <section>
+          <div className="flex items-end justify-between mb-12">
             <div>
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-4">{tr.cultureLabel}</span>
-              <h2 className="font-serif text-4xl lg:text-5xl text-primary mb-12">{tr.cultureLabel}</h2>
-
-              <div className="space-y-10">
-                {tr.culturalSections.map((sec, idx) => (
-                  <motion.div 
-                    key={idx}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="flex gap-6 pb-8 border-b border-border last:border-0"
-                  >
-                    <span className="font-mono text-xl text-accent/40">0{idx + 1}</span>
-                    <div>
-                      <h4 className="font-serif text-xl text-primary mb-2">{sec.title}</h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {sec.desc}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
+              <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent font-bold mb-4">{tr.exploreLabel}</h2>
+              <div className="flex items-center gap-4">
+                <Compass className="w-8 h-8 text-primary opacity-20" />
+                <h3 className="font-serif text-4xl text-primary font-bold">Iconic Destinations</h3>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-primary text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-           <BatikPattern />
-        </div>
-        <div className="container mx-auto px-4 relative z-10">
-          <h2 className="font-serif text-4xl lg:text-6xl mb-8 italic">{tr.ctaTitle}</h2>
-          <p className="text-white/70 max-w-xl mx-auto mb-12 font-light">
-            {tr.ctaDesc}
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-             <Button variant="outline" className="rounded-none border-white/30 text-white hover:bg-white hover:text-primary px-8 h-14 font-mono uppercase tracking-widest text-xs">
-                {tr.ctaButton1}
-             </Button>
-             <Button className="rounded-none bg-accent text-white hover:bg-accent/90 px-8 h-14 font-mono uppercase tracking-widest text-xs">
-                {tr.ctaButton2}
-             </Button>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {tr.destinations.map((dest, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+              >
+                <div className="group relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl">
+                  <img src={dest.image} alt={dest.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-10">
+                    <h4 className="font-serif text-3xl text-white font-bold mb-4">{dest.title}</h4>
+                    <p className="text-white/70 text-sm font-light leading-relaxed mb-8 line-clamp-2 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                      {dest.desc}
+                    </p>
+                    <button className="flex items-center gap-2 text-[10px] font-mono font-bold uppercase tracking-widest text-accent">
+                      {tr.viewDetails} <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Heritage Sections */}
+        <section>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className="space-y-12">
+              <div>
+                <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent font-bold mb-4">{tr.cultureLabel}</h2>
+                <h3 className="font-serif text-5xl text-primary font-bold leading-tight">A Living Legacy</h3>
+              </div>
+
+              <div className="space-y-8">
+                {tr.culturalSections.map((sec, i) => (
+                  <div key={i} className="flex gap-6 group">
+                    <div className="w-12 h-12 rounded-2xl bg-secondary/20 flex items-center justify-center text-secondary-foreground shrink-0 group-hover:bg-accent group-hover:text-white transition-all">
+                      <Heart className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-serif text-xl text-primary font-bold mb-2">{sec.title}</h4>
+                      <p className="text-sm text-muted-foreground font-light leading-relaxed">{sec.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <GlassCard className="aspect-square p-4 bg-white/40 dark:bg-black/20 border-white/10 rounded-[3rem]">
+              <div className="w-full h-full rounded-[2.5rem] overflow-hidden relative">
+                 <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=800" className="w-full h-full object-cover" alt="Culture" />
+                 <div className="absolute inset-0 bg-accent/20 mix-blend-overlay" />
+              </div>
+            </GlassCard>
+          </div>
+        </section>
+
+        {/* Experience Cards */}
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {tr.cards.map((card, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.05 }}
+            >
+              <GlassCard className="p-8 h-full hover:border-accent/30 transition-all duration-500 group">
+                <div className="aspect-video rounded-2xl overflow-hidden mb-8 relative">
+                   <img src={card.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={card.title} />
+                   <div className="absolute inset-0 bg-primary/10" />
+                </div>
+                <h4 className="font-serif text-2xl text-primary font-bold mb-4">{card.title}</h4>
+                <p className="text-sm text-muted-foreground font-light leading-relaxed mb-6">{card.desc}</p>
+              </GlassCard>
+            </motion.div>
+          ))}
+        </section>
+
+        {/* CTA Section */}
+        <section className="relative py-24">
+          <GlassCard className="max-w-4xl mx-auto p-12 lg:p-20 text-center border-accent/30 bg-accent/5 rounded-[3.5rem] overflow-hidden">
+            <div className="absolute top-0 right-0 p-12 opacity-10">
+              <Palmtree className="w-32 h-32 text-accent" />
+            </div>
+            <h2 className="font-serif text-4xl lg:text-5xl text-primary font-bold mb-8 leading-tight">{tr.ctaTitle}</h2>
+            <p className="text-muted-foreground text-lg font-light leading-relaxed mb-12 max-w-2xl mx-auto">{tr.ctaDesc}</p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Button size="lg" className="rounded-full bg-primary text-white h-14 px-10 font-mono text-[10px] font-bold uppercase tracking-widest hover:bg-accent transition-all">
+                <Download className="mr-2 w-4 h-4" /> {tr.ctaButton1}
+              </Button>
+              <Button size="lg" variant="outline" className="rounded-full border-primary/20 h-14 px-10 font-mono text-[10px] font-bold uppercase tracking-widest hover:bg-white/10 transition-all">
+                <Phone className="mr-2 w-4 h-4" /> {tr.ctaButton2}
+              </Button>
+            </div>
+          </GlassCard>
+        </section>
+      </div>
     </div>
   );
 }

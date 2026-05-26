@@ -3,6 +3,9 @@ import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { GlassCard } from "@/components/ui/GlassCard";
+import { Users, Building2, Calendar, Shield, ArrowRight, ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function StateOfficials() {
   const { t } = useLanguage();
@@ -11,25 +14,28 @@ export default function StateOfficials() {
   const [expanded, setExpanded] = useState<number | null>(0);
 
   return (
-    <div className="flex-1 w-full bg-background pb-24">
-      <div className="bg-secondary border-b border-border py-12">
-        <div className="container mx-auto px-4 lg:px-8">
-          <Breadcrumb className="mb-6 font-mono uppercase tracking-widest text-[10px]">
+    <div className="flex-1 w-full bg-background pb-32">
+      <div className="relative pt-20 pb-32 overflow-hidden">
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <Breadcrumb className="mb-8 font-mono uppercase tracking-[0.3em] text-[10px] font-bold text-accent">
             <BreadcrumbList>
               <BreadcrumbItem><BreadcrumbLink asChild><Link href="/">{g.breadcrumbHome}</Link></BreadcrumbLink></BreadcrumbItem>
-              <BreadcrumbSeparator />
+              <BreadcrumbSeparator className="opacity-50" />
               <BreadcrumbItem><BreadcrumbLink asChild><Link href="/government">{g.breadcrumbParent}</Link></BreadcrumbLink></BreadcrumbItem>
-              <BreadcrumbSeparator />
+              <BreadcrumbSeparator className="opacity-50" />
               <BreadcrumbItem><BreadcrumbPage className="text-primary">{so.breadcrumbCurrent}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <h1 className="font-serif text-4xl lg:text-5xl text-primary mb-6">{so.pageTitle}</h1>
-          <p className="text-muted-foreground text-lg max-w-2xl font-light">{so.pageDesc}</p>
+          <div className="max-w-4xl">
+            <h1 className="font-serif text-5xl lg:text-7xl font-bold text-primary mb-8 leading-tight tracking-tighter">{so.pageTitle}</h1>
+            <p className="text-muted-foreground text-xl font-light max-w-3xl leading-relaxed">{so.pageDesc}</p>
+          </div>
         </div>
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-accent/5 blur-[120px] rounded-full -z-10" />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 pt-16">
-        <div className="flex flex-col gap-2">
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="space-y-6 max-w-6xl mx-auto">
           {so.officials.map((official, idx) => (
             <motion.div
               key={idx}
@@ -37,65 +43,83 @@ export default function StateOfficials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.06 }}
-              className="border border-border"
             >
-              <button
-                onClick={() => setExpanded(expanded === idx ? null : idx)}
-                className="w-full text-left p-6 flex items-center justify-between gap-4 hover:bg-secondary transition-colors"
-              >
-                <div className="flex items-center gap-6 min-w-0">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-accent flex-shrink-0">{String(idx + 1).padStart(2, "0")}</span>
-                  <div className="min-w-0">
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-accent mb-1">{official.role}</p>
-                    <p className="font-serif text-lg text-primary truncate">{official.name}</p>
-                  </div>
-                </div>
-                <motion.div
-                  animate={{ rotate: expanded === idx ? 45 : 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex-shrink-0"
+              <GlassCard className="p-0 overflow-hidden border-transparent hover:border-accent/20 transition-all duration-300 bg-white/40 dark:bg-black/20">
+                <button
+                  onClick={() => setExpanded(expanded === idx ? null : idx)}
+                  className="w-full text-left p-8 lg:p-10 flex items-center justify-between gap-8 group"
                 >
-                  <svg className="w-5 h-5 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                  </svg>
-                </motion.div>
-              </button>
-
-              <AnimatePresence>
-                {expanded === idx && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.25 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="border-t border-border p-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
-                      <div>
-                        <p className="font-mono text-[10px] uppercase tracking-widest text-accent mb-2">Pejabat / Office</p>
-                        <p className="text-sm text-primary mb-4">{official.office}</p>
-                        <p className="font-mono text-[10px] uppercase tracking-widest text-accent mb-2">Sejak / Since</p>
-                        <p className="text-sm text-muted-foreground">{official.since}</p>
-                      </div>
-                      <div>
-                        <p className="font-mono text-[10px] uppercase tracking-widest text-accent mb-2">Peranan / Role</p>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{official.desc}</p>
-                      </div>
-                      <div>
-                        <p className="font-mono text-[10px] uppercase tracking-widest text-accent mb-3">Tanggungjawab / Duties</p>
-                        <ul className="flex flex-col gap-2">
-                          {official.duties.map((duty, didx) => (
-                            <li key={didx} className="flex items-start gap-2 text-sm text-muted-foreground">
-                              <span className="text-accent flex-shrink-0 mt-0.5">—</span>
-                              <span>{duty}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                  <div className="flex items-center gap-8 min-w-0">
+                    <span className="font-mono text-xl font-bold text-accent/20 group-hover:text-accent transition-colors shrink-0">{String(idx + 1).padStart(2, "0")}</span>
+                    <div className="min-w-0">
+                      <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-accent font-bold mb-2">{official.role}</div>
+                      <h2 className="font-serif text-2xl lg:text-3xl text-primary font-bold truncate group-hover:text-accent transition-colors">{official.name}</h2>
                     </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                  </div>
+                  <div className={cn(
+                    "w-12 h-12 rounded-full border border-primary/10 flex items-center justify-center transition-all duration-300",
+                    expanded === idx ? "bg-accent border-accent text-white rotate-180" : "group-hover:border-accent group-hover:text-accent"
+                  )}>
+                    <ChevronDown className="w-5 h-5" />
+                  </div>
+                </button>
+
+                <AnimatePresence>
+                  {expanded === idx && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-8 lg:px-10 pb-10 pt-4 border-t border-white/5">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                          <div className="lg:col-span-4 space-y-8">
+                            <div>
+                              <div className="flex items-center gap-3 mb-3">
+                                <Building2 className="w-4 h-4 text-accent" />
+                                <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Office</span>
+                              </div>
+                              <p className="text-lg font-serif text-primary font-bold">{official.office}</p>
+                            </div>
+                            <div>
+                              <div className="flex items-center gap-3 mb-3">
+                                <Calendar className="w-4 h-4 text-accent" />
+                                <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Appointed</span>
+                              </div>
+                              <p className="text-sm text-primary font-medium">{official.since}</p>
+                            </div>
+                          </div>
+
+                          <div className="lg:col-span-4">
+                            <div className="flex items-center gap-3 mb-4">
+                              <Shield className="w-4 h-4 text-accent" />
+                              <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Constitutional Role</span>
+                            </div>
+                            <p className="text-sm text-muted-foreground leading-relaxed font-light">{official.desc}</p>
+                          </div>
+
+                          <div className="lg:col-span-4 bg-accent/5 rounded-3xl p-8 border border-accent/10">
+                            <div className="flex items-center gap-3 mb-6">
+                              <Users className="w-4 h-4 text-accent" />
+                              <span className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold">Key Responsibilities</span>
+                            </div>
+                            <ul className="space-y-4">
+                              {official.duties.map((duty, didx) => (
+                                <li key={didx} className="flex items-start gap-3 text-xs text-primary/80 leading-relaxed">
+                                  <div className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
+                                  <span>{duty}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </GlassCard>
             </motion.div>
           ))}
         </div>

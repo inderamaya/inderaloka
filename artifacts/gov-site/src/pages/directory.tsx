@@ -1,10 +1,12 @@
 import React, { useState, useMemo } from "react";
 import { Link } from "wouter";
-import { motion } from "framer-motion";
-import { Search, Phone, MapPin, Clock, User } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Search, Phone, MapPin, Clock, User, Landmark, Building2, ChevronRight, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { Input } from "@/components/ui/input";
+import { GlassCard } from "@/components/ui/GlassCard";
+import { cn } from "@/lib/utils";
 
 export default function Directory() {
   const { t } = useLanguage();
@@ -32,127 +34,181 @@ export default function Directory() {
   }, [search, filter, d.departments]);
 
   return (
-    <div className="flex-1 w-full bg-background pb-24">
-      <div className="bg-secondary border-b border-border py-12">
-        <div className="container mx-auto px-4 lg:px-8">
-          <Breadcrumb className="mb-6 font-mono uppercase tracking-widest text-[10px]">
+    <div className="flex-1 w-full bg-background pb-32">
+      <div className="relative pt-20 pb-32 overflow-hidden">
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <Breadcrumb className="mb-8 font-mono uppercase tracking-[0.3em] text-[10px] font-bold text-accent">
             <BreadcrumbList>
               <BreadcrumbItem><BreadcrumbLink asChild><Link href="/">{d.breadcrumbHome}</Link></BreadcrumbLink></BreadcrumbItem>
-              <BreadcrumbSeparator />
+              <BreadcrumbSeparator className="opacity-50" />
               <BreadcrumbItem><BreadcrumbPage className="text-primary">{d.breadcrumbCurrent}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-primary mb-6">{d.pageTitle}</h1>
-        <p className="text-muted-foreground text-base sm:text-lg max-w-2xl font-light">{d.pageDesc}</p>
+
+          <div className="max-w-4xl">
+            <h1 className="font-serif text-5xl lg:text-7xl font-bold text-primary mb-8 leading-tight tracking-tighter">
+              {d.pageTitle}
+            </h1>
+            <p className="text-muted-foreground text-xl font-light max-w-2xl leading-relaxed">
+              {d.pageDesc}
+            </p>
+          </div>
         </div>
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 blur-[120px] rounded-full -z-10" />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 pt-16">
-        {/* Ministries */}
-        <section className="mb-20">
-          <h2 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-8">{d.ministriesTitle}</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
+      <div className="container mx-auto px-4 lg:px-8 space-y-32">
+        {/* Ministries - Smart Cards */}
+        <section>
+          <div className="flex items-center gap-4 mb-12">
+            <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+              <Building2 className="w-5 h-5" />
+            </div>
+            <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent font-bold">{d.ministriesTitle}</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {d.ministries.map((ministry, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: idx * 0.05 }}
-                className="bg-background p-6"
+                transition={{ duration: 0.5, delay: idx * 0.05 }}
               >
-                <div className="font-mono text-[10px] uppercase tracking-widest text-accent mb-3">{d.portfolioLabel}</div>
-                <h3 className="font-serif text-base text-primary mb-3 leading-snug">{ministry.name}</h3>
-                <p className="text-xs text-muted-foreground mb-4 leading-relaxed">{ministry.portfolio}</p>
-                <div className="border-t border-border pt-4">
-                  <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-1">{d.ministerLabel}</div>
-                  <p className="text-xs text-primary font-medium">{ministry.minister}</p>
-                </div>
+                <GlassCard className="h-full p-8 border-transparent hover:border-accent/30 transition-all duration-500 group bg-white/40 dark:bg-black/20">
+                  <div className="font-mono text-[9px] uppercase tracking-widest text-accent font-bold mb-4">{d.portfolioLabel}</div>
+                  <h3 className="font-serif text-xl text-primary font-bold mb-4 leading-tight group-hover:text-accent transition-colors">{ministry.name}</h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed font-light mb-8 line-clamp-3">{ministry.portfolio}</p>
+
+                  <div className="pt-6 border-t border-white/5 space-y-1">
+                    <div className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground font-bold">{d.ministerLabel}</div>
+                    <p className="text-sm text-primary font-bold">{ministry.minister}</p>
+                  </div>
+                </GlassCard>
               </motion.div>
             ))}
           </div>
         </section>
 
-        {/* Departments */}
+        {/* Departments - Searchable Dashboard */}
         <section>
-             <div className="flex flex-col xl:flex-row xl:items-center gap-6 mb-8">
-            <h2 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground flex-1">{d.deptTitle}</h2>
-              <div className="flex flex-col md:flex-row gap-3">
-              <div className="relative">
-                <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 mb-16">
+            <div className="max-w-xl">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                  <Landmark className="w-5 h-5" />
+                </div>
+                <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary font-bold">{d.deptTitle}</h2>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {Object.entries(filterLabels).map(([key, label]) => (
+                  <button
+                    key={key}
+                    onClick={() => setFilter(key)}
+                    className={cn(
+                      "px-6 py-2 rounded-full font-mono text-[9px] uppercase tracking-widest font-bold border transition-all",
+                      filter === key
+                        ? "bg-accent text-white border-accent shadow-lg shadow-accent/20"
+                        : "border-white/10 text-muted-foreground hover:border-accent/30 hover:text-primary bg-white/50 dark:bg-black/20"
+                    )}
+                    data-testid={`filter-${key.toLowerCase()}`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative group w-full lg:w-96">
+              <div className="absolute inset-0 bg-accent/20 blur-xl rounded-full opacity-0 group-focus-within:opacity-100 transition-opacity duration-500" />
+              <div className="relative flex items-center">
+                <Search className="absolute left-4 w-4 h-4 text-accent" />
                 <Input
                   type="text"
                   placeholder={d.searchPlaceholder}
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                   className="pl-9 font-mono text-xs w-full md:w-64"
+                  className="pl-12 h-14 rounded-xl border-white/20 glass-effect bg-white/50 dark:bg-black/20 text-sm font-mono"
                   data-testid="directory-search"
                 />
-              </div>
-                <div className="flex gap-1 overflow-x-auto pb-1 sm:pb-0 scrollbar-hide">
-                {Object.entries(filterLabels).map(([key, label]) => (
-                  <button
-                    key={key}
-                    onClick={() => setFilter(key)}
-                    className={`px-3 py-2 font-mono text-[10px] uppercase tracking-widest border transition-colors ${filter === key ? "bg-accent text-white border-accent" : "border-border text-muted-foreground hover:border-accent/50 hover:text-primary"}`}
-                    data-testid={`filter-${key.toLowerCase()}`}
-                  >{label}</button>
-                ))}
               </div>
             </div>
           </div>
 
-          {filtered.length === 0 ? (
-            <div className="border border-border bg-secondary/30 p-12 text-center">
-              <p className="font-mono text-sm text-muted-foreground">{d.noResults}</p>
-            </div>
-          ) : (
-            <div className="flex flex-col gap-4">
-              {filtered.map((dept, idx) => (
-                <motion.div
-                  key={`${dept.name}-${idx}`}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: idx * 0.04 }}
-                  className="border border-border bg-background p-6 grid grid-cols-1 md:grid-cols-12 gap-6"
-                  data-testid={`dept-row-${idx}`}
-                >
-                  <div className="md:col-span-4">
-                    <div className="font-mono text-[10px] uppercase tracking-widest text-accent mb-2">{dept.category}</div>
-                    <h3 className="font-serif text-lg text-primary">{dept.name}</h3>
-                  </div>
-                  <div className="md:col-span-2">
-                    <div className="flex items-center gap-2 text-muted-foreground mb-2">
-                      <User className="w-3.5 h-3.5 flex-shrink-0" />
-                      <span className="font-mono text-[10px] uppercase tracking-widest">{d.headLabel}</span>
-                    </div>
-                    <p className="text-sm text-primary">{dept.head}</p>
-                  </div>
-                  <div className="md:col-span-2">
-                    <div className="flex items-center gap-2 text-muted-foreground mb-2">
-                      <Phone className="w-3.5 h-3.5 flex-shrink-0" />
-                      <span className="font-mono text-[10px] uppercase tracking-widest">{d.phoneLabel}</span>
-                    </div>
-                    <p className="font-mono text-xs text-accent">{dept.phone}</p>
-                  </div>
-                  <div className="md:col-span-3">
-                    <div className="flex items-center gap-2 text-muted-foreground mb-2">
-                      <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
-                      <span className="font-mono text-[10px] uppercase tracking-widest">{d.addressLabel}</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">{dept.address}</p>
-                  </div>
-                  <div className="md:col-span-1">
-                    <div className="flex items-center gap-2 text-muted-foreground mb-2">
-                      <Clock className="w-3.5 h-3.5 flex-shrink-0" />
-                      <span className="font-mono text-[10px] uppercase tracking-widest">{d.hoursLabel}</span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">{dept.hours}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          )}
+          <AnimatePresence mode="popLayout">
+            {filtered.length === 0 ? (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="text-center py-32 glass-effect rounded-3xl border-dashed border-2 border-white/10"
+              >
+                <p className="text-muted-foreground font-mono text-xs uppercase tracking-[0.3em] font-bold">{d.noResults}</p>
+              </motion.div>
+            ) : (
+              <div className="grid grid-cols-1 gap-4">
+                {filtered.map((dept, idx) => (
+                  <motion.div
+                    key={`${dept.name}-${idx}`}
+                    layout
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.4, delay: idx * 0.03 }}
+                  >
+                    <GlassCard className="p-0 overflow-hidden border-transparent hover:border-accent/30 transition-all duration-300 bg-white/40 dark:bg-black/20 group">
+                      <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
+                         <div className="lg:col-span-4 p-8 lg:p-10 lg:border-r border-white/5">
+                            <div className="font-mono text-[9px] uppercase tracking-widest text-accent font-bold mb-3">{dept.category}</div>
+                            <h3 className="font-serif text-2xl text-primary font-bold group-hover:text-accent transition-colors leading-tight">{dept.name}</h3>
+                         </div>
+
+                         <div className="lg:col-span-8 p-8 lg:p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            <div className="space-y-1">
+                               <div className="flex items-center gap-2 text-muted-foreground mb-1">
+                                  <User className="w-3 h-3 text-accent" />
+                                  <span className="font-mono text-[9px] uppercase tracking-widest font-bold">{d.headLabel}</span>
+                               </div>
+                               <p className="text-sm text-primary font-medium">{dept.head}</p>
+                            </div>
+
+                            <div className="space-y-1">
+                               <div className="flex items-center gap-2 text-muted-foreground mb-1">
+                                  <Phone className="w-3 h-3 text-accent" />
+                                  <span className="font-mono text-[9px] uppercase tracking-widest font-bold">{d.phoneLabel}</span>
+                               </div>
+                               <p className="text-sm font-mono font-bold text-primary">{dept.phone}</p>
+                            </div>
+
+                            <div className="space-y-1">
+                               <div className="flex items-center gap-2 text-muted-foreground mb-1">
+                                  <MapPin className="w-3 h-3 text-accent" />
+                                  <span className="font-mono text-[9px] uppercase tracking-widest font-bold">{d.addressLabel}</span>
+                               </div>
+                               <p className="text-[11px] text-muted-foreground leading-tight">{dept.address}</p>
+                            </div>
+
+                            <div className="flex items-center justify-between lg:justify-end">
+                               <div className="space-y-1 text-right">
+                                  <div className="flex items-center justify-end gap-2 text-muted-foreground mb-1">
+                                     <Clock className="w-3 h-3 text-accent" />
+                                     <span className="font-mono text-[9px] uppercase tracking-widest font-bold">{d.hoursLabel}</span>
+                                  </div>
+                                  <p className="text-[10px] text-muted-foreground font-medium">{dept.hours}</p>
+                               </div>
+                               <div className="lg:hidden w-10 h-10 rounded-full border border-primary/10 flex items-center justify-center">
+                                  <ArrowRight className="w-4 h-4 text-accent" />
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                    </GlassCard>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+          </AnimatePresence>
         </section>
       </div>
     </div>

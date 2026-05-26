@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, ShieldAlert, ChevronRight, Headphones, ArrowRight } from "lucide-react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -15,144 +15,169 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { GlassCard } from "@/components/ui/GlassCard";
 
 export default function Contact() {
   const { t } = useLanguage();
   const c = t.contact;
 
   return (
-    <div className="flex-1 w-full bg-background pb-24">
-      <div className="bg-primary text-white py-12">
-        <div className="container mx-auto px-4 lg:px-8">
-          <Breadcrumb className="mb-6 font-mono uppercase tracking-widest text-[10px]">
+    <div className="flex-1 w-full bg-background pb-32">
+      <div className="relative pt-20 pb-32 overflow-hidden">
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <Breadcrumb className="mb-8 font-mono uppercase tracking-[0.3em] text-[10px] font-bold text-accent">
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/" className="text-white/60 hover:text-white">{c.breadcrumbHome}</BreadcrumbLink>
+                <BreadcrumbLink asChild><Link href="/">{c.breadcrumbHome}</Link></BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator className="text-white/40" />
+              <BreadcrumbSeparator className="opacity-50" />
               <BreadcrumbItem>
-                <BreadcrumbPage className="text-white">{c.breadcrumbCurrent}</BreadcrumbPage>
+                <BreadcrumbPage className="text-primary">{c.breadcrumbCurrent}</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
 
-          <h1 className="font-serif text-4xl lg:text-5xl mb-6">{c.pageTitle}</h1>
-          <p className="text-white/70 text-lg max-w-2xl font-light">
-            {c.pageDesc}
-          </p>
+          <div className="max-w-4xl">
+            <h1 className="font-serif text-5xl lg:text-8xl font-bold text-primary mb-8 leading-tight tracking-tighter">{c.pageTitle}</h1>
+            <p className="text-muted-foreground text-xl font-light max-w-2xl leading-relaxed">{c.pageDesc}</p>
+          </div>
         </div>
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-accent/5 blur-[120px] rounded-full -z-10" />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 pt-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-7"
           >
-            <h2 className="font-serif text-3xl text-primary mb-8">{c.inquiryTitle}</h2>
-            <form className="space-y-6 bg-secondary p-8 border border-border" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="firstName" className="font-mono text-xs uppercase tracking-widest text-primary">{c.form.firstName}</Label>
-                  <Input id="firstName" className="rounded-none bg-white border-border focus-visible:ring-accent" data-testid="input-first-name" />
+            <div className="flex items-center gap-4 mb-10">
+               <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+                  <Send className="w-5 h-5" />
+               </div>
+               <h2 className="font-serif text-3xl text-primary font-bold">{c.inquiryTitle}</h2>
+            </div>
+
+            <GlassCard className="p-8 lg:p-12 border-transparent bg-white/40 dark:bg-black/20 rounded-[2.5rem]">
+              <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <Label htmlFor="firstName" className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold">{c.form.firstName}</Label>
+                    <Input id="firstName" className="h-14 rounded-xl bg-white/50 border-white/20 focus-visible:ring-accent" data-testid="input-first-name" />
+                  </div>
+                  <div className="space-y-3">
+                    <Label htmlFor="lastName" className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold">{c.form.lastName}</Label>
+                    <Input id="lastName" className="h-14 rounded-xl bg-white/50 border-white/20 focus-visible:ring-accent" data-testid="input-last-name" />
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="lastName" className="font-mono text-xs uppercase tracking-widest text-primary">{c.form.lastName}</Label>
-                  <Input id="lastName" className="rounded-none bg-white border-border focus-visible:ring-accent" data-testid="input-last-name" />
+
+                <div className="space-y-3">
+                  <Label htmlFor="email" className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold">{c.form.email}</Label>
+                  <Input id="email" type="email" className="h-14 rounded-xl bg-white/50 border-white/20 focus-visible:ring-accent" data-testid="input-email" />
                 </div>
-              </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="email" className="font-mono text-xs uppercase tracking-widest text-primary">{c.form.email}</Label>
-                <Input id="email" type="email" className="rounded-none bg-white border-border focus-visible:ring-accent" data-testid="input-email" />
-              </div>
+                <div className="space-y-3">
+                  <Label htmlFor="department" className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold">{c.form.directTo}</Label>
+                  <select id="department" data-testid="select-department" className="flex h-14 w-full rounded-xl border border-white/20 bg-white/50 px-4 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent font-sans shadow-inner appearance-none">
+                    <option value="">{c.form.selectDept}</option>
+                    <option value="state">{c.form.deptState}</option>
+                    <option value="finance">{c.form.deptFinance}</option>
+                    <option value="health">{c.form.deptHealth}</option>
+                    <option value="transport">{c.form.deptTransport}</option>
+                    <option value="other">{c.form.deptOther}</option>
+                  </select>
+                </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="department" className="font-mono text-xs uppercase tracking-widest text-primary">{c.form.directTo}</Label>
-                <select id="department" data-testid="select-department" className="flex h-10 w-full rounded-none border border-border bg-white px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-50 font-sans">
-                  <option value="">{c.form.selectDept}</option>
-                  <option value="state">{c.form.deptState}</option>
-                  <option value="finance">{c.form.deptFinance}</option>
-                  <option value="health">{c.form.deptHealth}</option>
-                  <option value="transport">{c.form.deptTransport}</option>
-                  <option value="other">{c.form.deptOther}</option>
-                </select>
-              </div>
+                <div className="space-y-3">
+                  <Label htmlFor="message" className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold">{c.form.message}</Label>
+                  <Textarea id="message" rows={6} className="rounded-xl bg-white/50 border-white/20 focus-visible:ring-accent resize-none p-4" data-testid="textarea-message" />
+                </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="message" className="font-mono text-xs uppercase tracking-widest text-primary">{c.form.message}</Label>
-                <Textarea id="message" rows={5} className="rounded-none bg-white border-border focus-visible:ring-accent resize-none" data-testid="textarea-message" />
-              </div>
-
-              <Button type="submit" className="w-full rounded-none h-12 bg-primary text-white hover:bg-accent font-mono uppercase tracking-widest text-xs transition-colors" data-testid="btn-submit-inquiry">
-                {c.form.submit}
-              </Button>
-            </form>
+                <Button type="submit" className="w-full rounded-xl h-16 bg-primary text-white hover:bg-accent font-mono uppercase tracking-[0.2em] text-[11px] font-bold transition-all shadow-2xl group" data-testid="btn-submit-inquiry">
+                  {c.form.submit}
+                  <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                </Button>
+              </form>
+            </GlassCard>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-col gap-12"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="lg:col-span-5 space-y-16"
           >
-            <div>
-              <h2 className="font-serif text-3xl text-primary mb-6">{c.directoryTitle}</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                <div className="flex gap-4">
-                  <MapPin className="w-5 h-5 text-accent shrink-0 mt-1" />
+            <div className="space-y-10">
+              <h2 className="font-serif text-3xl text-primary font-bold border-b border-white/10 pb-6">{c.directoryTitle}</h2>
+              <div className="grid grid-cols-1 gap-10">
+                <div className="flex gap-6 group">
+                  <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent shrink-0 group-hover:bg-accent group-hover:text-white transition-all">
+                    <MapPin className="w-6 h-6" />
+                  </div>
                   <div>
-                    <h4 className="font-mono text-xs uppercase tracking-widest text-primary mb-2 font-semibold">{c.hq}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      1 Capital Plaza<br />
-                      Government District<br />
+                    <h4 className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent font-bold mb-3">{c.hq}</h4>
+                    <p className="text-lg text-primary font-serif leading-tight">
+                      1 Capital Plaza, Government District<br />
                       Republic City, 10001
                     </p>
                   </div>
                 </div>
-                <div className="flex gap-4">
-                  <Clock className="w-5 h-5 text-accent shrink-0 mt-1" />
+
+                <div className="flex gap-6 group">
+                  <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent shrink-0 group-hover:bg-accent group-hover:text-white transition-all">
+                    <Clock className="w-6 h-6" />
+                  </div>
                   <div>
-                    <h4 className="font-mono text-xs uppercase tracking-widest text-primary mb-2 font-semibold">{c.hours}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
+                    <h4 className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent font-bold mb-3">{c.hours}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line font-light">
                       {c.hoursDetail}
                     </p>
                   </div>
                 </div>
-                <div className="flex gap-4">
-                  <Phone className="w-5 h-5 text-accent shrink-0 mt-1" />
-                  <div>
-                    <h4 className="font-mono text-xs uppercase tracking-widest text-primary mb-2 font-semibold">{c.switchboard}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed font-mono">
-                      1-800-GOV-INFO<br />
-                      (1-800-468-4636)
-                    </p>
+
+                <div className="flex gap-6 group">
+                  <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent shrink-0 group-hover:bg-accent group-hover:text-white transition-all">
+                    <Headphones className="w-6 h-6" />
                   </div>
-                </div>
-                <div className="flex gap-4">
-                  <Mail className="w-5 h-5 text-accent shrink-0 mt-1" />
-                  <div>
-                    <h4 className="font-mono text-xs uppercase tracking-widest text-primary mb-2 font-semibold">{c.generalEmail}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed font-mono">
-                      contact@republic.gov
-                    </p>
+                  <div className="flex-1">
+                    <h4 className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent font-bold mb-3">Communication Hub</h4>
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between pb-3 border-b border-white/5">
+                        <span className="text-[10px] font-mono text-muted-foreground font-bold uppercase">{c.switchboard}</span>
+                        <span className="text-sm font-mono font-bold text-primary group-hover:text-accent transition-colors">1-800-GOV-INFO</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-mono text-muted-foreground font-bold uppercase">{c.generalEmail}</span>
+                        <span className="text-sm font-mono font-bold text-primary group-hover:text-accent transition-colors">contact@republic.gov</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-destructive/5 border border-destructive/20 p-8">
-              <h3 className="font-serif text-2xl text-destructive mb-4">{c.emergencyTitle}</h3>
-              <ul className="space-y-4 font-mono text-sm">
+            <GlassCard className="border-destructive/20 bg-destructive/5 rounded-[2.5rem] p-10">
+              <div className="flex items-center gap-4 mb-8">
+                 <ShieldAlert className="w-8 h-8 text-destructive animate-pulse" />
+                 <h3 className="font-serif text-3xl text-destructive font-bold">{c.emergencyTitle}</h3>
+              </div>
+              <ul className="space-y-6">
                 {c.emergencyItems.map((item, idx) => (
-                  <li key={idx} className={`flex justify-between items-center pb-2 ${idx < c.emergencyItems.length - 1 ? "border-b border-destructive/10" : ""}`}>
-                    <span className="text-primary font-sans">{item.label}</span>
-                    <strong className="text-destructive text-lg">{item.number}</strong>
+                  <li key={idx} className="flex justify-between items-center group/item">
+                    <span className="text-primary font-mono text-[10px] uppercase tracking-widest font-bold group-hover/item:text-destructive transition-colors">{item.label}</span>
+                    <div className="flex items-center gap-4">
+                       <div className="w-8 h-px bg-destructive/20" />
+                       <strong className="text-3xl font-mono font-bold text-destructive tracking-tighter">{item.number}</strong>
+                    </div>
                   </li>
                 ))}
               </ul>
-            </div>
+              <div className="mt-10 pt-6 border-t border-destructive/10 flex items-center gap-2 text-[9px] font-mono font-bold uppercase tracking-widest text-destructive/60">
+                 24/7 National Response Service <ChevronRight className="w-3 h-3" />
+              </div>
+            </GlassCard>
           </motion.div>
         </div>
       </div>
