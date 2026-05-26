@@ -14,7 +14,6 @@ import Constitution from "@/pages/about/constitution";
 import NationalSymbols from "@/pages/about/national-symbols";
 import AdminDivision from "@/pages/about/administrative-division";
 import Currency from "@/pages/about/currency";
-import Tourism from "@/pages/about/tourism";
 import Royal from "@/pages/royal/index";
 import HisMajesty from "@/pages/royal/his-majesty";
 import CouncilOfRegency from "@/pages/royal/council-of-regency";
@@ -63,7 +62,6 @@ function Router() {
       <Route path="/about/national-symbols" component={NationalSymbols} />
       <Route path="/about/administrative-division" component={AdminDivision} />
       <Route path="/about/currency" component={Currency} />
-      <Route path="/tourism" component={Tourism} />
       <Route path="/royal" component={Royal} />
       <Route path="/royal/his-majesty" component={HisMajesty} />
       <Route path="/royal/council-of-regency" component={CouncilOfRegency} />

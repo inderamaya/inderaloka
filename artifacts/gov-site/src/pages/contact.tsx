@@ -22,22 +22,24 @@ export default function Contact() {
 
   return (
     <div className="flex-1 w-full bg-background pb-24">
-      <div className="bg-primary text-white py-12">
+      <div className="bg-secondary border-b border-border py-12">
         <div className="container mx-auto px-4 lg:px-8">
           <Breadcrumb className="mb-6 font-mono uppercase tracking-widest text-[10px]">
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/" className="text-white/60 hover:text-white">{c.breadcrumbHome}</BreadcrumbLink>
+                <BreadcrumbLink asChild>
+                  <Link href="/">{c.breadcrumbHome}</Link>
+                </BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator className="text-white/40" />
+              <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage className="text-white">{c.breadcrumbCurrent}</BreadcrumbPage>
+                <BreadcrumbPage className="text-primary">{c.breadcrumbCurrent}</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
 
-          <h1 className="font-serif text-4xl lg:text-5xl mb-6">{c.pageTitle}</h1>
-          <p className="text-white/70 text-lg max-w-2xl font-light">
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-primary mb-6">{c.pageTitle}</h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl font-light">
             {c.pageDesc}
           </p>
         </div>
@@ -55,22 +57,22 @@ export default function Contact() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="firstName" className="font-mono text-xs uppercase tracking-widest text-primary">{c.form.firstName}</Label>
-                  <Input id="firstName" className="rounded-none bg-white border-border focus-visible:ring-accent" data-testid="input-first-name" />
+                  <Input id="firstName" className="rounded-none bg-background border-border focus-visible:ring-accent" data-testid="input-first-name" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="lastName" className="font-mono text-xs uppercase tracking-widest text-primary">{c.form.lastName}</Label>
-                  <Input id="lastName" className="rounded-none bg-white border-border focus-visible:ring-accent" data-testid="input-last-name" />
+                  <Input id="lastName" className="rounded-none bg-background border-border focus-visible:ring-accent" data-testid="input-last-name" />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="email" className="font-mono text-xs uppercase tracking-widest text-primary">{c.form.email}</Label>
-                <Input id="email" type="email" className="rounded-none bg-white border-border focus-visible:ring-accent" data-testid="input-email" />
+                <Input id="email" type="email" className="rounded-none bg-background border-border focus-visible:ring-accent" data-testid="input-email" />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="department" className="font-mono text-xs uppercase tracking-widest text-primary">{c.form.directTo}</Label>
-                <select id="department" data-testid="select-department" className="flex h-10 w-full rounded-none border border-border bg-white px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-50 font-sans">
+                <select id="department" data-testid="select-department" className="flex h-10 w-full rounded-none border border-border bg-background text-foreground px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-50 font-sans">
                   <option value="">{c.form.selectDept}</option>
                   <option value="state">{c.form.deptState}</option>
                   <option value="finance">{c.form.deptFinance}</option>
@@ -82,10 +84,10 @@ export default function Contact() {
 
               <div className="space-y-2">
                 <Label htmlFor="message" className="font-mono text-xs uppercase tracking-widest text-primary">{c.form.message}</Label>
-                <Textarea id="message" rows={5} className="rounded-none bg-white border-border focus-visible:ring-accent resize-none" data-testid="textarea-message" />
+                <Textarea id="message" rows={5} className="rounded-none bg-background border-border focus-visible:ring-accent resize-none" data-testid="textarea-message" />
               </div>
 
-              <Button type="submit" className="w-full rounded-none h-12 bg-primary text-white hover:bg-accent font-mono uppercase tracking-widest text-xs transition-colors" data-testid="btn-submit-inquiry">
+              <Button type="submit" className="w-full rounded-none h-12 bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground font-mono uppercase tracking-widest text-xs transition-colors" data-testid="btn-submit-inquiry">
                 {c.form.submit}
               </Button>
             </form>
