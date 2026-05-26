@@ -19,7 +19,7 @@ export default function Constitution() {
             <BreadcrumbList>
               <BreadcrumbItem><BreadcrumbLink asChild><Link href="/">{c.breadcrumbHome}</Link></BreadcrumbLink></BreadcrumbItem>
               <BreadcrumbSeparator />
-              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/about">{c.breadcrumbAbout}</Link></BreadcrumbLink></BreadcrumbItem>
+              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/about">{c.breadcrumbParent}</Link></BreadcrumbLink></BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem><BreadcrumbPage className="text-primary">{c.breadcrumbCurrent}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList>

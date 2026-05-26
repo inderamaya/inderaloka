@@ -63,7 +63,7 @@ function Router() {
       <Route path="/about/national-symbols" component={NationalSymbols} />
       <Route path="/about/administrative-division" component={AdminDivision} />
       <Route path="/about/currency" component={Currency} />
-      <Route path="/about/tourism" component={Tourism} />
+      <Route path="/tourism" component={Tourism} />
       <Route path="/royal" component={Royal} />
       <Route path="/royal/his-majesty" component={HisMajesty} />
       <Route path="/royal/council-of-regency" component={CouncilOfRegency} />

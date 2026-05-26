@@ -183,7 +183,7 @@ export const translations = {
     // About subpages
     history: {
       breadcrumbHome: "Utama",
-      breadcrumbAbout: "Mengenai",
+      breadcrumbParent: "Mengenai",
       breadcrumbCurrent: "Sejarah",
       pageTitle: "Sejarah Inderaloka",
       pageDesc: "Perjalanan sejarah Inderaloka merentasi lebih enam abad — dari kesultanan terawal hingga negara berdaulat yang maju.",
@@ -199,7 +199,7 @@ export const translations = {
     },
     constitution: {
       breadcrumbHome: "Utama",
-      breadcrumbAbout: "Mengenai",
+      breadcrumbParent: "Mengenai",
       breadcrumbCurrent: "Perlembagaan",
       pageTitle: "Perlembagaan Inderaloka",
       pageDesc: "Undang-undang tertinggi yang menjadi asas pemerintahan dan menjamin hak-hak asasi setiap warga negara.",
@@ -226,7 +226,7 @@ export const translations = {
     },
     nationalSymbols: {
       breadcrumbHome: "Utama",
-      breadcrumbAbout: "Mengenai",
+      breadcrumbParent: "Mengenai",
       breadcrumbCurrent: "Lambang Negara",
       pageTitle: "Lambang-Lambang Negara Inderaloka",
       pageDesc: "Simbol-simbol rasmi yang melambangkan identiti, sejarah, dan nilai-nilai luhur rakyat Inderaloka.",
@@ -262,7 +262,7 @@ export const translations = {
     },
     adminDivision: {
       breadcrumbHome: "Utama",
-      breadcrumbAbout: "Mengenai",
+      breadcrumbParent: "Mengenai",
       breadcrumbCurrent: "Pembahagian Pentadbiran",
       pageTitle: "Pembahagian Pentadbiran Inderaloka",
       pageDesc: "Inderaloka terdiri daripada 13 negeri berdaulat dan 3 wilayah persekutuan di bawah pentadbiran langsung kerajaan pusat.",
@@ -295,7 +295,7 @@ export const translations = {
     },
     currency: {
       breadcrumbHome: "Utama",
-      breadcrumbAbout: "Mengenai",
+      breadcrumbParent: "Mengenai",
       breadcrumbCurrent: "Mata Wang",
       pageTitle: "Mata Wang Inderaloka",
       pageDesc: "Ringgit Inderaloka (RI) — mata wang rasmi yang menjadi asas sistem kewangan negara.",
@@ -340,19 +340,27 @@ export const translations = {
     },
     tourism: {
       breadcrumbHome: "Utama",
-      breadcrumbAbout: "Mengenai",
+      breadcrumbParent: "Mengenai",
       breadcrumbCurrent: "Pelancongan",
       pageTitle: "Pelancongan di Inderaloka",
       pageDesc: "Alami gabungan harmoni antara kemodenan dan warisan tradisi di permata Asia Tenggara.",
-      sections: {
-        attractions: "Tarikan Utama",
-        identity: "Identiti Kebangsaan",
-        exploreLabel: "Terokai Destinasi",  // (ms) / "Explore Destinations" (en)
-          destinations: [],                    // keep empty if not needed, or add items
-          cultureLabel: "Warisan Budaya",      // (ms) / "Cultural Heritage" (en)
-          culturalSections: [],                // keep empty if not needed, or add items
-
-      },
+      exploreLabel: "Terokai Destinasi",
+      cultureLabel: "Warisan Budaya",
+      viewDetails: "Detail Destinasi",
+      ctaTitle: "Mula Rancang Perjalanan Anda",
+      ctaDesc: "Alami sendiri keajaiban Inderaloka. Kami sedia membantu anda merancang pengalaman yang tidak akan dilupakan.",
+      ctaButton1: "Muat Turun Brosur",
+      ctaButton2: "Hubungi Agen Pelancongan",
+      destinations: [
+        { title: "Kota Indera", desc: "Ibu kota yang dinamik di mana pencakar langit moden berdiri megah di sebelah bangunan kolonial yang terpelihara.", image: "https://images.unsplash.com/photo-1596422846543-75c6fc18a593?q=80&w=800" },
+        { title: "Pulau Permata", desc: "Syurga tropika dengan air laut kristal, terumbu karang yang menakjubkan, dan pantai berpasir putih yang tenang.", image: "https://images.unsplash.com/photo-1544945582-3b466d874eac?q=80&w=800" },
+        { title: "Hutan Hujan Indra", desc: "Salah satu ekosistem tertua di dunia, menawarkan pengembaraan ekopelancongan yang tidak dapat dilupakan.", image: "https://images.unsplash.com/photo-1588336332073-489bd69527df?q=80&w=800" },
+      ],
+      culturalSections: [
+        { title: "Seni Batik & Songket", desc: "Kehalusan seni tenunan dan lukisan kain yang melambangkan identiti dan estetika tinggi bangsa Melayu." },
+        { title: "Kesenian Tradisional", desc: "Dari Tarian Zapin yang rancak hingga alunan Gamelan yang merdu, warisan seni persembahan kami terus hidup." },
+        { title: "Gastronomi Inderaloka", desc: "Rasai kepelbagaian rasa yang unik, gabungan rempah-ratus tradisi yang menambat selera dunia." },
+      ],
       cards: [
         { title: "Mercu Tanda Ikonik", desc: "Dari Menara Indera yang menjulang tinggi ke jambatan bersejarah yang menghubungkan masa lalu dan masa depan.", image: "https://images.unsplash.com/photo-1596422846543-75c6fc18a593?q=80&w=800&auto=format&fit=crop" },
         { title: "Keajaiban Alam", desc: "Hutan hujan tropika yang belum diterokai, pantai yang memutih, dan kepelbagaian bio yang menakjubkan.", image: "https://images.unsplash.com/photo-1506929197327-0bb074513797?q=80&w=800&auto=format&fit=crop" },
@@ -1085,6 +1093,7 @@ export const translations = {
       bedsLabel: "Katil",
       phoneLabel: "Telefon",
       servicesLabel: "Perkhidmatan Utama",
+      hospitalNameLabel: "Hospital",
       hospitals: [
         { name: "Hospital Kuala Inderaloka", address: "Jalan Pahang, 50586 Inderaloka", beds: "2,200", phone: "+603-2615 5555", services: "Traumatologi, Onkologi, Kardiologi, Neurologi" },
         { name: "Hospital Selayang", address: "Jalan Selayang, 68100 Batu Caves", beds: "970", phone: "+603-6120 3000", services: "Gastroenterologi, Hepatologi, Paru-paru" },
@@ -1116,6 +1125,7 @@ export const translations = {
       programsLabel: "Program Utama",
       rankingLabel: "Ranking",
       typeLabel: "Jenis",
+      schoolNameLabel: "Sekolah",
       universities: [
         { name: "Universiti Diraja Inderaloka (UDIndra)", location: "Kuala Inderaloka", enrollment: "22,000", programs: "Perubatan, Undang-undang, Kejuruteraan, Sains", ranking: "QS #1 Inderaloka" },
         { name: "Universiti Sains Inderaloka (USI)", location: "Penang", enrollment: "27,000", programs: "Sains, Teknologi, Kejuruteraan, Perubatan", ranking: "QS #2 Inderaloka" },
@@ -1324,7 +1334,7 @@ export const translations = {
     // About subpages
     history: {
       breadcrumbHome: "Home",
-      breadcrumbAbout: "About",
+      breadcrumbParent: "About",
       breadcrumbCurrent: "History",
       pageTitle: "History of Inderaloka",
       pageDesc: "The history of Inderaloka spanning over six centuries — from its earliest sultanate to a prosperous sovereign nation.",
@@ -1340,7 +1350,7 @@ export const translations = {
     },
     constitution: {
       breadcrumbHome: "Home",
-      breadcrumbAbout: "About",
+      breadcrumbParent: "About",
       breadcrumbCurrent: "Constitution",
       pageTitle: "Constitution of Inderaloka",
       pageDesc: "The supreme law of the land, the foundation of governance and guarantor of every citizen's fundamental rights.",
@@ -1367,7 +1377,7 @@ export const translations = {
     },
     nationalSymbols: {
       breadcrumbHome: "Home",
-      breadcrumbAbout: "About",
+      breadcrumbParent: "About",
       breadcrumbCurrent: "National Symbols",
       pageTitle: "National Symbols of Inderaloka",
       pageDesc: "Official symbols representing the identity, history, and noble values of the people of Inderaloka.",
@@ -1403,7 +1413,7 @@ export const translations = {
     },
     adminDivision: {
       breadcrumbHome: "Home",
-      breadcrumbAbout: "About",
+      breadcrumbParent: "About",
       breadcrumbCurrent: "Administrative Division",
       pageTitle: "Administrative Division of Inderaloka",
       pageDesc: "Inderaloka comprises 13 sovereign states and 3 federal territories under the direct administration of the central government.",
@@ -1436,7 +1446,7 @@ export const translations = {
     },
     currency: {
       breadcrumbHome: "Home",
-      breadcrumbAbout: "About",
+      breadcrumbParent: "About",
       breadcrumbCurrent: "Currency",
       pageTitle: "Currency of Inderaloka",
       pageDesc: "The Ringgit Inderaloka (RI) — the official currency underpinning the nation's financial system.",
@@ -1479,13 +1489,19 @@ export const translations = {
         { year: "2024", event: "Ringgit strengthened to RI 4.20 against 1 USD amid robust economic growth." },
       ],
     },
-      tourismPage: {
+      tourism: {
         breadcrumbHome: "Home",
+        breadcrumbParent: "About",
         breadcrumbCurrent: "Tourism",
         pageTitle: "Wonders of Inderaloka",
         pageDesc: "Discover rich cultural heritage, breathtaking natural beauty, and futuristic modernity in the jewel of Southeast Asia.",
         exploreLabel: "Explore Destinations",
         cultureLabel: "Cultural Heritage",
+        viewDetails: "View Details",
+        ctaTitle: "Start Planning Your Journey",
+        ctaDesc: "Experience the magic of Inderaloka for yourself. We are here to help you plan an unforgettable experience.",
+        ctaButton1: "Download Brochure",
+        ctaButton2: "Contact Travel Agent",
         destinations: [
           { title: "Indera City", desc: "A dynamic capital where modern skyscrapers stand majestically beside preserved colonial buildings.", image: "https://images.unsplash.com/photo-1596422846543-75c6fc18a593?q=80&w=800" },
           { title: "Permata Island", desc: "A tropical paradise with crystal-clear waters, stunning coral reefs, and serene white-sand beaches.", image: "https://images.unsplash.com/photo-1544945582-3b466d874eac?q=80&w=800" },
@@ -1496,8 +1512,15 @@ export const translations = {
           { title: "Traditional Arts", desc: "From the lively Zapin Dance to the melodious sounds of Gamelan, our performing arts heritage continues to thrive." },
           { title: "Inderaloka Gastronomy", desc: "Experience a unique diversity of flavors, a blend of traditional spices that captivates the world's palate." },
         ],
+        cards: [
+          { title: "Iconic Landmarks", desc: "From the towering Indera Tower to the historic bridges connecting past and future.", image: "https://images.unsplash.com/photo-1596422846543-75c6fc18a593?q=80&w=800&auto=format&fit=crop" },
+          { title: "Natural Wonders", desc: "Untouched tropical rainforests, pristine beaches, and breathtaking biodiversity.", image: "https://images.unsplash.com/photo-1506929197327-0bb074513797?q=80&w=800&auto=format&fit=crop" },
+          { title: "Cultural Heritage", desc: "Witness traditional performances, cultural dances, and handicrafts passed down through generations.", image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=800&auto=format&fit=crop" },
+          { title: "Food Paradise", desc: "Enjoy the deliciousness of Nasi Lemak Indera, Satay, and a variety of mouth-watering street foods.", image: "https://images.unsplash.com/photo-1562607349-590ca2f99fc3?q=80&w=800&auto=format&fit=crop" },
+          { title: "Traditional Attire", desc: "The elegance of Baju Kurung and Baju Melayu symbolizing the identity and grace of the Inderaloka people.", image: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=800&auto=format&fit=crop" },
+          { title: "Celebrations & Festivals", desc: "A vibrant variety of festive celebrations, reflecting the harmony and unity of the people.", image: "https://images.unsplash.com/photo-1533282960533-51328aa49826?q=80&w=800&auto=format&fit=crop" },
+        ],
       },
-    },
 
     // Royal Institution
     royal: {
@@ -2219,6 +2242,7 @@ export const translations = {
       bedsLabel: "Beds",
       phoneLabel: "Phone",
       servicesLabel: "Key Services",
+      hospitalNameLabel: "Hospital",
       hospitals: [
         { name: "Kuala Inderaloka Hospital", address: "Jalan Pahang, 50586 Inderaloka", beds: "2,200", phone: "+603-2615 5555", services: "Traumatology, Oncology, Cardiology, Neurology" },
         { name: "Selayang Hospital", address: "Jalan Selayang, 68100 Batu Caves", beds: "970", phone: "+603-6120 3000", services: "Gastroenterology, Hepatology, Pulmonology" },
@@ -2234,26 +2258,7 @@ export const translations = {
         { name: "Ipoh Timur Health Clinic", address: "Jalan Raja Dr. Nazrin Shah, 31400 Ipoh", services: "Primary care, Elderly Care" },
         { name: "Kota Bharu Health Clinic", address: "Jalan Sultanah Zainab, 15050 Kota Bharu", services: "Primary care, Mother & Child" },
         { name: "Kuching Utara Health Clinic", address: "Jalan Satok, 93400 Kuching", services: "Primary care, Diabetes" },
-        
       ],
-      tourismPage: {
-        breadcrumbHome: "Utama",
-        breadcrumbCurrent: "Pelancongan",
-        pageTitle: "Keajaiban Inderaloka",
-        pageDesc: "Temui warisan budaya yang kaya, keindahan alam semula jadi yang menakjubkan, dan kemodenan futuristik di permata Asia Tenggara.",
-        exploreLabel: "Terokai Destinasi",
-        cultureLabel: "Warisan Budaya",
-        destinations: [
-          { title: "Kota Indera", desc: "Ibu kota yang dinamik di mana pencakar langit moden berdiri megah di sebelah bangunan kolonial yang terpelihara.", image: "https://images.unsplash.com/photo-1596422846543-75c6fc18a593?q=80&w=800" },
-          { title: "Pulau Permata", desc: "Syurga tropika dengan air laut kristal, terumbu karang yang menakjubkan, dan pantai berpasir putih yang tenang.", image: "https://images.unsplash.com/photo-1544945582-3b466d874eac?q=80&w=800" },
-          { title: "Hutan Hujan Indra", desc: "Salah satu ekosistem tertua di dunia, menawarkan pengembaraan ekopelancongan yang tidak dapat dilupakan.", image: "https://images.unsplash.com/photo-1588336332073-489bd69527df?q=80&w=800" },
-        ],
-        culturalSections: [
-          { title: "Seni Batik & Songket", desc: "Kehalusan seni tenunan dan lukisan kain yang melambangkan identiti dan estetika tinggi bangsa Melayu." },
-          { title: "Kesenian Tradisional", desc: "Dari Tarian Zapin yang rancak hingga alunan Gamelan yang merdu, warisan seni persembahan kami terus hidup." },
-          { title: "Gastronomi Inderaloka", desc: "Rasai kepelbagaian rasa yang unik, gabungan rempah-ratus tradisi yang menambat selera dunia." },
-        ],
-      },
     },
     educationPage: {
       breadcrumbHome: "Home",
@@ -2269,6 +2274,7 @@ export const translations = {
       programsLabel: "Key Programmes",
       rankingLabel: "Ranking",
       typeLabel: "Type",
+      schoolNameLabel: "School",
       universities: [
         { name: "University of Inderaloka (UM)", location: "Kuala Inderaloka", enrollment: "22,000", programs: "Medicine, Law, Engineering, Sciences", ranking: "QS #1 Inderaloka" },
         { name: "Inderaloka Science University (USI)", location: "Penang", enrollment: "27,000", programs: "Science, Technology, Engineering, Medicine", ranking: "QS #2 Inderaloka" },
@@ -2294,6 +2300,7 @@ export const translations = {
         { name: "SK Georgetown", location: "George Town, Penang", enrollment: "820", type: "SK" },
       ],
     },
+  },
 } as const;
 
 export type Translations = typeof translations.ms;
