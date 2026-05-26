@@ -29,7 +29,7 @@ export default function News() {
   return (
     <div className="flex-1 w-full bg-background pb-32">
       {/* Hero & Search - Museum Style */}
-      <div className="relative pt-20 pb-32 overflow-hidden border-b border-white/5">
+      <div className="relative pt-40 pb-32 overflow-hidden border-b border-white/5">
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <Breadcrumb className="mb-8 font-mono uppercase tracking-[0.3em] text-[10px] font-bold text-accent">
             <BreadcrumbList>
