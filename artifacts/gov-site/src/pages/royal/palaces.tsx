@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { MapPin, Clock, Landmark, ArrowRight, ChevronRight, Compass } from "lucide-react";
+import { MapPin, Clock } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { GlassCard } from "@/components/ui/GlassCard";
 
 export default function Palaces() {
   const { t } = useLanguage();
@@ -12,95 +11,64 @@ export default function Palaces() {
   const p = r.palaces;
 
   return (
-    <div className="flex-1 w-full bg-background pb-32">
-      <div className="relative pt-20 pb-32 overflow-hidden">
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <Breadcrumb className="mb-8 font-mono uppercase tracking-[0.3em] text-[10px] font-bold text-accent">
-            <BreadcrumbList>
-              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/">{r.breadcrumbHome}</Link></BreadcrumbLink></BreadcrumbItem>
-              <BreadcrumbSeparator className="opacity-50" />
-              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/royal">{r.breadcrumbParent}</Link></BreadcrumbLink></BreadcrumbItem>
-              <BreadcrumbSeparator className="opacity-50" />
-              <BreadcrumbItem><BreadcrumbPage className="text-primary">{p.breadcrumbCurrent}</BreadcrumbPage></BreadcrumbItem>
+    <div className="flex-1 w-full bg-background pb-24">
+      <div className="bg-primary border-b border-white/10 py-12">
+        <div className="container mx-auto px-4 lg:px-8">
+          <Breadcrumb className="mb-6 font-mono uppercase tracking-widest text-[10px]">
+            <BreadcrumbList className="text-white/50">
+              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/" className="text-white/60 hover:text-white">{r.breadcrumbHome}</Link></BreadcrumbLink></BreadcrumbItem>
+              <BreadcrumbSeparator className="text-white/30" />
+              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/royal" className="text-white/60 hover:text-white">{r.breadcrumbParent}</Link></BreadcrumbLink></BreadcrumbItem>
+              <BreadcrumbSeparator className="text-white/30" />
+              <BreadcrumbItem><BreadcrumbPage className="text-accent">{p.breadcrumbCurrent}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <div className="max-w-4xl">
-            <h1 className="font-serif text-5xl lg:text-7xl font-bold text-primary mb-8 leading-tight tracking-tighter">{p.pageTitle}</h1>
-            <p className="text-muted-foreground text-xl font-light max-w-3xl leading-relaxed">{p.pageDesc}</p>
-          </div>
+          <h1 className="font-serif text-4xl lg:text-5xl text-white mb-4">{p.pageTitle}</h1>
+          <p className="text-white/70 text-lg max-w-2xl font-light">{p.pageDesc}</p>
         </div>
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-accent/5 blur-[120px] rounded-full -z-10" />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 space-y-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+      <div className="container mx-auto px-4 lg:px-8 pt-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {p.items.map((palace, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              transition={{ duration: 0.4, delay: idx * 0.1 }}
+              className="border border-border bg-background group hover:border-accent/40 transition-colors"
             >
-              <GlassCard className="h-full p-2 border-transparent hover:border-accent/30 transition-all duration-700 bg-white/40 dark:bg-black/20 rounded-[2.5rem] group overflow-hidden">
-                <div className="aspect-video lg:aspect-[16/10] rounded-[2rem] overflow-hidden relative shadow-2xl">
-                  <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-all duration-700 z-10" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                     <Landmark className="w-20 h-20 text-white opacity-10 group-hover:scale-110 transition-transform duration-1000" />
+              <div className="aspect-[16/9] bg-secondary border-b border-border flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-primary opacity-5 group-hover:opacity-10 transition-opacity" />
+                <div className="text-center z-10">
+                  <div className="w-16 h-16 border border-accent/30 bg-accent/5 flex items-center justify-center mx-auto mb-3">
+                    <span className="font-mono text-xl font-bold text-accent">{(idx + 1).toString().padStart(2, "0")}</span>
                   </div>
-                  <div className="absolute top-6 left-6 z-20">
-                     <span className="font-mono text-[9px] font-bold text-white px-3 py-1 bg-accent/80 backdrop-blur-md rounded-full uppercase tracking-widest shadow-lg">
-                        {palace.type}
-                     </span>
-                  </div>
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{palace.type}</span>
                 </div>
-
-                <div className="p-8 lg:p-10">
-                  <div className="flex items-start gap-4 mb-6">
-                    <MapPin className="w-5 h-5 text-accent mt-1 shrink-0" />
+              </div>
+              <div className="p-6 lg:p-8">
+                <div className="font-mono text-[10px] uppercase tracking-widest text-accent mb-3">{palace.type}</div>
+                <h3 className="font-serif text-2xl text-primary mb-4 group-hover:text-accent transition-colors">{palace.name}</h3>
+                <div className="flex items-start gap-2 mb-5">
+                  <MapPin className="w-3.5 h-3.5 text-muted-foreground mt-0.5 flex-shrink-0" />
+                  <span className="text-xs text-muted-foreground">{palace.location}</span>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-6">{palace.desc}</p>
+                <div className="border-t border-border pt-5">
+                  <div className="flex items-start gap-2">
+                    <Clock className="w-3.5 h-3.5 text-accent mt-0.5 flex-shrink-0" />
                     <div>
-                      <h3 className="font-serif text-3xl text-primary font-bold mb-2 group-hover:text-accent transition-colors leading-tight">{palace.name}</h3>
-                      <p className="text-[10px] text-muted-foreground font-mono font-bold uppercase tracking-widest">{palace.location}</p>
-                    </div>
-                  </div>
-
-                  <p className="text-sm text-muted-foreground leading-relaxed font-light mb-10 line-clamp-3">
-                    {palace.desc}
-                  </p>
-
-                  <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-6">
-                    <div className="flex items-start gap-3">
-                       <Clock className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                       <div>
-                          <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground font-bold block mb-1">{p.visitingLabel}</span>
-                          <p className="text-xs text-primary/80 font-medium">{palace.visiting}</p>
-                       </div>
-                    </div>
-                    <div className="w-10 h-10 rounded-full border border-primary/10 flex items-center justify-center shrink-0 group-hover:border-accent group-hover:bg-accent group-hover:text-white transition-all">
-                       <ChevronRight className="w-5 h-5" />
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground block mb-1">{p.visitingLabel}</span>
+                      <p className="text-xs text-muted-foreground">{palace.visiting}</p>
                     </div>
                   </div>
                 </div>
-              </GlassCard>
+              </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Global Access Section */}
-        <section className="relative py-24">
-          <GlassCard className="max-w-4xl mx-auto p-12 lg:p-20 text-center border-accent/20 bg-accent/5 rounded-[3.5rem] overflow-hidden">
-            <div className="absolute top-0 left-0 p-12 opacity-5">
-              <Compass className="w-48 h-48 text-accent" />
-            </div>
-            <h2 className="font-serif text-4xl lg:text-5xl text-primary font-bold mb-8 leading-tight">Preserving Royal Legacy</h2>
-            <p className="text-muted-foreground text-lg font-light leading-relaxed mb-12 max-w-2xl mx-auto italic">
-              "The Royal Palaces are more than mere residences; they are the living repositories of our national identity, where history and governance converge under the shadow of the Throne."
-            </p>
-            <div className="flex justify-center">
-              <div className="w-12 h-1 bg-accent rounded-full animate-pulse" />
-            </div>
-          </GlassCard>
-        </section>
       </div>
     </div>
   );

@@ -2,11 +2,10 @@ import React from "react";
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { Menu, ChevronRight } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { WeatherAlert } from "@/components/WeatherAlert";
-import { AnimatedBackground } from "@/components/ui/AnimatedBackground";
 import {
   Sheet,
   SheetClose,
@@ -16,29 +15,31 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-const Seal = ({ className }: { className?: string }) => (
+const Seal = () => (
   <img
     src="/Jata-Negara.png"
     alt="Jata Negara"
-    className={cn("w-12 h-12 object-contain", className)}
+    className="w-12 h-12 object-contain"
   />
 );
 
 function LanguageSwitcher() {
   const { language, setLanguage } = useLanguage();
   return (
-    <div className="flex items-center glass-effect border border-white/10 overflow-hidden flex-shrink-0 rounded-full" aria-label="Select Language" data-testid="language-switcher">
+         <div className="flex items-center border border-border overflow-hidden flex-shrink-0" aria-label="Select Language" data-testid="language-switcher">
       <button
         onClick={() => setLanguage("ms")}
         data-testid="lang-btn-ms"
-        className={cn("px-3 py-1 font-mono text-[10px] uppercase tracking-widest transition-all focus-visible:outline-none", language === "ms" ? "bg-accent text-white" : "text-muted-foreground hover:text-primary hover:bg-white/10")}
+                className={cn("px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-all focus-visible:outline-none focus-visible:bg-secondary focus-visible:text-primary", language === "ms" ? "bg-accent text-white" : "text-muted-foreground hover:text-primary hover:bg-secondary")}
         aria-pressed={language === "ms"}
-        aria-label="Tukar ke Bahasa Melayu"
-      >MS</button>
+         aria-label="Tukar ke Bahasa Melayu"
+      >BM</button>
+      <div className="w-px h-4 bg-border" />
+      
       <button
         onClick={() => setLanguage("en")}
         data-testid="lang-btn-en"
-        className={cn("px-3 py-1 font-mono text-[10px] uppercase tracking-widest transition-all focus-visible:outline-none", language === "en" ? "bg-accent text-white" : "text-muted-foreground hover:text-primary hover:bg-white/10")}
+        className={cn("px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest transition-all focus-visible:outline-none focus-visible:bg-secondary focus-visible:text-primary", language === "en" ? "bg-accent text-white" : "text-muted-foreground hover:text-primary hover:bg-secondary")}
         aria-pressed={language === "en"}
         aria-label="Switch to English"
       >EN</button>
@@ -54,10 +55,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
     { href: "/", label: t.nav.home },
     { href: "/services", label: t.nav.services },
     { href: "/news", label: t.nav.news },
+    { href: "/about", label: t.nav.about },
     { href: "/government", label: t.nav.government },
     { href: "/royal", label: t.nav.royal },
     { href: "/tourism", label: t.nav.tourism },
-    { href: "/about", label: t.nav.about },
     { href: "/directory", label: t.nav.directory },
     { href: "/contact", label: t.nav.contact },
   ];
@@ -65,146 +66,108 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const isActive = (href: string) => href === "/" ? location === "/" : location.startsWith(href);
 
   return (
-    <div className="min-h-[100dvh] flex flex-col bg-background selection:bg-accent selection:text-white font-sans overflow-x-hidden relative">
-      <AnimatedBackground />
+       <div className="min-h-[100dvh] flex flex-col bg-background selection:bg-accent selection:text-white font-sans overflow-x-hidden">
       <WeatherAlert />
-
-      <header className="sticky top-0 z-50 w-full transition-all duration-300">
-        <div className="container mx-auto px-4 lg:px-8 py-4">
-          <nav className="glass-effect premium-shadow rounded-2xl flex items-center justify-between px-6 py-3 border border-white/20 backdrop-blur-2xl">
-            <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
-              <Seal className="w-10 h-10 group-hover:scale-110 transition-transform duration-500" />
-              <div className="flex flex-col">
-                <span className="font-serif text-lg font-bold tracking-tight text-primary leading-tight">{t.siteTitle}</span>
-                <span className="text-[9px] uppercase font-mono tracking-[0.2em] text-accent font-semibold">{t.siteDept}</span>
-              </div>
-            </Link>
-
-            <div className="hidden lg:flex items-center gap-1">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "px-3 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-all rounded-lg relative group overflow-hidden",
-                    isActive(item.href) ? "text-accent" : "text-muted-foreground hover:text-primary"
-                  )}
-                  data-testid={`nav-desktop-${item.href === "/" ? "home" : item.href.slice(1).replace("/", "-")}`}
-                >
-                  <span className="relative z-10">{item.label}</span>
-                  {isActive(item.href) && (
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-accent rounded-full" />
-                  )}
-                </Link>
-              ))}
+      <header className="border-b border-border sticky top-0 bg-background/80 backdrop-blur-md z-50 shadow-sm">
+        <div className="container mx-auto px-4 lg:px-8 py-5 flex items-center justify-between gap-4">
+          <Link href="/" className="flex items-center gap-4 group flex-shrink-0">
+            <Seal />
+            <div className="flex flex-col">
+              <span className="font-serif text-xl font-semibold tracking-tight text-primary group-hover:text-accent transition-colors">{t.siteTitle}</span>
+              <span className="text-[10px] uppercase font-mono tracking-widest text-muted-foreground">{t.siteDept}</span>
             </div>
-
-            <div className="flex items-center gap-4">
-              <div className="hidden sm:block">
-                <LanguageSwitcher />
-              </div>
-              <ThemeToggle />
-
-              <div className="lg:hidden">
-                <Sheet>
-                  <SheetTrigger asChild>
-                    <Button variant="ghost" size="icon" className="rounded-xl hover:bg-white/10" aria-label={t.nav.openMenu} data-testid="mobile-menu-trigger">
-                      <Menu className="h-6 w-6" />
-                    </Button>
-                  </SheetTrigger>
-                  <SheetContent side="right" className="glass-effect border-l border-white/10 w-[300px] p-0 overflow-hidden">
-                    <div className="h-full flex flex-col">
-                      <SheetHeader className="p-6 text-left border-b border-white/10">
-                        <SheetTitle className="flex items-center gap-3">
-                          <Seal className="w-8 h-8" />
-                          <div className="flex flex-col">
-                            <span className="font-serif text-base font-bold text-primary">{t.siteTitle}</span>
-                            <span className="text-[8px] uppercase font-mono tracking-[0.2em] text-accent font-semibold">{t.siteDept}</span>
-                          </div>
-                        </SheetTitle>
-                      </SheetHeader>
-
-                      <div className="flex-1 overflow-y-auto py-6 px-4">
-                        <div className="mb-8 block sm:hidden px-2">
-                          <LanguageSwitcher />
-                        </div>
-                        <nav className="space-y-1">
-                          {navItems.map((item) => (
-                            <SheetClose asChild key={item.href}>
-                              <Link
-                                href={item.href}
-                                className={cn(
-                                  "flex items-center justify-between px-4 py-3 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all",
-                                  isActive(item.href) ? "bg-accent text-white shadow-lg" : "text-muted-foreground hover:bg-white/10 hover:text-primary"
-                                )}
-                                data-testid={`nav-mobile-${item.href === "/" ? "home" : item.href.slice(1).replace("/", "-")}`}
-                              >
-                                {item.label}
-                                <ChevronRight className="w-4 h-4 opacity-50" />
-                              </Link>
-                            </SheetClose>
-                          ))}
-                        </nav>
-                      </div>
-                    </div>
-                  </SheetContent>
-                </Sheet>
-              </div>
+          </Link>
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn("text-xs font-medium tracking-wide uppercase transition-colors hover:text-accent border-b-2 border-transparent pb-1 whitespace-nowrap", isActive(item.href) ? "border-accent text-primary" : "text-muted-foreground")}
+                data-testid={`nav-desktop-${item.href === "/" ? "home" : item.href.slice(1).replace("/", "-")}`}
+              >{item.label}</Link>
+            ))}
+            <div className="ml-2 xl:ml-4 pl-4 xl:pl-6 border-l border-border">
+              <LanguageSwitcher />
             </div>
           </nav>
+          <div className="flex items-center gap-2">
+            
+            <ThemeToggle />
+            
+            <div className="lg:hidden">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon" aria-label={t.nav.openMenu} data-testid="mobile-menu-trigger">
+                    <Menu className="h-6 w-6" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                  <SheetHeader className="text-left border-b border-border pb-4 mb-4">
+                    <SheetTitle className="flex items-center gap-4">
+                      <Seal />
+                      <div className="flex flex-col">
+                        <span className="font-serif text-lg font-semibold tracking-tight text-primary">{t.siteTitle}</span>
+                        <span className="text-[10px] uppercase font-mono tracking-widest text-muted-foreground">{t.siteDept}</span>
+                      </div>
+                    </SheetTitle>
+                  </SheetHeader>
+                    <div className="mt-8 mb-6 pb-6 border-b border-border flex justify-start">
+                      <LanguageSwitcher />
+                    </div>
+                    <nav className="flex flex-col gap-4">
+                    {navItems.map((item) => (
+                      <SheetClose asChild key={item.href}>
+                        <Link
+                          href={item.href}
+                          className={cn("text-sm font-medium tracking-wide uppercase transition-colors hover:text-accent pb-2 border-b border-border/50", isActive(item.href) ? "text-accent" : "text-muted-foreground")}
+                          data-testid={`nav-mobile-${item.href === "/" ? "home" : item.href.slice(1).replace("/", "-")}`}
+                        >{item.label}</Link>
+                      </SheetClose>
+                    ))}
+                  </nav>
+                </SheetContent>
+              </Sheet>
+            </div>
+          </div>
         </div>
       </header>
-
-      <main className="flex-1 flex flex-col relative z-0">{children}</main>
-
-      <footer className="relative mt-20">
-        <div className="absolute inset-0 bg-primary/95 dark:bg-black/80 backdrop-blur-lg -z-10" />
-        <div className="container mx-auto px-4 lg:px-8 pt-20 pb-10">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+      <main className="flex-1 flex flex-col">{children}</main>
+      <footer className="bg-primary text-white pt-16 pb-8 border-t-4 border-accent">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-1 md:col-span-2 flex flex-col gap-6">
               <div className="flex items-center gap-4 text-white">
-                <Seal className="w-14 h-14" />
+                <Seal />
                 <div className="flex flex-col">
-                  <span className="font-serif text-2xl font-bold tracking-tight text-white">{t.siteTitle}</span>
-                  <span className="text-[10px] uppercase font-mono tracking-[0.3em] text-accent font-bold">{t.siteDept}</span>
+                  <span className="font-serif text-xl font-semibold tracking-tight">{t.siteTitle}</span>
+                  <span className="text-[10px] uppercase font-mono tracking-widest text-white/60">{t.siteDept}</span>
                 </div>
               </div>
-              <p className="text-sm text-white/60 max-w-sm leading-relaxed font-light">{t.siteDesc}</p>
+              <p className="text-sm text-white/70 max-w-sm leading-relaxed">{t.siteDesc}</p>
             </div>
-
             <div>
-              <h3 className="font-mono uppercase text-[10px] tracking-[0.3em] text-accent font-bold mb-8">{t.footer.directory}</h3>
-              <ul className="flex flex-col gap-4 text-[11px] font-bold uppercase tracking-widest">
-                {navItems.slice(0, 5).map(item => (
-                  <li key={item.href}>
-                    <Link href={item.href} className="text-white/60 hover:text-accent transition-colors flex items-center gap-2 group">
-                      <span className="w-1 h-1 bg-accent/30 rounded-full group-hover:bg-accent transition-colors" />
-                      {item.label}
-                    </Link>
-                  </li>
+              <h3 className="font-mono uppercase text-xs tracking-widest text-white/50 mb-6">{t.footer.directory}</h3>
+              <ul className="flex flex-col gap-4 text-sm">
+                {navItems.map(item => (
+                  <li key={item.href}><Link href={item.href} className="hover:text-accent transition-colors hover:underline underline-offset-4 decoration-accent/50">{item.label}</Link></li>
                 ))}
               </ul>
             </div>
-
             <div>
-              <h3 className="font-mono uppercase text-[10px] tracking-[0.3em] text-accent font-bold mb-8">{t.contact.emergencyTitle}</h3>
-              <div className="space-y-6">
-                {t.contact.emergencyItems.map((item: any, idx: number) => (
-                  <div key={idx} className="flex flex-col gap-1">
-                    <span className="text-[9px] uppercase tracking-widest text-white/40">{item.label}</span>
-                    <span className="text-lg font-mono font-bold text-white leading-none">{item.number}</span>
-                  </div>
-                ))}
-              </div>
+              <h3 className="font-mono uppercase text-xs tracking-widest text-white/50 mb-6">{t.footer.contact}</h3>
+              <ul className="flex flex-col gap-4 text-sm text-white/80">
+                <li>1 Capital Plaza<br />Government District, 10001</li>
+                <li className="font-mono text-accent">1-800-GOV-INFO</li>
+                <li>contact@republic.gov</li>
+              </ul>
             </div>
           </div>
-
-          <div className="border-t border-white/5 pt-10 flex flex-col md:flex-row items-center justify-between gap-6 text-[10px] font-mono tracking-widest text-white/30 uppercase">
+          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-white/50">
             <div>&copy; {new Date().getFullYear()} {t.footer.copyright}</div>
-            <div className="flex gap-8">
-              <Link href="#" className="hover:text-accent transition-colors">{t.footer.privacy}</Link>
-              <Link href="#" className="hover:text-accent transition-colors">{t.footer.accessibility}</Link>
-              <Link href="#" className="hover:text-accent transition-colors">{t.footer.terms}</Link>
+            <div className="flex gap-4">
+              <Link href="#" className="hover:text-white">{t.footer.privacy}</Link>
+              <Link href="#" className="hover:text-white">{t.footer.accessibility}</Link>
+              <Link href="#" className="hover:text-white">{t.footer.terms}</Link>
             </div>
           </div>
         </div>
