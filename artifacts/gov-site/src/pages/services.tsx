@@ -37,7 +37,7 @@ export default function Services() {
 
   return (
     <div className="flex-1 w-full bg-background pb-32">
-      <div className="relative pt-40 pb-20 overflow-hidden">
+      <div className="relative pt-20 pb-20 overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <Breadcrumb className="mb-8 font-mono uppercase tracking-[0.3em] text-[10px] font-bold text-accent">
             <BreadcrumbList>

@@ -27,18 +27,18 @@ const Seal = ({ className }: { className?: string }) => (
 function LanguageSwitcher() {
   const { language, setLanguage } = useLanguage();
   return (
-    <div className="flex items-center glass-effect border border-white/10 overflow-hidden flex-shrink-0 rounded-full w-full" aria-label="Select Language" data-testid="language-switcher">
+    <div className="flex items-center glass-effect border border-white/10 overflow-hidden flex-shrink-0 rounded-full" aria-label="Select Language" data-testid="language-switcher">
       <button
         onClick={() => setLanguage("ms")}
         data-testid="lang-btn-ms"
-        className={cn("flex-1 px-3 py-2 font-mono text-[10px] uppercase tracking-widest transition-all focus-visible:outline-none", language === "ms" ? "bg-accent text-white" : "text-muted-foreground hover:text-primary hover:bg-white/10")}
+        className={cn("px-3 py-1 font-mono text-[10px] uppercase tracking-widest transition-all focus-visible:outline-none", language === "ms" ? "bg-accent text-white" : "text-muted-foreground hover:text-primary hover:bg-white/10")}
         aria-pressed={language === "ms"}
         aria-label="Tukar ke Bahasa Melayu"
       >MS</button>
       <button
         onClick={() => setLanguage("en")}
         data-testid="lang-btn-en"
-        className={cn("flex-1 px-3 py-2 font-mono text-[10px] uppercase tracking-widest transition-all focus-visible:outline-none", language === "en" ? "bg-accent text-white" : "text-muted-foreground hover:text-primary hover:bg-white/10")}
+        className={cn("px-3 py-1 font-mono text-[10px] uppercase tracking-widest transition-all focus-visible:outline-none", language === "en" ? "bg-accent text-white" : "text-muted-foreground hover:text-primary hover:bg-white/10")}
         aria-pressed={language === "en"}
         aria-label="Switch to English"
       >EN</button>
@@ -69,8 +69,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <AnimatedBackground />
       <WeatherAlert />
 
-      <header className="fixed top-0 z-50 w-full transition-all duration-300">
-        <div className="container mx-auto px-6 lg:px-8 py-5">
+      <header className="sticky top-0 z-50 w-full transition-all duration-300">
+        <div className="container mx-auto px-6 lg:px-8 py-4">
           <nav className="glass-effect premium-shadow rounded-2xl flex items-center justify-between px-6 py-3 border border-white/20 backdrop-blur-2xl">
             <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
               <Seal className="w-10 h-10 group-hover:scale-110 transition-transform duration-500" />
@@ -80,13 +80,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
               </div>
             </Link>
 
-            <div className="hidden lg:flex items-center gap-4">
+            <div className="hidden lg:flex items-center gap-1">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "px-3 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-all rounded-lg relative group overflow-hidden whitespace-nowrap",
+                    "px-3 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-all rounded-lg relative group overflow-hidden",
                     isActive(item.href) ? "text-accent" : "text-muted-foreground hover:text-primary"
                   )}
                   data-testid={`nav-desktop-${item.href === "/" ? "home" : item.href.slice(1).replace("/", "-")}`}
@@ -99,7 +99,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               ))}
             </div>
 
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-4">
               <div className="hidden sm:block">
                 <LanguageSwitcher />
               </div>
@@ -112,7 +112,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                       <Menu className="h-6 w-6" />
                     </Button>
                   </SheetTrigger>
-                  <SheetContent side="right" className="bg-background/95 backdrop-blur-3xl border-l border-white/20 shadow-2xl w-[300px] p-0 overflow-hidden">
+                  <SheetContent side="right" className="glass-effect border-l border-white/10 w-[300px] p-0 overflow-hidden">
                     <div className="h-full flex flex-col">
                       <SheetHeader className="p-6 text-left border-b border-white/10">
                         <SheetTitle className="flex items-center gap-3">

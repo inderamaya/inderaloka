@@ -13,7 +13,7 @@ export default function Tourism() {
 
   return (
     <div className="flex-1 w-full bg-background pb-32">
-      <div className="relative pt-40 pb-32 overflow-hidden">
+      <div className="relative pt-20 pb-32 overflow-hidden">
         <motion.div 
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.15 }}
