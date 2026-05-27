@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AlertTriangle, X, ArrowRight } from "lucide-react";
+import { AlertTriangle, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Link } from "wouter";
@@ -39,8 +39,6 @@ export function WeatherAlert() {
                   href="/news"
                   className="text-[10px] font-mono font-bold uppercase tracking-widest text-destructive hover:text-destructive/80 transition-colors flex items-center gap-1 group"
                 >
-                  {t.weatherAlert.link}
-                  <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
 

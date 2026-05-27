@@ -15,7 +15,7 @@ export const translations = {
       home: "Utama",
       services: "Perkhidmatan",
       news: "Berita",
-            about: "Mengenai",
+      about: "Mengenai",
       royal: "Institusi DiRaja",
       directory: "Direktori",
       government: "Kerajaan",
@@ -1179,7 +1179,7 @@ export const translations = {
       contact: "Contact",
       tourism: "Tourism",
       openMenu: "Open menu",
-        closeMenu: "Close menu",
+      closeMenu: "Close menu",
       search: "Search",
         },
         search: {
@@ -1192,7 +1192,7 @@ export const translations = {
       privacy: "Privacy Policy",
       accessibility: "Accessibility",
       terms: "Terms of Service",
-      copyright: "Government of the Republic. All rights reserved.",
+      copyright: "State of Inderaloka. All rights reserved.",
     },
     home: {
       alertText: "WEATHER ALERT: National Meteorological Department has issued a severe storm warning for the coastal regions.",
