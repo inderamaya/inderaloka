@@ -66,9 +66,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const isActive = (href: string) => href === "/" ? location === "/" : location.startsWith(href);
 
   return (
-       <div className="min-h-[100dvh] flex flex-col bg-background selection:bg-accent selection:text-white font-sans overflow-x-hidden">
+    <div className="min-h-[100dvh] flex flex-col bg-background selection:bg-accent selection:text-white font-sans">
       <WeatherAlert />
-      <header className="border-b border-border sticky top-0 bg-background/80 backdrop-blur-md z-50 shadow-sm">
+      <header className="border-b border-border sticky top-0 bg-background z-[100] shadow-md">
         <div className="container mx-auto px-4 lg:px-8 py-5 flex items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-4 group flex-shrink-0">
             <Seal />
@@ -131,7 +131,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </header>
-      <main className="flex-1 flex flex-col">{children}</main>
+      <main className="flex-1 flex flex-col overflow-x-hidden">{children}</main>
       <footer className="bg-primary text-white pt-16 pb-8 border-t-4 border-accent">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
