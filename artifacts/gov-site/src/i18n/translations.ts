@@ -6,7 +6,7 @@ export const translations = {
     weatherAlert: {
       title: "AMARAN CUACA AKTIF",
       description: "Jabatan Meteorologi Kebangsaan telah mengeluarkan amaran ribut kuat di kawasan pesisir pantai. Sila ambil langkah berjaga-jaga.",
-      link: "Lihat Butiran",
+
     },
     siteTitle: "InderaMaya.ir",
     siteDept: "Negara Inderaloka",
@@ -1152,7 +1152,7 @@ export const translations = {
         { name: "SK Bangsar", location: "Bangsar, Inderaloka", enrollment: "980", type: "SK" },
         { name: "SK Convent Bukit Nanas", location: "Kuala Inderaloka", enrollment: "900", type: "SK" },
         { name: "SK Seri Petaling", location: "Petaling, Inderaloka", enrollment: "1,050", type: "SK" },
-        { name: "SK Georgetown", location: "George Town, Penang", enrollment: "820", type: "SK" },
+        { name: "SK Tengku Mahmud Paduka Raja", location: "George Town, Penang", enrollment: "820", type: "SK" },
       ],
     },
   },
@@ -1162,7 +1162,6 @@ export const translations = {
     weatherAlert: {
       title: "ACTIVE WEATHER ALERT",
       description: "The National Meteorological Department has issued a severe storm warning for coastal regions. Please take necessary precautions.",
-      link: "View Details",
     },
     siteTitle: "InderaMaya.ir",
     siteDept: "State of inderaloka",

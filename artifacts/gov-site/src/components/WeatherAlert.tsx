@@ -35,18 +35,6 @@ export function WeatherAlert() {
                   {t.weatherAlert.description}
                 </p>
 
-                <Link
-                  href="/news"
-                  className="text-[10px] font-mono font-bold uppercase tracking-widest text-destructive-foreground hover:text-destructive-foreground/80 transition-colors flex items-center gap-1 group whitespace-nowrap"
-                >
-                  {t.weatherAlert.link}
-                  <motion.span
-                    animate={{ x: [0, 4, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    →
-                  </motion.span>
-                </Link>
               </div>
 
               <button
