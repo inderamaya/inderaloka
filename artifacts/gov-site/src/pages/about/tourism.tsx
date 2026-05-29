@@ -24,11 +24,11 @@ export default function Tourism() {
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
 
   return (
-    <div className="flex-1 w-full bg-background relative overflow-hidden">
+    <div className="flex-1 w-full bg-background relative overflow-hidden -mt-16">
       <BatikPattern />
 
       {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center overflow-hidden bg-primary">
+      <section className="relative h-[80vh] flex items-center overflow-hidden bg-primary dark:bg-background pt-16">
         <motion.div 
           style={{ y: y1 }}
           className="absolute inset-0 z-0"
@@ -36,9 +36,9 @@ export default function Tourism() {
           <img 
             src="https://images.unsplash.com/photo-1544945582-3b466d874eac?q=80&w=2000" 
             alt="Tourism Hero" 
-            className="w-full h-full object-cover opacity-60"
+            className="w-full h-full object-cover opacity-60 dark:opacity-40"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-transparent to-background"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/20 to-background dark:from-background/95 dark:via-background/40 dark:to-background"></div>
         </motion.div>
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10 text-white">
