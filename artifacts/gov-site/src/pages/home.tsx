@@ -35,10 +35,10 @@ export default function Home() {
               {h.heroDesc}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-none h-14 px-8 text-sm tracking-widest uppercase font-mono border border-transparent">
+              <Button asChild size="lg" className="bg-accent/85 text-accent-foreground hover:bg-accent rounded-none h-14 px-8 text-sm tracking-widest uppercase font-mono border border-transparent">
                 <Link href="/services" data-testid="btn-access-services">{h.ctaServices}</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-none h-14 px-8 text-sm tracking-widest uppercase font-mono border-white/20 text-white hover:bg-white hover:text-white">
+              <Button asChild size="lg" className="rounded-none bg-primary/70 h-14 px-8 text-sm tracking-widest uppercase font-mono border-white/20 text-white hover:bg-primary hover:text-white">
                 <Link href="/news" data-testid="btn-latest-news">{h.ctaNews}</Link>
               </Button>
             </div>
