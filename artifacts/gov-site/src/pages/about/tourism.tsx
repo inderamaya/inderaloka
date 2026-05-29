@@ -28,7 +28,7 @@ export default function Tourism() {
       <BatikPattern />
 
       {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center overflow-hidden bg-primary">
+      <section className="relative h-[80vh] flex items-center overflow-hidden bg-primary dark:bg-black">
         <motion.div 
           style={{ y: y1 }}
           className="absolute inset-0 z-0"
@@ -36,9 +36,9 @@ export default function Tourism() {
           <img 
             src="https://images.unsplash.com/photo-1544945582-3b466d874eac?q=80&w=2000" 
             alt="Tourism Hero" 
-            className="w-full h-full object-cover opacity-60"
+            className="w-full h-full object-cover opacity-60 dark:opacity-40"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-transparent to-background"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-transparent to-background dark:from-black/80 dark:via-black/40 dark:to-background"></div>
         </motion.div>
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10 text-white">
