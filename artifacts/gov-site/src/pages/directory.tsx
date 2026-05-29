@@ -8,16 +8,15 @@ import { Input } from "@/components/ui/input";
 
 export default function Directory() {
   const { t } = useLanguage();
-  const d = t.directoryPage || { departments: [], filterAll: "", filterExec: "", filterLeg: "", filterJud: "", filterDept: "" } as any;
+  const d = t.directoryPage;
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("All");
 
   const filterLabels: Record<string, string> = {
-    All: d.filterAll || "All",
-    Executive: d.filterExec || "Executive",
-    Legislative: d.filterLeg || "Legislative",
-    Judicial: d.filterJud || "Judicial",
-    Departments: d.filterDept || "Departments",
+    All: d.filterAll,
+    Executive: d.filterExec,
+    Legislative: d.filterLeg,
+    Judicial: d.filterJud,
   };
 
   const filtered = useMemo(() => {
@@ -60,7 +59,7 @@ export default function Directory() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: idx * 0.05 }}
                 className="bg-card p-6"
-                >
+              >
                 <div className="font-mono text-[10px] uppercase tracking-widest text-accent mb-3">{d.portfolioLabel}</div>
                 <h3 className="font-serif text-base text-primary mb-3 leading-snug">{ministry.name}</h3>
                 <p className="text-xs text-muted-foreground mb-4 leading-relaxed">{ministry.portfolio}</p>
