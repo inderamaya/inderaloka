@@ -56,18 +56,7 @@ export default function About() {
 
       {/* Main About Content */}
       <div className="container mx-auto px-4 lg:px-8 pt-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-          <div className="lg:col-span-4">
-            <div className="sticky top-32">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4 border-b border-border pb-2">{a.contentsLabel}</h3>
-              <ul className="flex flex-col gap-3 font-mono text-sm text-primary">
-                <li><a href="#mission" className="hover:text-accent transition-colors">{a.contents.mission}</a></li>
-                <li><a href="#structure" className="hover:text-accent transition-colors">{a.contents.structure}</a></li>
-                <li><a href="#leadership" className="hover:text-accent transition-colors">{a.contents.leadership}</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="lg:col-span-8 flex flex-col gap-20">
+        <div className="max-w-4xl mx-auto flex flex-col gap-20">
             <section id="mission" className="scroll-mt-32">
               <h2 className="font-serif text-3xl text-primary mb-6">{a.missionTitle}</h2>
               <p className="text-lg leading-relaxed mb-6 font-medium text-primary">{a.missionStatement}</p>
@@ -77,7 +66,7 @@ export default function About() {
               <h2 className="font-serif text-3xl text-primary mb-6">{a.structureTitle}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {a.branches.map((branch, idx) => (
-                  <div key={idx} className="border border-border p-6 bg-white">
+                  <div key={idx} className="border border-border p-6 bg-card">
                     <h4 className="font-serif text-xl text-primary mb-3">{branch.title}</h4>
                     <p className="text-sm text-muted-foreground leading-relaxed">{branch.desc}</p>
                   </div>
@@ -101,7 +90,6 @@ export default function About() {
                 ))}
               </div>
             </section>
-          </div>
         </div>
       </div>
     </div>
