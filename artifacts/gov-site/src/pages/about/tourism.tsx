@@ -46,8 +46,6 @@ export default function Tourism() {
             <BreadcrumbList>
               <BreadcrumbItem><BreadcrumbLink asChild><Link href="/">{tr.breadcrumbHome}</Link></BreadcrumbLink></BreadcrumbItem>
               <BreadcrumbSeparator className="text-white/30" />
-              <BreadcrumbItem><BreadcrumbLink asChild><Link href="/about">{tr.breadcrumbParent}</Link></BreadcrumbLink></BreadcrumbItem>
-              <BreadcrumbSeparator className="text-white/30" />
               <BreadcrumbItem><BreadcrumbPage className="text-white">{tr.breadcrumbCurrent}</BreadcrumbPage></BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
