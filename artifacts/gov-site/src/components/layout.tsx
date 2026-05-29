@@ -5,7 +5,6 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { WeatherAlert } from "@/components/WeatherAlert";
 import {
   Sheet,
   SheetClose,
@@ -35,7 +34,7 @@ function LanguageSwitcher() {
          aria-label="Tukar ke Bahasa Melayu"
       >BM</button>
       <div className="w-px h-4 bg-border" />
-      
+
       <button
         onClick={() => setLanguage("en")}
         data-testid="lang-btn-en"
@@ -58,7 +57,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
     { href: "/about", label: t.nav.about },
     { href: "/government", label: t.nav.government },
     { href: "/royal", label: t.nav.royal },
-    { href: "/tourism", label: t.nav.tourism },
     { href: "/directory", label: t.nav.directory },
     { href: "/contact", label: t.nav.contact },
   ];
@@ -66,14 +64,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const isActive = (href: string) => href === "/" ? location === "/" : location.startsWith(href);
 
   return (
-    <div className="min-h-[100dvh] flex flex-col bg-background selection:bg-accent selection:text-white font-sans">
-      <WeatherAlert />
-      <header className="border-b border-border sticky top-0 bg-background z-[100] shadow-md">
+       <div className="min-h-[100dvh] flex flex-col bg-background selection:bg-accent selection:text-white font-sans overflow-x-hidden">
+      <div className="bg-primary text-primary-foreground text-xs font-mono py-1 text-center border-b border-primary-foreground/10 tracking-widest uppercase">
+        {t.officialBanner}
+      </div>
+      <header className="border-b border-border sticky top-0 bg-background/95 backdrop-blur z-50">
         <div className="container mx-auto px-4 lg:px-8 py-5 flex items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-4 group flex-shrink-0">
             <Seal />
             <div className="flex flex-col">
-              <span className="font-serif text-xl font-semibold tracking-tight text-primary group-hover:text-accent transition-colors">{t.siteTitle}</span>
+              <span className="font-serif text-xl font-semibold tracking-tight text-foreground group-hover:text-accent transition-colors">{t.siteTitle}</span>
               <span className="text-[10px] uppercase font-mono tracking-widest text-muted-foreground">{t.siteDept}</span>
             </div>
           </Link>
@@ -91,9 +91,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
             </div>
           </nav>
           <div className="flex items-center gap-2">
-            
+
             <ThemeToggle />
-            
+
             <div className="lg:hidden">
               <Sheet>
                 <SheetTrigger asChild>
@@ -131,22 +131,22 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </header>
-      <main className="flex-1 flex flex-col overflow-x-hidden">{children}</main>
-      <footer className="bg-primary text-white pt-16 pb-8 border-t-4 border-accent">
+      <main className="flex-1 flex flex-col">{children}</main>
+      <footer className="bg-primary text-primary-foreground pt-16 pb-8 border-t-4 border-accent">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-1 md:col-span-2 flex flex-col gap-6">
-              <div className="flex items-center gap-4 text-white">
+              <div className="flex items-center gap-4 text-primary-foreground">
                 <Seal />
                 <div className="flex flex-col">
                   <span className="font-serif text-xl font-semibold tracking-tight">{t.siteTitle}</span>
-                  <span className="text-[10px] uppercase font-mono tracking-widest text-white/60">{t.siteDept}</span>
+                  <span className="text-[10px] uppercase font-mono tracking-widest text-primary-foreground/60">{t.siteDept}</span>
                 </div>
               </div>
-              <p className="text-sm text-white/70 max-w-sm leading-relaxed">{t.siteDesc}</p>
+              <p className="text-sm text-primary-foreground/70 max-w-sm leading-relaxed">{t.siteDesc}</p>
             </div>
             <div>
-              <h3 className="font-mono uppercase text-xs tracking-widest text-white/50 mb-6">{t.footer.directory}</h3>
+              <h3 className="font-mono uppercase text-xs tracking-widest text-primary-foreground/50 mb-6">{t.footer.directory}</h3>
               <ul className="flex flex-col gap-4 text-sm">
                 {navItems.map(item => (
                   <li key={item.href}><Link href={item.href} className="hover:text-accent transition-colors hover:underline underline-offset-4 decoration-accent/50">{item.label}</Link></li>
@@ -154,20 +154,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
               </ul>
             </div>
             <div>
-              <h3 className="font-mono uppercase text-xs tracking-widest text-white/50 mb-6">{t.footer.contact}</h3>
-              <ul className="flex flex-col gap-4 text-sm text-white/80">
+              <h3 className="font-mono uppercase text-xs tracking-widest text-primary-foreground/50 mb-6">{t.footer.contact}</h3>
+              <ul className="flex flex-col gap-4 text-sm text-primary-foreground/80">
                 <li>1 Capital Plaza<br />Government District, 10001</li>
                 <li className="font-mono text-accent">1-800-GOV-INFO</li>
                 <li>contact@republic.gov</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-white/50">
+          <div className="border-t border-primary-foreground/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-primary-foreground/50">
             <div>&copy; {new Date().getFullYear()} {t.footer.copyright}</div>
             <div className="flex gap-4">
-              <Link href="#" className="hover:text-white">{t.footer.privacy}</Link>
-              <Link href="#" className="hover:text-white">{t.footer.accessibility}</Link>
-              <Link href="#" className="hover:text-white">{t.footer.terms}</Link>
+              <Link href="#" className="hover:text-primary-foreground">{t.footer.privacy}</Link>
+              <Link href="#" className="hover:text-primary-foreground">{t.footer.accessibility}</Link>
+              <Link href="#" className="hover:text-primary-foreground">{t.footer.terms}</Link>
             </div>
           </div>
         </div>

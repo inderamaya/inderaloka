@@ -64,7 +64,7 @@ export default function Services() {
               id="service-search"
               aria-label={s.searchPlaceholder}
               placeholder={s.searchPlaceholder}
-              className="pl-12 h-14 rounded-none border-primary/20 focus-visible:ring-accent focus-visible:border-accent text-base bg-white"
+              className="pl-12 h-14 rounded-none border-primary/20 focus-visible:ring-accent focus-visible:border-accent text-base bg-background"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               data-testid="input-search-services"
@@ -93,9 +93,9 @@ export default function Services() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: idx * 0.05 }}
                 >
-                    <Link href={href} className="group block h-full border border-border p-6 lg:p-8 hover:border-accent hover:shadow-[0_0_0_1px_var(--accent)] transition-all bg-white" data-testid={`card-service-${service.id}`}>
+                    <Link href={href} className="group block h-full border border-border p-6 lg:p-8 hover:border-accent hover:shadow-[0_0_0_1px_var(--accent)] transition-all bg-card" data-testid={`card-service-${service.id}`}>
                     <div className="flex items-center gap-4 mb-6">
-                      <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-white transition-colors">
+                      <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
                         <Icon className="w-5 h-5" />
                       </div>
                       <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground group-hover:text-primary transition-colors">
