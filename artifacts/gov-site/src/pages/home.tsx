@@ -31,14 +31,14 @@ export default function Home() {
               {h.heroTitle1} <br />
               <span className="text-white/70 italic">{h.heroItalic}</span> {h.heroTitle2}
             </h1>
-              <p className="text-base sm:text-lg lg:text-xl text-white/80 mb-10 max-w-2xl font-light leading-relaxed">
+              <p className="text-base sm:text-lg lg:text-xl text-white/80 dark:text-primary-foreground mb-10 max-w-2xl font-light leading-relaxed">
               {h.heroDesc}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="bg-accent/85 text-accent-foreground hover:bg-accent rounded-none h-14 px-8 text-sm tracking-widest uppercase font-mono border border-transparent">
                 <Link href="/services" data-testid="btn-access-services">{h.ctaServices}</Link>
               </Button>
-              <Button asChild size="lg" className="rounded-none bg-primary/70 h-14 px-8 text-sm tracking-widest uppercase font-mono border-white/20 text-white hover:bg-primary hover:text-white">
+              <Button asChild size="lg" className="rounded-none bg-primary/70 h-14 px-8 text-sm tracking-widest uppercase font-mono border-white/20 text-white dark:text-primary-foreground hover:bg-primary hover:text-white">
                 <Link href="/news" data-testid="btn-latest-news">{h.ctaNews}</Link>
               </Button>
             </div>

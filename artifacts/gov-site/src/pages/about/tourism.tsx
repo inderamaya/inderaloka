@@ -174,20 +174,20 @@ export default function Tourism() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-primary text-white text-center relative overflow-hidden">
+      <section className="py-24 bg-primary text-primary-foreground text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
            <BatikPattern />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <h2 className="font-serif text-4xl lg:text-6xl mb-8 italic">{tr.ctaTitle}</h2>
-          <p className="text-white/70 max-w-xl mx-auto mb-12 font-light">
+          <p className="text-primary-foreground/70 max-w-xl mx-auto mb-12 font-light">
             {tr.ctaDesc}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-             <Button variant="outline" className="rounded-none border-white/30 text-white hover:bg-white hover:text-primary px-8 h-14 font-mono uppercase tracking-widest text-xs">
+             <Button variant="outline" className="rounded-none border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 h-14 font-mono uppercase tracking-widest text-xs">
                 {tr.ctaButton1}
              </Button>
-             <Button className="rounded-none bg-accent text-white hover:bg-accent/90 px-8 h-14 font-mono uppercase tracking-widest text-xs">
+             <Button className="rounded-none bg-accent text-accent-foreground hover:bg-accent/90 px-8 h-14 font-mono uppercase tracking-widest text-xs">
                 {tr.ctaButton2}
              </Button>
           </div>
