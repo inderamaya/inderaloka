@@ -99,7 +99,7 @@ export const translations = {
     },
     news: {
       breadcrumbHome: "Utama",
-      breadcrumbCurrent: "Berita & Pengumuman",
+      breadcrumbCurrent: "Berita",
       pageTitle: "Pengumuman Rasmi",
       pageDesc: "Siaran akhbar, kemas kini dasar, dan kenyataan rasmi daripada kerajaan.",
       readStatement: "Baca Kenyataan",
@@ -1256,7 +1256,7 @@ export const translations = {
     },
     news: {
       breadcrumbHome: "Home",
-      breadcrumbCurrent: "News & Announcements",
+      breadcrumbCurrent: "News",
       pageTitle: "Official Announcements",
       pageDesc: "Press releases, policy updates, and official statements from the government.",
       readStatement: "Read Statement",
