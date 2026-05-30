@@ -22,7 +22,7 @@ export default function History() {
             </BreadcrumbList>
           </Breadcrumb>
           <h1 className="font-serif text-4xl lg:text-5xl text-primary mb-6">{h.pageTitle}</h1>
-          <p className="text-muted-foreground text-lg max-w-2xl font-light">{h.pageDesc}</p>
+          <div className="text-muted-foreground text-lg max-w-2xl font-light whitespace-pre-line">{h.pageDesc}</div>
         </div>
       </div>
 
@@ -61,7 +61,7 @@ export default function History() {
                       <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">{era.label} — {era.year}</span>
                       <h2 className="font-serif text-3xl text-primary">{era.title}</h2>
                     </div>
-                    <p className="text-muted-foreground leading-relaxed text-base">{era.body}</p>
+                    <div className="text-muted-foreground leading-relaxed text-base whitespace-pre-line">{era.body}</div>
                   </motion.div>
                 ))}
               </div>
