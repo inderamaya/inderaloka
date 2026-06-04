@@ -17,7 +17,7 @@ export const translations = {
       services: "Perkhidmatan",
       news: "Berita",
       about: "Mengenai",
-      royal: "Institusi DiRaja",
+      royal: "Institusi Diraja",
       directory: "Direktori",
       government: "Kerajaan",
       contact: "Hubungi",
@@ -903,13 +903,13 @@ export const translations = {
     // Royal Institution
     royal: {
       breadcrumbHome: "Utama",
-      breadcrumbParent: "Institusi DiRaja",
+      breadcrumbParent: "Institusi Diraja",
       landing: {
         banner:
           "Duli Yang Maha Mulia Seri Paduka Baginda Yang di-Pertuan Agong",
-        pageTitle: "Institusi DiRaja Inderaloka",
+        pageTitle: "Institusi Diraja Inderaloka",
         pageDesc:
-          "Majlis DiRaja merupakan nadi pemerintahan berperlembagaan Inderaloka — simbol perpaduan, warisan agung, dan kedaulatan negara yang tidak boleh dipersoalkan.",
+          "Majlis Diraja merupakan nadi pemerintahan berperlembagaan Inderaloka — simbol perpaduan, warisan agung, dan kedaulatan negara yang tidak boleh dipersoalkan.",
         subpages: [
           {
             href: "/royal/his-majesty",
@@ -923,8 +923,8 @@ export const translations = {
           },
           {
             href: "/royal/royal-family",
-            title: "Keluarga DiRaja",
-            desc: "Ahli-ahli keluarga DiRaja dan peranan mereka dalam kehidupan negara.",
+            title: "Keluarga Diraja",
+            desc: "Ahli-ahli keluarga Diraja dan peranan mereka dalam kehidupan negara.",
           },
           {
             href: "/royal/orders-and-decorations",
@@ -932,23 +932,28 @@ export const translations = {
             desc: "Penghargaan diraja tertinggi yang dianugerahkan kepada tokoh-tokoh negara.",
           },
           {
-            href: "/royal/customs-and-regalia",
-            title: "Terasul & Adat DiRaja",
-            desc: "Sistem rujukan kehormat, alat kebesaran, dan protokol istana Inderaloka.",
+            href: "/royal/terasul",
+            title: "Terasul & Adat Diraja",
+            desc: "Sistem rujukan kehormat dan panduan protokol gelaran istana Inderaloka.",
+          },
+          {
+            href: "/royal/regalia",
+            title: "Alat Kebesaran Diraja",
+            desc: "Warisan gilang-gemilang alat-alat kebesaran yang melambangkan kedaulatan Sultan.",
           },
           {
             href: "/royal/royal-statement",
-            title: "Titah DiRaja",
+            title: "Titah Diraja",
             desc: "Titah dan kenyataan rasmi Kebawah Duli Yang Maha Mulia kepada rakyat.",
           },
           {
             href: "/royal/palaces",
-            title: "Istana DiRaja",
+            title: "Istana Diraja",
             desc: "Kediaman rasmi dan istana-istana bersejarah Yang di-Pertuan Agong.",
           },
           {
             href: "/royal/royal-advisory-council",
-            title: "Majlis Penasihat DiRaja",
+            title: "Majlis Penasihat Diraja",
             desc: "Badan penasihat tertinggi kepada Yang di-Pertuan Agong dalam hal ehwal dasar negara.",
           },
           {
@@ -982,7 +987,7 @@ export const translations = {
         dutiesTitle: "Tugas-Tugas Diraja",
         duties: [
           "Memperkenankan perlantikan Perdana Menteri dan ahli Jemaah Menteri",
-          "Membuka setiap penggal Parlimen dengan Titah DiRaja",
+          "Membuka setiap penggal Parlimen dengan Titah Diraja",
           "Memperkenankan rang undang-undang yang diluluskan oleh Parlimen",
           "Menjadi Ketua Agama Islam bagi Wilayah Persekutuan",
           "Menerima surat tauliah duta-duta negara asing",
@@ -994,7 +999,7 @@ export const translations = {
         achievementsLabel: "Pencapaian Negeri",
         consortLabel: "Raja Permaisuri",
         reignLabel: "Tempoh Pemerintahan",
-        standardLabel: "Panji DiRaja",
+        standardLabel: "Panji Diraja",
         formerMonarchs: [
           {
             order: "XV",
@@ -1070,10 +1075,10 @@ export const translations = {
         ],
       },
       royalFamily: {
-        breadcrumbCurrent: "Keluarga DiRaja",
-        pageTitle: "Keluarga DiRaja Inderaloka",
+        breadcrumbCurrent: "Keluarga Diraja",
+        pageTitle: "Keluarga Diraja Inderaloka",
         pageDesc:
-          "Ahli-ahli keluarga DiRaja yang memainkan peranan penting dalam kehidupan awam, kebajikan, dan adat istiadat negara.",
+          "Ahli-ahli keluarga Diraja yang memainkan peranan penting dalam kehidupan awam, kebajikan, dan adat istiadat negara.",
         members: [
           {
             role: "Yang di-Pertuan Agong",
@@ -1125,7 +1130,7 @@ export const translations = {
             military: "Fil Marsyal Angkatan Tentera Inderaloka",
             patronages: [
               "Yayasan Kebajikan Inderaloka",
-              "Majlis Kesenian DiRaja",
+              "Majlis Kesenian Diraja",
             ],
             duties: [
               "Membuka sidang Parlimen",
@@ -1142,7 +1147,7 @@ export const translations = {
             portrait: "Portrait Azizah",
             bio: "Dikenali dengan usaha gigih Baginda dalam mempromosikan kraftangan tradisional dan seni kulinari Inderaloka di persada dunia.",
             education: "Universiti Kebangsaan Inderaloka (Sastera)",
-            military: "Kolonel Yang Dipertua Kor Perkhidmatan DiRaja",
+            military: "Kolonel Yang Dipertua Kor Perkhidmatan Diraja",
             patronages: [
               "Persatuan Pandu Puteri",
               "Yayasan Kesuburan Inderaloka",
@@ -1154,7 +1159,7 @@ export const translations = {
             honours: ["D.K.", "D.M.N.", "S.S.A.P."],
           },
         ],
-        householdDirectoryTitle: "Direktori Isi Rumah DiRaja",
+        householdDirectoryTitle: "Direktori Isi Rumah Diraja",
         householdDirectory: [
           {
             office: "Pejabat Setiausaha Sulit",
@@ -1606,58 +1611,12 @@ export const translations = {
         closing:
           "Panduan ini hendaklah menjadi rujukan rasmi bagi penamaan, penganugerahan, pemakaian dan susunan keutamaan darjah kebesaran, bintang kehormatan, pingat dan tauliah Negara Inderaloka. Sebarang pindaan, tambahan atau pelucutan yang berkaitan dengan kurniaan dalam panduan ini hendaklah dibuat atas titah perkenan Sultan Inderaloka.",
       },
-      customs: {
-        breadcrumbCurrent: "Terasul & Adat DiRaja",
-        pageTitle: "Terasul & Adat Istiadat DiRaja",
+      terasul: {
+        breadcrumbCurrent: "Terasul & Adat Diraja",
+        pageTitle: "Terasul & Adat Istiadat Diraja",
         pageDesc:
-          "Sistem rujukan kehormat, warisan upacara, alat-alat kebesaran, dan protokol istana yang dijaga sejak berabad lamanya.",
-        regaliaTitle: "Alat-Alat Kebesaran DiRaja",
-        regaliaItems: [
-          {
-            name: "Mahkota DiRaja",
-            desc: "Mahkota keemasan yang dihiasi dengan permata berharga, dipakai semasa Istiadat Pertabalan. Dibuat pada abad ke-15 dan telah diperbaharui beberapa kali sepanjang sejarah.",
-          },
-          {
-            name: "Pedang DiRaja (Pedang Pendek dan Panjang)",
-            desc: "Dua bilah pedang keramat yang melambangkan kuasa dan kedaulatan Yang di-Pertuan Agong. Dibawa oleh pegawai khas semasa semua istiadat rasmi negara.",
-          },
-          {
-            name: "Tongkat DiRaja",
-            desc: "Tongkat keemasan yang melambangkan autoriti pemerintahan. Digunakan dalam semua istiadat pertabalan dan upacara penerimaan tetamu negara.",
-          },
-          {
-            name: "Mohor Besar DiRaja",
-            desc: "Cop mohor rasmi Yang di-Pertuan Agong yang digunakan untuk mengisytiharkan dan mengesahkan dokumen-dokumen negara yang paling penting.",
-          },
-          {
-            name: "Cogan Emas dan Cogan Perak",
-            desc: "Hiasan keemasan yang dipaparkan semasa istiadat diraja, melambangkan kemakmuran, kemuliaan, dan ketinggian martabat negara.",
-          },
-        ],
-        ceremoniesTitle: "Majlis-Majlis DiRaja",
-        ceremonies: [
-          {
-            name: "Istiadat Pertabalan Yang di-Pertuan Agong",
-            desc: "Majlis paling agung dalam kalendar diraja. Dilangsungkan di Istana Negara dengan kehadiran para Sultan, pemimpin negara, dan tetamu kehormat antarabangsa.",
-          },
-          {
-            name: "Hari Keputeraan Yang di-Pertuan Agong",
-            desc: "Disambut setiap tahun pada 5 Jun dengan perarakan kebangsaan, istiadat penganugerahan darjah kebesaran, dan pertunjukan bunga api di Dataran Indera.",
-          },
-          {
-            name: "Istiadat Pembukaan Parlimen",
-            desc: "Dipengerusikan oleh Yang di-Pertuan Agong pada pembukaan setiap penggal Parlimen baru, termasuk pembacaan Titah DiRaja yang menggariskan agenda kerajaan.",
-          },
-        ],
-        protocolTitle: "Protokol DiRaja",
-        protocols: [
-          "Tegur sapa rasmi untuk Yang di-Pertuan Agong: 'Duli Yang Maha Mulia'",
-          "Pakaian formal dan sopan wajib semasa menghadiri audience diraja",
-          "Memberi hormat dengan membongkok sedikit semasa menghadap",
-          "Tidak dibenarkan membelakangi Yang di-Pertuan Agong semasa mengundur diri",
-          "Segala rakaman gambar atau video memerlukan kebenaran rasmi daripada pihak istana",
-        ],
-        terasulTitle: "Panduan Terasul DiRaja Inderaloka",
+          "Sistem rujukan kehormat dan rujukan protokol gelaran istana yang dijaga sejak berabad lamanya.",
+        terasulTitle: "Panduan Terasul Diraja Inderaloka",
         terasulSections: [
           {
             id: "PART I",
@@ -2447,11 +2406,40 @@ export const translations = {
             content:
               "Dalam semua urusan rasmi, bentuk terasul penuh hendaklah digunakan pada sebutan pertama. Bagi sebutan berikutnya, bentuk ringkas boleh digunakan mengikut kesesuaian majlis atau dokumen.\n\nPenggunaan gelaran asal bagi kerabat diraja yang berkahwin dengan kerabat lain hendaklah mengikut ketetapan istiadat dan gelaran yang lebih tinggi.\n\nSebarang perkara yang tidak dinyatakan secara khusus dalam panduan ini hendaklah dirujuk kepada Istana Diraja Inderaloka untuk ketetapan lanjut.",
           },
+        ]
+      },
+      regalia: {
+        breadcrumbCurrent: "Alat Kebesaran Diraja",
+        pageTitle: "Alat-Alat Kebesaran Diraja Inderaloka",
+        pageDesc:
+          "Warisan gilang-gemilang alat-alat kebesaran yang melambangkan kedaulatan, kuasa, dan keagungan Sultan Inderaloka.",
+        regaliaTitle: "Alat-Alat Kebesaran Diraja",
+        regaliaItems: [
+          {
+            name: "Mahkota Diraja",
+            desc: "Mahkota keemasan yang dihiasi dengan permata berharga, dipakai semasa Istiadat Pertabalan. Dibuat pada abad ke-15 dan telah diperbaharui beberapa kali sepanjang sejarah.",
+          },
+          {
+            name: "Pedang Diraja (Pedang Pendek dan Panjang)",
+            desc: "Dua bilah pedang keramat yang melambangkan kuasa dan kedaulatan Yang di-Pertuan Agong. Dibawa oleh pegawai khas semasa semua istiadat rasmi negara.",
+          },
+          {
+            name: "Tongkat Diraja",
+            desc: "Tongkat keemasan yang melambangkan autoriti pemerintahan. Digunakan dalam semua istiadat pertabalan dan upacara penerimaan tetamu negara.",
+          },
+          {
+            name: "Mohor Besar Diraja",
+            desc: "Cop mohor rasmi Yang di-Pertuan Agong yang digunakan untuk mengisytiharkan dan mengesahkan dokumen-dokumen negara yang paling penting.",
+          },
+          {
+            name: "Cogan Emas dan Cogan Perak",
+            desc: "Hiasan keemasan yang dipaparkan semasa istiadat diraja, melambangkan kemakmuran, kemuliaan, dan ketinggian martabat negara.",
+          },
         ],
       },
       statement: {
-        breadcrumbCurrent: "Titah DiRaja",
-        pageTitle: "Titah DiRaja",
+        breadcrumbCurrent: "Titah Diraja",
+        pageTitle: "Titah Diraja",
         pageDesc:
           "Kenyataan rasmi, titah, dan ucapan Yang di-Pertuan Agong XVI kepada seluruh rakyat Inderaloka.",
         latestLabel: "Titah Terkini",
@@ -2470,7 +2458,7 @@ export const translations = {
           },
           {
             date: "1 Januari 2025",
-            title: "Titah DiRaja Sempena Tahun Baharu 2025",
+            title: "Titah Diraja Sempena Tahun Baharu 2025",
           },
           {
             date: "15 September 2024",
@@ -2484,8 +2472,8 @@ export const translations = {
         readMore: "Baca Titah Penuh",
       },
       palaces: {
-        breadcrumbCurrent: "Istana DiRaja",
-        pageTitle: "Istana-Istana DiRaja Inderaloka",
+        breadcrumbCurrent: "Istana Diraja",
+        pageTitle: "Istana-Istana Diraja Inderaloka",
         pageDesc:
           "Kediaman rasmi dan istana-istana bersejarah Yang di-Pertuan Agong serta keluarga diraja Inderaloka.",
         typeLabel: "Jenis",
@@ -2496,7 +2484,7 @@ export const translations = {
             name: "Istana Negara",
             location: "Jalan Duta, Wilayah Persekutuan Inderaloka",
             type: "Kediaman Rasmi",
-            desc: "Istana Negara adalah kediaman rasmi Yang di-Pertuan Agong. Dibina pada 2011 di atas tanah seluas 97 hektar, istana ini menempatkan Balairong Seri untuk istiadat rasmi dan ruang kediaman DiRaja. Seni bina istana menggabungkan estetika Melayu tradisional dengan rekabentuk kontemporari yang anggun.",
+            desc: "Istana Negara adalah kediaman rasmi Yang di-Pertuan Agong. Dibina pada 2011 di atas tanah seluas 97 hektar, istana ini menempatkan Balairong Seri untuk istiadat rasmi dan ruang kediaman Diraja. Seni bina istana menggabungkan estetika Melayu tradisional dengan rekabentuk kontemporari yang anggun.",
             visiting:
               "Tidak dibuka kepada awam secara tetap. Majlis-majlis tertentu diadakan di pekarangan istana pada hari kebesaran.",
           },
@@ -2526,15 +2514,15 @@ export const translations = {
         ],
       },
       royalAdvisoryCouncil: {
-        breadcrumbCurrent: "Majlis Penasihat DiRaja",
-        pageTitle: "Majlis Penasihat DiRaja",
+        breadcrumbCurrent: "Majlis Penasihat Diraja",
+        pageTitle: "Majlis Penasihat Diraja",
         pageDesc:
           "Badan penasihat bebas yang memberikan nasihat kepada Yang di-Pertuan Agong dalam hal ehwal pentadbiran dan keselamatan negara.",
         overviewTitle: "Peranan dan Fungsi",
         overviewBody:
-          "Majlis Penasihat DiRaja ditubuhkan sebagai badan penasihat bebas kepada Yang di-Pertuan Agong. Terdiri daripada tokoh-tokoh berpengalaman dalam bidang undang-undang, ekonomi, keselamatan, dan agama, majlis ini memberikan pandangan bebas tentang isu-isu nasional kritikal.",
+          "Majlis Penasihat Diraja ditubuhkan sebagai badan penasihat bebas kepada Yang di-Pertuan Agong. Terdiri daripada tokoh-tokoh berpengalaman dalam bidang undang-undang, ekonomi, keselamatan, dan agama, majlis ini memberikan pandangan bebas tentang isu-isu nasional kritikal.",
         basisLabel: "Asas Penubuhan",
-        basis: "Perintah DiRaja dan Perlembagaan Persekutuan Inderaloka",
+        basis: "Perintah Diraja dan Perlembagaan Persekutuan Inderaloka",
         membersTitle: "Ahli-Ahli Majlis",
         members: [
           {
@@ -2582,7 +2570,7 @@ export const translations = {
       },
       palaceCourtiers: {
         breadcrumbCurrent: "Pegawai Istana",
-        pageTitle: "Pegawai-Pegawai Istana DiRaja",
+        pageTitle: "Pegawai-Pegawai Istana Diraja",
         pageDesc:
           "Pegawai-pegawai khas yang berkhidmat di istana dalam menguruskan protokol, adat istiadat, dan pentadbiran istana diraja.",
         overviewTitle: "Tentang Pegawai Istana",
@@ -2591,11 +2579,11 @@ export const translations = {
         categoriesTitle: "Kategori Pegawai Istana",
         categories: [
           {
-            title: "Pegawai Protokol DiRaja",
+            title: "Pegawai Protokol Diraja",
             desc: "Bertanggungjawab mengatur semua majlis rasmi, tetamu negara, dan istiadat diraja mengikut protokol yang ditetapkan.",
             members: [
               {
-                role: "Ketua Protokol DiRaja",
+                role: "Ketua Protokol Diraja",
                 name: "Dato' Haji Abdullah bin Hassan",
               },
               {
@@ -2605,25 +2593,25 @@ export const translations = {
             ],
           },
           {
-            title: "Setiausaha DiRaja",
+            title: "Setiausaha Diraja",
             desc: "Menguruskan surat-menyurat, jadual waktu, dan komunikasi rasmi Yang di-Pertuan Agong serta keluarga diraja.",
             members: [
               {
-                role: "Setiausaha DiRaja Kanan",
+                role: "Setiausaha Diraja Kanan",
                 name: "Dato' Sri Muhd Zakri bin Abdul Hamid",
               },
               {
-                role: "Setiausaha DiRaja",
+                role: "Setiausaha Diraja",
                 name: "Datin Haslinda binti Mohd Amin",
               },
             ],
           },
           {
-            title: "Pegawai Adat DiRaja",
+            title: "Pegawai Adat Diraja",
             desc: "Menjaga, memelihara, dan melaksanakan adat istiadat diraja yang telah diwarisi sejak berabad lamanya.",
             members: [
               {
-                role: "Pemangku Adat DiRaja",
+                role: "Pemangku Adat Diraja",
                 name: "Dato' Haji Harun bin Jaafar",
               },
               {
@@ -2633,11 +2621,11 @@ export const translations = {
             ],
           },
           {
-            title: "Pengawal Peribadi DiRaja",
+            title: "Pengawal Peribadi Diraja",
             desc: "Anggota pasukan keselamatan khas yang bertanggungjawab ke atas keselamatan peribadi Yang di-Pertuan Agong.",
             members: [
               {
-                role: "Komandan Pengawal DiRaja",
+                role: "Komandan Pengawal Diraja",
                 name: "Brigadier Jeneral Dato' Azman bin Ibrahim",
               },
               { role: "Penolong Komandan", name: "Kolonel Hasrul bin Mat Zin" },
@@ -3294,7 +3282,7 @@ export const translations = {
           },
           {
             step: "06",
-            title: "Perkenan DiRaja",
+            title: "Perkenan Diraja",
             desc: "Yang di-Pertuan Agong memperkenankan rang undang-undang yang telah diluluskan untuk dijadikan undang-undang.",
           },
         ],
@@ -3528,8 +3516,8 @@ export const translations = {
             role: "Ketua Polis Negara",
             name: "Tan Sri Razarudin bin Husain",
             since: "Mei 2023",
-            office: "Polis DiRaja Inderaloka (PDRI)",
-            desc: "Ketua Polis Negara mengetuai Polis DiRaja Inderaloka dan bertanggungjawab ke atas keselamatan dalam negeri, pencegahan jenayah, dan penguatkuasaan undang-undang.",
+            office: "Polis Diraja Inderaloka (PDRI)",
+            desc: "Ketua Polis Negara mengetuai Polis Diraja Inderaloka dan bertanggungjawab ke atas keselamatan dalam negeri, pencegahan jenayah, dan penguatkuasaan undang-undang.",
             duties: [
               "Mengetuai operasi PDRI di seluruh negara",
               "Menguruskan keselamatan dalam negeri dan jenayah",
@@ -4739,9 +4727,14 @@ export const translations = {
             desc: "The highest royal honours bestowed upon distinguished individuals.",
           },
           {
-            href: "/royal/customs-and-regalia",
+            href: "/royal/terasul",
             title: "Terasul & Royal Customs",
-            desc: "The system of royal honorifics, regalia, and palace protocols of Inderaloka.",
+            desc: "The system of royal honorifics and palace title protocols of Inderaloka.",
+          },
+          {
+            href: "/royal/regalia",
+            title: "Royal Regalia",
+            desc: "The magnificent heritage of royal regalia symbolising the sovereignty of the Sultan.",
           },
           {
             href: "/royal/royal-statement",
@@ -5395,57 +5388,11 @@ export const translations = {
         closing:
           "This guide shall serve as the official reference for naming, investiture, wearing, and the order of precedence for orders, decorations, medals and commissions of the State of Inderaloka. Any amendments, additions, or revocations related to the honours in this guide shall be made at the decree and consent of the Sultan of Inderaloka.",
       },
-      customs: {
+      terasul: {
         breadcrumbCurrent: "Terasul & Royal Customs",
         pageTitle: "Terasul & Royal Customs",
         pageDesc:
-          "The system of royal honorifics, ceremonial heritage, regalia, and palace protocols preserved for centuries.",
-        regaliaTitle: "Royal Regalia",
-        regaliaItems: [
-          {
-            name: "Royal Crown",
-            desc: "A golden crown adorned with precious stones, worn during the Installation Ceremony. Crafted in the 15th century and refurbished several times throughout history.",
-          },
-          {
-            name: "Royal Swords (Short and Long Sword)",
-            desc: "Two sacred blades symbolising the power and sovereignty of the Yang di-Pertuan Agong. Carried by special officers during all official state ceremonies.",
-          },
-          {
-            name: "Royal Sceptre",
-            desc: "A golden staff symbolising the authority of governance. Used in all installation ceremonies and official state receptions.",
-          },
-          {
-            name: "Great Royal Seal",
-            desc: "The official seal of the Yang di-Pertuan Agong used to proclaim and authenticate the most important documents of the state.",
-          },
-          {
-            name: "Golden and Silver Cogans",
-            desc: "Royal ornaments displayed during royal ceremonies, symbolising the prosperity, glory, and the high dignity of the nation.",
-          },
-        ],
-        ceremoniesTitle: "Royal Ceremonies",
-        ceremonies: [
-          {
-            name: "Installation of the Yang di-Pertuan Agong",
-            desc: "The most magnificent ceremony in the royal calendar. Held at the National Palace with the attendance of all Sultans, state leaders, and distinguished international guests.",
-          },
-          {
-            name: "Yang di-Pertuan Agong's Birthday",
-            desc: "Celebrated annually on 5 June with a national parade, royal honours investiture ceremony, and a spectacular fireworks display at Indera Square.",
-          },
-          {
-            name: "Opening of Parliament",
-            desc: "Chaired by the Yang di-Pertuan Agong at the opening of each new parliamentary session, including the reading of the Royal Address outlining the government's agenda.",
-          },
-        ],
-        protocolTitle: "Royal Protocol",
-        protocols: [
-          "Official salutation for the Yang di-Pertuan Agong: 'Duli Yang Maha Mulia'",
-          "Formal and respectful attire is mandatory when attending royal audiences",
-          "Show deference with a slight bow when approaching His Majesty",
-          "One must never turn one's back on the Yang di-Pertuan Agong when withdrawing",
-          "All photography or video recording requires official permission from the palace",
-        ],
+          "The system of royal honorifics and palace title protocols preserved for centuries.",
         terasulTitle: "Inderaloka Royal Terasul Guide",
         terasulSections: [
           {
@@ -6219,6 +6166,35 @@ export const translations = {
             title: "General Provisions",
             content:
               "In all official matters, the full terasul form must be used upon first mention. For subsequent mentions, a short form may be used as appropriate for the occasion or document.\n\nThe use of original titles for royal family members married to other royals shall follow ceremonial determination and the higher title.\n\nAny matters not specifically mentioned in this guide shall be referred to the Inderaloka Royal Palace for further determination.",
+          },
+        ]
+      },
+      regalia: {
+        breadcrumbCurrent: "Royal Regalia",
+        pageTitle: "Royal Regalia of Inderaloka",
+        pageDesc:
+          "The magnificent heritage of royal regalia symbolising the sovereignty, power, and dignity of the Sultan of Inderaloka.",
+        regaliaTitle: "Royal Regalia",
+        regaliaItems: [
+          {
+            name: "Royal Crown",
+            desc: "A golden crown adorned with precious stones, worn during the Installation Ceremony. Crafted in the 15th century and refurbished several times throughout history.",
+          },
+          {
+            name: "Royal Swords (Short and Long Sword)",
+            desc: "Two sacred blades symbolising the power and sovereignty of the Yang di-Pertuan Agong. Carried by special officers during all official state ceremonies.",
+          },
+          {
+            name: "Royal Sceptre",
+            desc: "A golden staff symbolising the authority of governance. Used in all installation ceremonies and official state receptions.",
+          },
+          {
+            name: "Great Royal Seal",
+            desc: "The official seal of the Yang di-Pertuan Agong used to proclaim and authenticate the most important documents of the state.",
+          },
+          {
+            name: "Golden and Silver Cogans",
+            desc: "Royal ornaments displayed during royal ceremonies, symbolising the prosperity, glory, and the high dignity of the nation.",
           },
         ],
       },
