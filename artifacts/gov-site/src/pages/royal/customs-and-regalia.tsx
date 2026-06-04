@@ -38,7 +38,7 @@ export default function CustomsAndRegalia() {
           </div>
 
           <div className="space-y-16">
-            {(c.terasulSections as any[]).map((section, idx) => (
+            {(c.terasulSections as unknown as any[]).map((section, idx) => (
               <motion.div
                 key={section.id}
                 initial={{ opacity: 0, y: 10 }}
