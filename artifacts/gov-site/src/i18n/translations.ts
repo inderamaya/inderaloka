@@ -408,7 +408,7 @@ export const translations = {
           { href: "/royal/council-of-regency", title: "Majlis Pemangku Raja", desc: "Badan yang memerintah semasa ketiadaan Yang di-Pertuan Agong." },
           { href: "/royal/royal-family", title: "Keluarga DiRaja", desc: "Ahli-ahli keluarga DiRaja dan peranan mereka dalam kehidupan negara." },
           { href: "/royal/orders-and-decorations", title: "Darjah Kebesaran & Bintang", desc: "Penghargaan diraja tertinggi yang dianugerahkan kepada tokoh-tokoh negara." },
-          { href: "/royal/customs-and-regalia", title: "Adat dan Regalia DiRaja", desc: "Upacara, alat kebesaran, dan protokol istana yang dijaga sejak berabad." },
+          { href: "/royal/customs-and-regalia", title: "Terasul & Adat DiRaja", desc: "Sistem rujukan kehormat, alat kebesaran, dan protokol istana Inderaloka." },
           { href: "/royal/royal-statement", title: "Titah DiRaja", desc: "Titah dan kenyataan rasmi Kebawah Duli Yang Maha Mulia kepada rakyat." },
           { href: "/royal/palaces", title: "Istana DiRaja", desc: "Kediaman rasmi dan istana-istana bersejarah Yang di-Pertuan Agong." },
           { href: "/royal/royal-advisory-council", title: "Majlis Penasihat DiRaja", desc: "Badan penasihat tertinggi kepada Yang di-Pertuan Agong dalam hal ehwal dasar negara." },
@@ -781,9 +781,9 @@ export const translations = {
         closing: "Panduan ini hendaklah menjadi rujukan rasmi bagi penamaan, penganugerahan, pemakaian dan susunan keutamaan darjah kebesaran, bintang kehormatan, pingat dan tauliah Negara Inderaloka. Sebarang pindaan, tambahan atau pelucutan yang berkaitan dengan kurniaan dalam panduan ini hendaklah dibuat atas titah perkenan Sultan Inderaloka.",
       },
       customs: {
-        breadcrumbCurrent: "Adat dan Regalia DiRaja",
-        pageTitle: "Adat Istiadat dan Regalia DiRaja",
-        pageDesc: "Warisan upacara diraja, alat-alat kebesaran, dan protokol istana yang dijaga dengan penuh khidmat sejak berabad lamanya.",
+        breadcrumbCurrent: "Terasul & Adat DiRaja",
+        pageTitle: "Terasul & Adat Istiadat DiRaja",
+        pageDesc: "Sistem rujukan kehormat, warisan upacara, alat-alat kebesaran, dan protokol istana yang dijaga sejak berabad lamanya.",
         regaliaTitle: "Alat-Alat Kebesaran DiRaja",
         regaliaItems: [
           { name: "Mahkota DiRaja", desc: "Mahkota keemasan yang dihiasi dengan permata berharga, dipakai semasa Istiadat Pertabalan. Dibuat pada abad ke-15 dan telah diperbaharui beberapa kali sepanjang sejarah." },
@@ -805,6 +805,318 @@ export const translations = {
           "Memberi hormat dengan membongkok sedikit semasa menghadap",
           "Tidak dibenarkan membelakangi Yang di-Pertuan Agong semasa mengundur diri",
           "Segala rakaman gambar atau video memerlukan kebenaran rasmi daripada pihak istana",
+        ],
+        terasulTitle: "Panduan Terasul DiRaja Inderaloka",
+        terasulSections: [
+          {
+            id: 1,
+            title: "Tujuan",
+            content: "Panduan ini menetapkan penggunaan terasul bagi Kerabat Diraja Inderaloka dalam urusan rasmi kerajaan, istiadat diraja, surat-menyurat, warkah, undangan rasmi, kenyataan istana dan majlis kebesaran negara.\n\nPenggunaannya tertakluk kepada adat Istana Diraja Inderaloka, Undang-Undang Tubuh Kerajaan Inderaloka dan titah perkenan Sultan Inderaloka."
+          },
+          {
+            id: 2,
+            title: "Takrif",
+            content: "Dalam panduan ini, terasul bermaksud susunan lengkap rujukan kehormat dan gelaran yang digunakan dalam sebutan rasmi, istiadat dan persuratan."
+          },
+          {
+            id: 3,
+            title: "Sultan Yang Memerintah",
+            info: [
+              { label: "Rujukan kehormat", value: "Kebawah Duli Yang Maha Mulia Paduka Seri Baginda" },
+              { label: "Gelaran", value: "Sultan [Nama]" },
+              { label: "Terasul penuh", value: "Kebawah Duli Yang Maha Mulia Paduka Seri Baginda Sultan [Nama], Sultan dan Yang di-Pertuan bagi Negara Inderaloka serta Sekalian Jajahan Naungannya" }
+            ],
+            footer: "Sultan Inderaloka ialah Raja Pemerintah, Ketua Negara dan Ketua Agama Islam bagi Negara Inderaloka."
+          },
+          {
+            id: 4,
+            title: "Isteri Utama Sultan Yang Memerintah",
+            table: {
+              headers: ["Kedudukan", "Rujukan Kehormat", "Gelaran"],
+              rows: [
+                ["Daripada kerabat diraja", "Kebawah Duli Yang Maha Mulia Paduka Seri Baginda", "Raja Permaisuri [Gelaran Asal] [Nama]"],
+                ["Daripada orang kebanyakan", "Kebawah Duli Yang Maha Mulia Paduka Seri Baginda", "Sultanah [Nama]"]
+              ]
+            }
+          },
+          {
+            id: 5,
+            title: "Isteri Kedua Sultan Yang Memerintah",
+            table: {
+              headers: ["Kedudukan", "Rujukan Kehormat", "Gelaran"],
+              rows: [
+                ["Daripada kerabat diraja", "Yang Teramat Mulia Paduka Suri", "[Gelaran Asal] [Nama]"],
+                ["Daripada orang kebanyakan", "Yang Teramat Mulia Paduka Suri", "Che Puan [Nama]"]
+              ]
+            }
+          },
+          {
+            id: 6,
+            title: "Sultan Yang Telah Turun Takhta",
+            info: [
+              { label: "Rujukan kehormat", value: "Duli Yang Maha Mulia Paduka Seri Begawan" },
+              { label: "Gelaran", value: "Sultan [Nama]" },
+              { label: "Terasul penuh", value: "Duli Yang Maha Mulia Paduka Seri Begawan Sultan [Nama]" }
+            ]
+          },
+          {
+            id: 7,
+            title: "Isteri Sultan Yang Telah Turun Takhta",
+            info: [
+              { label: "Rujukan kehormat", value: "Duli Yang Maha Mulia Paduka Seri Begawan" },
+              { label: "Gelaran", value: "Permaisuri [Nama]" },
+              { label: "Terasul penuh", value: "Duli Yang Maha Mulia Paduka Seri Begawan Permaisuri [Nama]" }
+            ]
+          },
+          {
+            id: 8,
+            title: "Isteri Kedua Sultan Yang Telah Turun Takhta",
+            info: [
+              { label: "Rujukan kehormat", value: "Yang Teramat Mulia" },
+              { label: "Gelaran", value: "Che Puan [Nama]" },
+              { label: "Terasul penuh", value: "Yang Teramat Mulia Che Puan [Nama]" }
+            ]
+          },
+          {
+            id: 9,
+            title: "Sultan Yang Telah Mangkat",
+            info: [
+              { label: "Rujukan kehormat", value: "Kebawah Duli Paduka Baginda" },
+              { label: "Gelaran", value: "al-Marhum Sultan [Nama]" },
+              { label: "Terasul penuh", value: "Kebawah Duli Paduka Baginda al-Marhum Sultan [Nama]" }
+            ]
+          },
+          {
+            id: 10,
+            title: "Isteri Sultan Yang Telah Mangkat",
+            table: {
+              headers: ["Kedudukan", "Rujukan Kehormat", "Gelaran"],
+              rows: [
+                ["Daripada kerabat diraja", "Yang Maha Mulia", "Raja Permaisuri [Gelaran Asal] [Nama]"],
+                ["Daripada orang kebanyakan", "Yang Maha Mulia", "Sultanah [Nama]"]
+              ]
+            }
+          },
+          {
+            id: 11,
+            title: "Raja Permaisuri Yang Lebih Kanan",
+            info: [
+              { label: "Rujukan kehormat", value: "Yang Maha Mulia" },
+              { label: "Gelaran", value: "Raja Perempuan [Nama]" },
+              { label: "Terasul penuh", value: "Yang Maha Mulia Raja Perempuan [Nama]" }
+            ],
+            footer: "Raja Perempuan ialah gelaran yang dikurniakan kepada Raja Permaisuri yang lebih kanan apabila terdapat Raja Permaisuri baharu dalam pemerintahan Sultan semasa."
+          },
+          {
+            id: 12,
+            title: "Isteri Kedua Sultan Yang Telah Mangkat",
+            table: {
+              headers: ["Kedudukan", "Rujukan Kehormat", "Gelaran"],
+              rows: [
+                ["Daripada kerabat diraja", "Yang Amat Mulia", "Tunku Puan Besar [Gelaran Asal] [Nama]"],
+                ["Daripada orang kebanyakan", "Yang Amat Mulia", "Che Puan Besar [Nama]"]
+              ]
+            }
+          },
+          {
+            id: 13,
+            title: "Pemangku Sultan",
+            info: [
+              { label: "Rujukan kehormat", value: "Kebawah Duli Paduka Mulia" },
+              { label: "Gelaran", value: "Pemangku Sultan Tunku Putera [Nama]" },
+              { label: "Terasul penuh", value: "Kebawah Duli Paduka Mulia Pemangku Sultan Tunku Putera [Nama]" }
+            ],
+            footer: "Pemangku Sultan hendaklah seorang kerabat lelaki. Jika Tunku Mahkota tidak dapat memangku, keutamaan diberikan kepada Waris Damping menurut susunan berikut:",
+            list: ["Tunku Arif Bendahara", "Tunku Temenggung Aria Pahlawan", "Tunku Perdana Di-Gadong", "Tunku Indera Laksamana", "Tunku Syahbandar", "Tunku Panglima Raja"]
+          },
+          {
+            id: 14,
+            title: "Pewaris Takhta",
+            info: [
+              { label: "Rujukan kehormat", value: "Kebawah Duli Yang Teramat Mulia Paduka Seri" },
+              { label: "Gelaran", value: "Tunku Mahkota Tunku Putera [Nama]" },
+              { label: "Terasul penuh", value: "Kebawah Duli Yang Teramat Mulia Paduka Seri Tunku Mahkota Tunku Putera [Nama]" }
+            ]
+          },
+          {
+            id: 15,
+            title: "Isteri Pewaris Takhta",
+            table: {
+              headers: ["Kedudukan", "Rujukan Kehormat", "Gelaran"],
+              rows: [
+                ["Daripada kerabat diraja", "Duli Yang Teramat Mulia Paduka Seri", "Tunku Ampuan Mahkota [Gelaran Asal] [Nama]"],
+                ["Daripada orang kebanyakan", "Duli Yang Teramat Mulia Paduka Seri", "Che Ampuan Mahkota [Nama]"]
+              ]
+            }
+          },
+          {
+            id: 16,
+            title: "Waris Damping",
+            info: [
+              { label: "Rujukan kehormat", value: "Yang Teramat Mulia Paduka Seri" },
+              { label: "Bentuk gelaran", value: "[Gelaran Waris Damping] Tunku Putera [Nama]" }
+            ],
+            footer: "Waris Damping Inderaloka adalah seperti berikut:",
+            list: ["Tunku Arif Bendahara", "Tunku Temenggung Aria Pahlawan", "Tunku Perdana Di-Gadong", "Tunku Indera Laksamana", "Tunku Syahbandar", "Tunku Panglima Raja"],
+            additionalInfo: "Waris Damping ialah kerabat lelaki yang memegang gelaran kanan dalam istana dan termasuk dalam susunan pewarisan takhta menurut adat dan Undang-Undang Tubuh Kerajaan Inderaloka."
+          },
+          {
+            id: 17,
+            title: "Isteri Waris Damping",
+            table: {
+              headers: ["Kedudukan", "Rujukan Kehormat", "Gelaran"],
+              rows: [
+                ["Daripada kerabat diraja", "Yang Teramat Mulia Paduka Seri", "Tunku Puan [Gelaran Waris Damping] [Gelaran Asal] [Nama]"],
+                ["Daripada orang kebanyakan", "Yang Amat Mulia", "Che Puan [Gelaran Waris Damping] [Nama]"]
+              ]
+            },
+            footer: "Gelaran ini boleh gugur apabila penyandang Waris Damping mangkat, turun daripada jawatan atau perkahwinan dibubarkan, kecuali dititahkan sebaliknya."
+          },
+          {
+            id: 18,
+            title: "Putera Sultan dan Putera Tunku Mahkota",
+            info: [
+              { label: "Rujukan kehormat", value: "Yang Teramat Mulia" },
+              { label: "Gelaran", value: "Tunku Putera [Nama]" },
+              { label: "Terasul penuh", value: "Yang Teramat Mulia Tunku Putera [Nama]" }
+            ],
+            footer: "Keutamaan antara putera Sultan dan putera Tunku Mahkota ditentukan menurut susunan pewarisan takhta."
+          },
+          {
+            id: 19,
+            title: "Isteri Putera Sultan dan Isteri Putera Tunku Mahkota",
+            table: {
+              headers: ["Kedudukan", "Rujukan Kehormat", "Gelaran"],
+              rows: [
+                ["Daripada kerabat diraja", "[Rujukan Kehormat Asal jika lebih tinggi]", "[Gelaran Asal] [Nama]"],
+                ["Daripada orang kebanyakan", "Yang Amat Mulia", "Che Puan [Nama]"]
+              ]
+            }
+          },
+          {
+            id: 20,
+            title: "Puteri Sultan dan Puteri Tunku Mahkota",
+            info: [
+              { label: "Rujukan kehormat", value: "Yang Teramat Mulia" },
+              { label: "Gelaran", value: "Tunku Puteri [Nama]" },
+              { label: "Terasul penuh", value: "Yang Teramat Mulia Tunku Puteri [Nama]" }
+            ]
+          },
+          {
+            id: 21,
+            title: "Suami Puteri Sultan dan Suami Puteri Tunku Mahkota",
+            table: {
+              headers: ["Kedudukan", "Rujukan Kehormat", "Gelaran"],
+              rows: [
+                ["Daripada kerabat diraja", "[Rujukan Kehormat Asal jika lebih tinggi]", "[Gelaran Asal] [Nama]"],
+                ["Daripada orang kebanyakan", "Yang Amat Dimuliakan", "Tuan [Nama]"]
+              ]
+            }
+          },
+          {
+            id: 22,
+            title: "Cucunda Lelaki Sultan Melalui Putera Sultan",
+            info: [
+              { label: "Rujukan kehormat", value: "Yang Amat Mulia" },
+              { label: "Gelaran", value: "Tunku Putera [Nama]" },
+              { label: "Terasul penuh", value: "Yang Amat Mulia Tunku Putera [Nama]" }
+            ],
+            subTable: {
+              title: "Isteri",
+              headers: ["Kedudukan", "Rujukan Kehormat", "Gelaran"],
+              rows: [
+                ["Daripada kerabat diraja", "[Rujukan Kehormat Asal jika lebih tinggi]", "[Gelaran Asal] [Nama]"],
+                ["Daripada orang kebanyakan", "Yang Mulia", "Che Puan [Nama]"]
+              ]
+            }
+          },
+          {
+            id: 23,
+            title: "Cucunda Perempuan Sultan Melalui Putera Sultan",
+            info: [
+              { label: "Rujukan kehormat", value: "Yang Amat Mulia" },
+              { label: "Gelaran", value: "Tunku Puteri [Nama]" },
+              { label: "Terasul penuh", value: "Yang Amat Mulia Tunku Puteri [Nama]" }
+            ],
+            subTable: {
+              title: "Suami",
+              headers: ["Kedudukan", "Rujukan Kehormat", "Gelaran"],
+              rows: [
+                ["Daripada kerabat diraja", "[Rujukan Kehormat Asal jika lebih tinggi]", "[Gelaran Asal] [Nama]"],
+                ["Daripada orang kebanyakan", "Yang Dimuliakan", "Tuan [Nama]"]
+              ]
+            }
+          },
+          {
+            id: 24,
+            title: "Cicinda Lelaki Sultan Melalui Putera Sultan",
+            info: [
+              { label: "Rujukan kehormat", value: "Yang Amat Mulia" },
+              { label: "Gelaran", value: "Tunku [Nama]" },
+              { label: "Terasul penuh", value: "Yang Amat Mulia Tunku [Nama]" }
+            ],
+            subTable: {
+              title: "Isteri",
+              headers: ["Kedudukan", "Rujukan Kehormat", "Gelaran"],
+              rows: [
+                ["Daripada kerabat diraja", "[Rujukan Kehormat Asal jika lebih tinggi]", "[Gelaran Asal] [Nama]"],
+                ["Daripada orang kebanyakan", "Yang Mulia", "Che Puan [Nama]"]
+              ]
+            }
+          },
+          {
+            id: 25,
+            title: "Cicinda Perempuan Sultan Melalui Putera Sultan",
+            info: [
+              { label: "Rujukan kehormat", value: "Yang Amat Mulia" },
+              { label: "Gelaran", value: "Tunku [Nama]" },
+              { label: "Terasul penuh", value: "Yang Amat Mulia Tunku [Nama]" }
+            ],
+            subTable: {
+              title: "Suami",
+              headers: ["Kedudukan", "Rujukan Kehormat", "Gelaran"],
+              rows: [
+                ["Daripada kerabat diraja", "[Rujukan Kehormat Asal jika lebih tinggi]", "[Gelaran Asal] [Nama]"],
+                ["Daripada orang kebanyakan", "Yang Dimuliakan", "Tuan [Nama]"]
+              ]
+            }
+          },
+          {
+            id: 26,
+            title: "Piut Sultan Melalui Putera Sultan",
+            info: [
+              { label: "Rujukan kehormat", value: "Yang Mulia" },
+              { label: "Gelaran", value: "Tunku [Nama]" },
+              { label: "Terasul penuh", value: "Yang Mulia Tunku [Nama]" }
+            ],
+            subTable: {
+              title: "Pasangan",
+              headers: ["Kedudukan", "Rujukan Kehormat", "Gelaran"],
+              rows: [
+                ["Daripada kerabat diraja", "[Rujukan Kehormat Asal jika lebih tinggi]", "[Gelaran Asal] [Nama]"],
+                ["Isteri daripada orang kebanyakan", "Yang Mulia", "Che Puan [Nama]"],
+                ["Suami daripada orang kebanyakan", "Yang Dimuliakan", "Tuan [Nama]"]
+              ]
+            }
+          },
+          {
+            id: 27,
+            title: "Indraputra dan Indraputri",
+            content: "Gelaran ini digunakan bagi:\n1. keturunan Sultan melalui puteri Sultan, bermula daripada cucunda Sultan dan seterusnya; dan\n2. keturunan Sultan melalui putera Sultan, bermula daripada generasi kelima dan seterusnya.",
+            table: {
+              headers: ["Jantina", "Gelaran"],
+              rows: [
+                ["Lelaki", "[Nama] Indraputra"],
+                ["Perempuan", "[Nama] Indraputri"]
+              ]
+            },
+            footer: "Gelaran ini boleh diwarisi melalui jalur lelaki sahaja."
+          },
+          {
+            id: 28,
+            title: "Ketetapan Am",
+            content: "Penggunaan semua terasul dalam panduan ini hendaklah menurut adat Istana Diraja Inderaloka, Undang-Undang Tubuh Kerajaan Inderaloka dan titah perkenan Sultan.\n\nDalam semua urusan rasmi, bentuk terasul penuh hendaklah digunakan pada sebutan pertama. Bagi sebutan berikutnya, bentuk ringkas boleh digunakan mengikut kesesuaian majlis atau dokumen."
+          }
         ],
       },
       statement: {
@@ -1796,7 +2108,7 @@ export const translations = {
           { href: "/royal/council-of-regency", title: "Council of Regency", desc: "The constitutional body that governs during the King's absence." },
           { href: "/royal/royal-family", title: "The Royal Family", desc: "Members of the Royal Family and their roles in national life." },
           { href: "/royal/orders-and-decorations", title: "Orders & Decorations", desc: "The highest royal honours bestowed upon distinguished individuals." },
-          { href: "/royal/customs-and-regalia", title: "Customs & Regalia", desc: "Royal ceremonies, regalia, and palace protocols preserved for centuries." },
+          { href: "/royal/customs-and-regalia", title: "Terasul & Royal Customs", desc: "The system of royal honorifics, regalia, and palace protocols of Inderaloka." },
           { href: "/royal/royal-statement", title: "Royal Statement", desc: "Official addresses and statements from His Majesty to the nation." },
           { href: "/royal/palaces", title: "Royal Palaces", desc: "Official residences and historic palaces of the Yang di-Pertuan Agong." },
           { href: "/royal/royal-advisory-council", title: "Royal Advisory Council", desc: "The highest advisory body to the Yang di-Pertuan Agong on matters of national policy." },
@@ -2168,9 +2480,9 @@ export const translations = {
         closing: "This guide shall serve as the official reference for naming, investiture, wearing, and the order of precedence for orders, decorations, medals and commissions of the State of Inderaloka. Any amendments, additions, or revocations related to the honours in this guide shall be made at the decree and consent of the Sultan of Inderaloka.",
       },
       customs: {
-        breadcrumbCurrent: "Customs & Regalia",
-        pageTitle: "Royal Customs and Regalia",
-        pageDesc: "The heritage of royal ceremonies, regalia, and palace protocols preserved with great reverence for centuries.",
+        breadcrumbCurrent: "Terasul & Royal Customs",
+        pageTitle: "Terasul & Royal Customs",
+        pageDesc: "The system of royal honorifics, ceremonial heritage, regalia, and palace protocols preserved for centuries.",
         regaliaTitle: "Royal Regalia",
         regaliaItems: [
           { name: "Royal Crown", desc: "A golden crown adorned with precious stones, worn during the Installation Ceremony. Crafted in the 15th century and refurbished several times throughout history." },
@@ -2192,6 +2504,318 @@ export const translations = {
           "Show deference with a slight bow when approaching His Majesty",
           "One must never turn one's back on the Yang di-Pertuan Agong when withdrawing",
           "All photography or video recording requires official permission from the palace",
+        ],
+        terasulTitle: "Inderaloka Royal Terasul Guide",
+        terasulSections: [
+          {
+            id: 1,
+            title: "Purpose",
+            content: "This guide establishes the use of terasul (honorifics) for the Royal Family of Inderaloka in official government affairs, royal ceremonies, correspondence, formal letters, official invitations, palace statements, and national ceremonies.\n\nIts use is subject to the customs of the Royal Palace of Inderaloka, the Constitution of the Government of Inderaloka, and the decree and consent of the Sultan of Inderaloka."
+          },
+          {
+            id: 2,
+            title: "Definition",
+            content: "In this guide, terasul means the complete arrangement of honorific references and titles used in official addresses, ceremonies, and correspondence."
+          },
+          {
+            id: 3,
+            title: "The Reigning Sultan",
+            info: [
+              { label: "Honorific reference", value: "Kebawah Duli Yang Maha Mulia Paduka Seri Baginda" },
+              { label: "Title", value: "Sultan [Name]" },
+              { label: "Full terasul", value: "Kebawah Duli Yang Maha Mulia Paduka Seri Baginda Sultan [Name], Sultan and Yang di-Pertuan of the State of Inderaloka and All Its Protected Territories" }
+            ],
+            footer: "The Sultan of Inderaloka is the Ruling Monarch, Head of State, and Head of the Islamic Religion for the State of Inderaloka."
+          },
+          {
+            id: 4,
+            title: "Main Consort of the Reigning Sultan",
+            table: {
+              headers: ["Position", "Honorific Reference", "Title"],
+              rows: [
+                ["From royal lineage", "Kebawah Duli Yang Maha Mulia Paduka Seri Baginda", "Raja Permaisuri [Original Title] [Name]"],
+                ["From commoner lineage", "Kebawah Duli Yang Maha Mulia Paduka Seri Baginda", "Sultanah [Name]"]
+              ]
+            }
+          },
+          {
+            id: 5,
+            title: "Second Consort of the Reigning Sultan",
+            table: {
+              headers: ["Position", "Honorific Reference", "Title"],
+              rows: [
+                ["From royal lineage", "Yang Teramat Mulia Paduka Suri", "[Original Title] [Name]"],
+                ["From commoner lineage", "Yang Teramat Mulia Paduka Suri", "Che Puan [Name]"]
+              ]
+            }
+          },
+          {
+            id: 6,
+            title: "The Abdicated Sultan",
+            info: [
+              { label: "Honorific reference", value: "Duli Yang Maha Mulia Paduka Seri Begawan" },
+              { label: "Title", value: "Sultan [Name]" },
+              { label: "Full terasul", value: "Duli Yang Maha Mulia Paduka Seri Begawan Sultan [Name]" }
+            ]
+          },
+          {
+            id: 7,
+            title: "Consort of the Abdicated Sultan",
+            info: [
+              { label: "Honorific reference", value: "Duli Yang Maha Mulia Paduka Seri Begawan" },
+              { label: "Title", value: "Permaisuri [Name]" },
+              { label: "Full terasul", value: "Duli Yang Maha Mulia Paduka Seri Begawan Permaisuri [Name]" }
+            ]
+          },
+          {
+            id: 8,
+            title: "Second Consort of the Abdicated Sultan",
+            info: [
+              { label: "Honorific reference", value: "Yang Teramat Mulia" },
+              { label: "Title", value: "Che Puan [Name]" },
+              { label: "Full terasul", value: "Yang Teramat Mulia Che Puan [Name]" }
+            ]
+          },
+          {
+            id: 9,
+            title: "The Deceased Sultan",
+            info: [
+              { label: "Honorific reference", value: "Kebawah Duli Paduka Baginda" },
+              { label: "Title", value: "al-Marhum Sultan [Name]" },
+              { label: "Full terasul", value: "Kebawah Duli Paduka Baginda al-Marhum Sultan [Name]" }
+            ]
+          },
+          {
+            id: 10,
+            title: "Consort of the Deceased Sultan",
+            table: {
+              headers: ["Position", "Honorific Reference", "Title"],
+              rows: [
+                ["From royal lineage", "Yang Maha Mulia", "Raja Permaisuri [Original Title] [Name]"],
+                ["From commoner lineage", "Yang Maha Mulia", "Sultanah [Name]"]
+              ]
+            }
+          },
+          {
+            id: 11,
+            title: "Senior Raja Permaisuri",
+            info: [
+              { label: "Honorific reference", value: "Yang Maha Mulia" },
+              { label: "Title", value: "Raja Perempuan [Name]" },
+              { label: "Full terasul", value: "Yang Maha Mulia Raja Perempuan [Name]" }
+            ],
+            footer: "Raja Perempuan is the title bestowed upon the more senior Raja Permaisuri when there is a new Raja Permaisuri during the current Sultan's reign."
+          },
+          {
+            id: 12,
+            title: "Second Consort of the Deceased Sultan",
+            table: {
+              headers: ["Position", "Honorific Reference", "Title"],
+              rows: [
+                ["From royal lineage", "Yang Amat Mulia", "Tunku Puan Besar [Original Title] [Name]"],
+                ["From commoner lineage", "Yang Amat Mulia", "Che Puan Besar [Name]"]
+              ]
+            }
+          },
+          {
+            id: 13,
+            title: "Regent (Pemangku Sultan)",
+            info: [
+              { label: "Honorific reference", value: "Kebawah Duli Paduka Mulia" },
+              { label: "Title", value: "Pemangku Sultan Tunku Putera [Name]" },
+              { label: "Full terasul", value: "Kebawah Duli Paduka Mulia Pemangku Sultan Tunku Putera [Name]" }
+            ],
+            footer: "The Regent must be a male royal. If the Crown Prince (Tunku Mahkota) is unable to act as Regent, priority is given to the Close Heirs according to the following order:",
+            list: ["Tunku Arif Bendahara", "Tunku Temenggung Aria Pahlawan", "Tunku Perdana Di-Gadong", "Tunku Indera Laksamana", "Tunku Syahbandar", "Tunku Panglima Raja"]
+          },
+          {
+            id: 14,
+            title: "Heir Apparent",
+            info: [
+              { label: "Honorific reference", value: "Kebawah Duli Yang Teramat Mulia Paduka Seri" },
+              { label: "Title", value: "Tunku Mahkota Tunku Putera [Name]" },
+              { label: "Full terasul", value: "Kebawah Duli Yang Teramat Mulia Paduka Seri Tunku Mahkota Tunku Putera [Name]" }
+            ]
+          },
+          {
+            id: 15,
+            title: "Consort of the Heir Apparent",
+            table: {
+              headers: ["Position", "Honorific Reference", "Title"],
+              rows: [
+                ["From royal lineage", "Duli Yang Teramat Mulia Paduka Seri", "Tunku Ampuan Mahkota [Original Title] [Name]"],
+                ["From commoner lineage", "Duli Yang Teramat Mulia Paduka Seri", "Che Ampuan Mahkota [Name]"]
+              ]
+            }
+          },
+          {
+            id: 16,
+            title: "Close Heirs (Waris Damping)",
+            info: [
+              { label: "Honorific reference", value: "Yang Teramat Mulia Paduka Seri" },
+              { label: "Form of title", value: "[Title of Close Heir] Tunku Putera [Name]" }
+            ],
+            footer: "The Close Heirs of Inderaloka are as follows:",
+            list: ["Tunku Arif Bendahara", "Tunku Temenggung Aria Pahlawan", "Tunku Perdana Di-Gadong", "Tunku Indera Laksamana", "Tunku Syahbandar", "Tunku Panglima Raja"],
+            additionalInfo: "Close Heirs are male royals who hold senior titles within the palace and are included in the line of succession to the throne according to the customs and the Constitution of the Government of Inderaloka."
+          },
+          {
+            id: 17,
+            title: "Consorts of Close Heirs",
+            table: {
+              headers: ["Position", "Honorific Reference", "Title"],
+              rows: [
+                ["From royal lineage", "Yang Teramat Mulia Paduka Seri", "Tunku Puan [Title of Close Heir] [Original Title] [Name]"],
+                ["From commoner lineage", "Yang Amat Mulia", "Che Puan [Title of Close Heir] [Name]"]
+              ]
+            },
+            footer: "This title may be revoked when the Close Heir holder passes away, abdicates from the position, or the marriage is dissolved, unless decreed otherwise."
+          },
+          {
+            id: 18,
+            title: "Sons of the Sultan and Sons of the Crown Prince",
+            info: [
+              { label: "Honorific reference", value: "Yang Teramat Mulia" },
+              { label: "Title", value: "Tunku Putera [Name]" },
+              { label: "Full terasul", value: "Yang Teramat Mulia Tunku Putera [Name]" }
+            ],
+            footer: "Precedence between the Sultan's sons and the Crown Prince's sons is determined according to the order of succession."
+          },
+          {
+            id: 19,
+            title: "Wives of the Sons of the Sultan and Wives of the Sons of the Crown Prince",
+            table: {
+              headers: ["Position", "Honorific Reference", "Title"],
+              rows: [
+                ["From royal lineage", "[Original Honorific if higher]", "[Original Title] [Name]"],
+                ["From commoner lineage", "Yang Amat Mulia", "Che Puan [Name]"]
+              ]
+            }
+          },
+          {
+            id: 20,
+            title: "Daughters of the Sultan and Daughters of the Crown Prince",
+            info: [
+              { label: "Honorific reference", value: "Yang Teramat Mulia" },
+              { label: "Title", value: "Tunku Puteri [Name]" },
+              { label: "Full terasul", value: "Yang Teramat Mulia Tunku Puteri [Name]" }
+            ]
+          },
+          {
+            id: 21,
+            title: "Husbands of the Daughters of the Sultan and Husbands of the Daughters of the Crown Prince",
+            table: {
+              headers: ["Position", "Honorific Reference", "Title"],
+              rows: [
+                ["From royal lineage", "[Original Honorific if higher]", "[Original Title] [Name]"],
+                ["From commoner lineage", "Yang Amat Dimuliakan", "Tuan [Name]"]
+              ]
+            }
+          },
+          {
+            id: 22,
+            title: "Grandsons of the Sultan through the Sultan's Son",
+            info: [
+              { label: "Honorific reference", value: "Yang Amat Mulia" },
+              { label: "Title", value: "Tunku Putera [Name]" },
+              { label: "Full terasul", value: "Yang Amat Mulia Tunku Putera [Name]" }
+            ],
+            subTable: {
+              title: "Wife",
+              headers: ["Position", "Honorific Reference", "Title"],
+              rows: [
+                ["From royal lineage", "[Original Honorific if higher]", "[Original Title] [Name]"],
+                ["From commoner lineage", "Yang Mulia", "Che Puan [Name]"]
+              ]
+            }
+          },
+          {
+            id: 23,
+            title: "Granddaughters of the Sultan through the Sultan's Son",
+            info: [
+              { label: "Honorific reference", value: "Yang Amat Mulia" },
+              { label: "Title", value: "Tunku Puteri [Name]" },
+              { label: "Full terasul", value: "Yang Amat Mulia Tunku Puteri [Name]" }
+            ],
+            subTable: {
+              title: "Husband",
+              headers: ["Position", "Honorific Reference", "Title"],
+              rows: [
+                ["From royal lineage", "[Original Honorific if higher]", "[Original Title] [Name]"],
+                ["From commoner lineage", "Yang Dimuliakan", "Tuan [Name]"]
+              ]
+            }
+          },
+          {
+            id: 24,
+            title: "Great-Grandsons of the Sultan through the Sultan's Son",
+            info: [
+              { label: "Honorific reference", value: "Yang Amat Mulia" },
+              { label: "Title", value: "Tunku [Name]" },
+              { label: "Full terasul", value: "Yang Amat Mulia Tunku [Name]" }
+            ],
+            subTable: {
+              title: "Wife",
+              headers: ["Position", "Honorific Reference", "Title"],
+              rows: [
+                ["From royal lineage", "[Original Honorific if higher]", "[Original Title] [Name]"],
+                ["From commoner lineage", "Yang Mulia", "Che Puan [Name]"]
+              ]
+            }
+          },
+          {
+            id: 25,
+            title: "Great-Granddaughters of the Sultan through the Sultan's Son",
+            info: [
+              { label: "Honorific reference", value: "Yang Amat Mulia" },
+              { label: "Title", value: "Tunku [Name]" },
+              { label: "Full terasul", value: "Yang Amat Mulia Tunku [Name]" }
+            ],
+            subTable: {
+              title: "Husband",
+              headers: ["Position", "Honorific Reference", "Title"],
+              rows: [
+                ["From royal lineage", "[Original Honorific if higher]", "[Original Title] [Name]"],
+                ["From commoner lineage", "Yang Dimuliakan", "Tuan [Name]"]
+              ]
+            }
+          },
+          {
+            id: 26,
+            title: "Great-Great-Grandchildren (Piut) through the Sultan's Son",
+            info: [
+              { label: "Honorific reference", value: "Yang Mulia" },
+              { label: "Title", value: "Tunku [Name]" },
+              { label: "Full terasul", value: "Yang Mulia Tunku [Name]" }
+            ],
+            subTable: {
+              title: "Partner",
+              headers: ["Position", "Honorific Reference", "Title"],
+              rows: [
+                ["From royal lineage", "[Original Honorific if higher]", "[Original Title] [Name]"],
+                ["Wife from commoner lineage", "Yang Mulia", "Che Puan [Name]"],
+                ["Husband from commoner lineage", "Yang Dimuliakan", "Tuan [Name]"]
+              ]
+            }
+          },
+          {
+            id: 27,
+            title: "Indraputra and Indraputri",
+            content: "This title is used for:\n1. descendants of the Sultan through the Sultan's daughter, starting from the Sultan's grandchildren onwards; and\n2. descendants of the Sultan through the Sultan's son, starting from the fifth generation onwards.",
+            table: {
+              headers: ["Gender", "Title"],
+              rows: [
+                ["Male", "[Name] Indraputra"],
+                ["Female", "[Name] Indraputri"]
+              ]
+            },
+            footer: "This title can be inherited through the male line only."
+          },
+          {
+            id: 28,
+            title: "General Provisions",
+            content: "The use of all honorifics in this guide shall be according to the customs of the Inderaloka Royal Palace, the Constitution of the Government of Inderaloka, and the Sultan's decree and consent.\n\nIn all official matters, the full terasul form must be used upon first mention. For subsequent mentions, a short form may be used as appropriate for the occasion or document."
+          }
         ],
       },
       statement: {
