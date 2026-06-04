@@ -945,7 +945,7 @@ export const translations = {
               headers: ["Kedudukan", "Rujukan Kehormat", "Gelaran"],
               rows: [
                 ["Daripada kerabat diraja", "Duli Yang Teramat Mulia Paduka Seri", "Tunku Ampuan Mahkota [Gelaran Asal] [Nama]"],
-                ["Daripada orang kebanyakan", "Duli Yang Teramat Mulia Paduka Seri", "Che Ampuan Mahkota [Nama]"]
+                ["Daripada orang kebanyakan", "Duli Yang Amat Mulia Paduka Seri", "Che Ampuan Mahkota [Nama]"]
               ]
             }
           },
@@ -953,7 +953,7 @@ export const translations = {
             id: 16,
             title: "Waris Damping",
             info: [
-              { label: "Rujukan kehormat", value: "Yang Teramat Mulia Paduka Seri" },
+              { label: "Rujukan kehormat", value: "Duli Yang Amat Mulia Paduka Seri" },
               { label: "Bentuk gelaran", value: "[Gelaran Waris Damping] Tunku Putera [Nama]" }
             ],
             footer: "Waris Damping Inderaloka adalah seperti berikut:",
@@ -966,8 +966,8 @@ export const translations = {
             table: {
               headers: ["Kedudukan", "Rujukan Kehormat", "Gelaran"],
               rows: [
-                ["Daripada kerabat diraja", "Yang Teramat Mulia Paduka Seri", "Tunku Puan [Gelaran Waris Damping] [Gelaran Asal] [Nama]"],
-                ["Daripada orang kebanyakan", "Yang Amat Mulia", "Che Puan [Gelaran Waris Damping] [Nama]"]
+                ["Daripada kerabat diraja", "Duli Yang Amat Mulia Paduka Seri", "Tunku Puan [Gelaran Waris Damping] [Gelaran Asal] [Nama]"],
+                ["Daripada orang kebanyakan", "Yang Teramat Mulia", "Che Puan [Gelaran Waris Damping] [Nama]"]
               ]
             },
             footer: "Gelaran ini boleh gugur apabila penyandang Waris Damping mangkat, turun daripada jawatan atau perkahwinan dibubarkan, kecuali dititahkan sebaliknya."
@@ -989,7 +989,7 @@ export const translations = {
               headers: ["Kedudukan", "Rujukan Kehormat", "Gelaran"],
               rows: [
                 ["Daripada kerabat diraja", "[Rujukan Kehormat Asal jika lebih tinggi]", "[Gelaran Asal] [Nama]"],
-                ["Daripada orang kebanyakan", "Yang Amat Mulia", "Che Puan [Nama]"]
+                ["Daripada orang kebanyakan", "Yang Teramat Mulia", "Che Puan [Nama]"]
               ]
             }
           },
@@ -1026,7 +1026,7 @@ export const translations = {
               headers: ["Kedudukan", "Rujukan Kehormat", "Gelaran"],
               rows: [
                 ["Daripada kerabat diraja", "[Rujukan Kehormat Asal jika lebih tinggi]", "[Gelaran Asal] [Nama]"],
-                ["Daripada orang kebanyakan", "Yang Mulia", "Che Puan [Nama]"]
+                ["Daripada orang kebanyakan", "Yang Amat Mulia", "Che Puan [Nama]"]
               ]
             }
           },
@@ -1060,7 +1060,7 @@ export const translations = {
               headers: ["Kedudukan", "Rujukan Kehormat", "Gelaran"],
               rows: [
                 ["Daripada kerabat diraja", "[Rujukan Kehormat Asal jika lebih tinggi]", "[Gelaran Asal] [Nama]"],
-                ["Daripada orang kebanyakan", "Yang Mulia", "Che Puan [Nama]"]
+                ["Daripada orang kebanyakan", "Yang Amat Mulia", "Che Puan [Nama]"]
               ]
             }
           },
@@ -1095,7 +1095,7 @@ export const translations = {
               rows: [
                 ["Daripada kerabat diraja", "[Rujukan Kehormat Asal jika lebih tinggi]", "[Gelaran Asal] [Nama]"],
                 ["Isteri daripada orang kebanyakan", "Yang Mulia", "Che Puan [Nama]"],
-                ["Suami daripada orang kebanyakan", "Yang Dimuliakan", "Tuan [Nama]"]
+                ["Suami daripada orang kebanyakan", "[Tiada]", "Tuan [Nama]"]
               ]
             }
           },
