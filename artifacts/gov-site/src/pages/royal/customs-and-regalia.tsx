@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { cn } from "@/lib/utils";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
@@ -37,7 +38,7 @@ export default function CustomsAndRegalia() {
             <div className="h-px bg-border flex-1" />
           </div>
 
-          <div className="space-y-16">
+          <div className="space-y-12">
             {(c.terasulSections as unknown as any[]).map((section, idx) => (
               <motion.div
                 key={section.id}
@@ -45,19 +46,37 @@ export default function CustomsAndRegalia() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.05 }}
-                className="relative pl-8 border-l border-border"
+                className={cn(
+                  "relative pl-8",
+                  section.isPartHeader ? "pt-16 pb-4 ml-[-2rem]" : "border-l border-border"
+                )}
               >
-                <div className="absolute top-0 left-[-5px] w-[10px] h-[10px] rounded-full bg-accent" />
+                {section.isPartHeader ? (
+                  <div className="mb-8">
+                    <div className="flex items-center gap-6 mb-3">
+                      <div className="h-px bg-accent/20 flex-1" />
+                      <span className="font-mono text-xs text-accent font-bold tracking-[0.3em] uppercase">{section.id}</span>
+                      <div className="h-px bg-accent/20 flex-1" />
+                    </div>
+                    <h3 className="font-serif text-2xl lg:text-3xl text-primary text-center tracking-wide">{section.title}</h3>
+                  </div>
+                ) : (
+                  <>
+                    <div className="absolute top-0 left-[-5px] w-[10px] h-[10px] rounded-full bg-accent" />
 
-                <div className="flex items-start gap-4 mb-6">
-                  <span className="font-mono text-sm text-accent font-bold mt-1">{section.id}.</span>
-                  <h3 className="font-serif text-xl text-primary">{section.title}</h3>
-                </div>
+                    <div className="flex items-start gap-4 mb-6">
+                      {section.id && !isNaN(Number(section.id)) && (
+                        <span className="font-mono text-sm text-accent font-bold mt-1">{section.id}.</span>
+                      )}
+                      <h3 className="font-serif text-xl text-primary leading-tight">{section.title}</h3>
+                    </div>
 
-                {section.content && (
-                  <p className="text-muted-foreground text-sm leading-relaxed whitespace-pre-line mb-6 max-w-3xl italic">
-                    {section.content}
-                  </p>
+                    {section.content && (
+                      <p className="text-muted-foreground text-sm leading-relaxed whitespace-pre-line mb-6 max-w-3xl italic">
+                        {section.content}
+                      </p>
+                    )}
+                  </>
                 )}
 
                 {section.info && (
