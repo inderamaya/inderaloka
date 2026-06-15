@@ -6,10 +6,10 @@ import { cn } from "@/lib/utils";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
-export default function CustomsAndRegalia() {
+export default function TerasulPage() {
   const { t } = useLanguage();
   const r = t.royal;
-  const c = r.customs;
+  const c = r.terasul;
 
   return (
     <div className="flex-1 w-full bg-background pb-24">
@@ -161,78 +161,6 @@ export default function CustomsAndRegalia() {
                     {section.additionalInfo}
                   </p>
                 )}
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-32">
-          <section>
-            <div className="mb-10">
-              <h2 className="font-serif text-2xl text-primary mb-2">{c.regaliaTitle}</h2>
-              <div className="h-1 w-12 bg-accent" />
-            </div>
-            <div className="flex flex-col gap-4">
-              {c.regaliaItems.map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 8 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: idx * 0.07 }}
-                  className="border border-border bg-card p-5 flex gap-4 hover:border-accent/50 transition-colors group"
-                >
-                  <div className="w-1 bg-accent/20 group-hover:bg-accent flex-shrink-0 self-stretch transition-colors" />
-                  <div>
-                    <h3 className="font-serif text-base text-primary mb-2">{item.name}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </section>
-
-          <section>
-            <div className="mb-10">
-              <h2 className="font-serif text-2xl text-primary mb-2">{c.ceremoniesTitle}</h2>
-              <div className="h-1 w-12 bg-accent" />
-            </div>
-            <div className="flex flex-col gap-6">
-              {c.ceremonies.map((ceremony, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 8 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: idx * 0.1 }}
-                  className="border border-border bg-card p-6 hover:shadow-lg hover:shadow-primary/5 transition-all"
-                >
-                  <div className="w-8 h-px bg-accent mb-4" />
-                  <h3 className="font-serif text-lg text-primary mb-3">{ceremony.name}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{ceremony.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </section>
-        </div>
-
-        <section>
-          <div className="mb-10">
-            <h2 className="font-serif text-2xl text-primary mb-2">{c.protocolTitle}</h2>
-            <div className="h-1 w-12 bg-accent" />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {c.protocols.map((protocol, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.06 }}
-                className="border border-border bg-secondary/30 p-5 flex gap-3 group hover:bg-secondary/50 transition-colors"
-              >
-                <span className="font-mono text-xs text-accent font-bold mt-0.5 flex-shrink-0 opacity-40 group-hover:opacity-100 transition-opacity">{(idx + 1).toString().padStart(2, "0")}</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">{protocol}</p>
               </motion.div>
             ))}
           </div>

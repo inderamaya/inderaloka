@@ -20,7 +20,8 @@ import HisMajesty from "@/pages/royal/his-majesty";
 import CouncilOfRegency from "@/pages/royal/council-of-regency";
 import RoyalFamily from "@/pages/royal/royal-family";
 import OrdersAndDecorations from "@/pages/royal/orders-and-decorations";
-import CustomsAndRegalia from "@/pages/royal/customs-and-regalia";
+import Terasul from "@/pages/royal/terasul";
+import Regalia from "@/pages/royal/regalia";
 import RoyalStatement from "@/pages/royal/royal-statement";
 import Palaces from "@/pages/royal/palaces";
 import RoyalAdvisoryCouncil from "@/pages/royal/royal-advisory-council";
@@ -69,7 +70,8 @@ function Router() {
       <Route path="/royal/council-of-regency" component={CouncilOfRegency} />
       <Route path="/royal/royal-family" component={RoyalFamily} />
       <Route path="/royal/orders-and-decorations" component={OrdersAndDecorations} />
-      <Route path="/royal/customs-and-regalia" component={CustomsAndRegalia} />
+      <Route path="/royal/terasul" component={Terasul} />
+      <Route path="/royal/regalia" component={Regalia} />
       <Route path="/royal/royal-statement" component={RoyalStatement} />
       <Route path="/royal/palaces" component={Palaces} />
       <Route path="/royal/royal-advisory-council" component={RoyalAdvisoryCouncil} />
