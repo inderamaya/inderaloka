@@ -37,11 +37,17 @@ export const translations = {
       accessibility: "Aksesibiliti",
       terms: "Terma Perkhidmatan",
       copyright: "Negara Inderaloka. Hak cipta terpelihara.",
+      disclaimer: "Penafian: Kerajaan Inderaloka tidak bertanggungjawab terhadap sebarang kerugian atau kerosakan di atas penggunaan apa jua maklumat dalam laman web ini.",
     },
     home: {
       alertText:
         "AMARAN CUACA: Jabatan Meteorologi Kebangsaan telah mengeluarkan amaran ribut kuat di kawasan pesisir pantai.",
       alertLink: "Baca Penuh",
+      announcements: [
+        "Penyelenggaraan sistem dijadualkan pada jam 2:00 pagi.",
+        "Selamat Datang ke Portal Rasmi Kerajaan Inderaloka.",
+        "Kemas kini Dasar Ekonomi Baharu S3 kini tersedia.",
+      ],
       heroTitle1: "Pertiwi",
       heroItalic: "Dijunjung",
       heroTitle2: "Bermartabat",
@@ -79,22 +85,27 @@ export const translations = {
       latestNews: [
         {
           date: "23 Mei 2026",
+          category: "Ekonomi",
           title: "Garis Panduan Dasar Ekonomi Baharu Diterbitkan untuk S3",
+          excerpt: "Jabatan Kewangan telah mengeluarkan garis panduan komprehensif yang memperincikan program penstrukturan semula ekonomi bagi memupuk pertumbuhan mampan.",
           dept: "Jabatan Kewangan",
           image:
             "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=400&auto=format&fit=crop",
         },
         {
           date: "20 Mei 2026",
+          category: "Infrastruktur",
           title: "Projek Pembaharuan Infrastruktur Bermula di Ibu Kota",
+          excerpt: "Pembaikan besar rangkaian transit awam dan jalan raya ibu kota telah bermula secara rasmi, menjanjikan peningkatan kecekapan jangka panjang.",
           dept: "Jabatan Pengangkutan",
           image:
             "https://images.unsplash.com/photo-1545143333-636a6619f707?q=80&w=400&auto=format&fit=crop",
         },
         {
           date: "15 Mei 2026",
-          title:
-            "Nasihat Perjalanan Terkini Dikeluarkan untuk Warga Antarabangsa",
+          category: "Hal Ehwal Luar",
+          title: "Nasihat Perjalanan Terkini Dikeluarkan untuk Warga Antarabangsa",
+          excerpt: "Jabatan Negara menasihati semua warga yang mengembara ke luar negara untuk menyemak protokol keselamatan dan keperluan visa yang baru dikemas kini.",
           dept: "Jabatan Negara",
           image:
             "https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?q=80&w=400&auto=format&fit=crop",
@@ -3835,11 +3846,17 @@ export const translations = {
       accessibility: "Accessibility",
       terms: "Terms of Service",
       copyright: "State of Inderaloka. All rights reserved.",
+      disclaimer: "Disclaimer: The Inderalokan Government shall not be liable for any damages arising from the use of any information in the website.",
     },
     home: {
       alertText:
         "WEATHER ALERT: National Meteorological Department has issued a severe storm warning for the coastal regions.",
       alertLink: "Read Full",
+      announcements: [
+        "System maintenance scheduled for 2:00 AM.",
+        "Welcome to the Official Portal of the Inderalokan Government.",
+        "New Q3 Economic Policy updates are now available.",
+      ],
       heroTitle1: "The Homeland",
       heroItalic: "Upheld with",
       heroTitle2: "Dignity",
@@ -3877,21 +3894,27 @@ export const translations = {
       latestNews: [
         {
           date: "23 May 2026",
+          category: "Economy",
           title: "New Economic Policy Guidelines Published for Q3",
+          excerpt: "The Dept. of Finance has released comprehensive guidelines detailing the economic restructuring program to foster sustainable growth.",
           dept: "Dept. of Finance",
           image:
             "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=400&auto=format&fit=crop",
         },
         {
           date: "20 May 2026",
+          category: "Infrastructure",
           title: "Infrastructure Renewal Project Breaks Ground in Capital",
+          excerpt: "Major repairs to the capital's public transit and road networks have officially commenced, promising long-term efficiency gains.",
           dept: "Dept. of Transport",
           image:
             "https://images.unsplash.com/photo-1545143333-636a6619f707?q=80&w=400&auto=format&fit=crop",
         },
         {
           date: "15 May 2026",
+          category: "Foreign Affairs",
           title: "Updated Travel Advisories Issued for International Citizens",
+          excerpt: "The Dept. of State advises all citizens travelling abroad to check the newly updated safety protocols and visa requirements.",
           dept: "Dept. of State",
           image:
             "https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?q=80&w=400&auto=format&fit=crop",
