@@ -1,11 +1,174 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "wouter";
-import { AlertTriangle, ChevronRight, FileText, Landmark, Shield, Plane, Users, Map, Banknote, LineChart, MapPin } from "lucide-react";
+import { AlertTriangle, ChevronRight, FileText, Landmark, Shield, Plane, Users, Map, Banknote, LineChart, MapPin, Info, Gavel, Crown, Tent, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { cn } from "@/lib/utils";
 
-const icons = [FileText, Landmark, Shield, Plane];
+const serviceIcons = [Info, Gavel, Crown, Tent];
+const serviceLinks = ["/about", "/government", "/royal", "/tourism"];
+
+function NewsCarousel({ news }: { news: readonly any[] }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [direction, setDirection] = useState(0);
+
+  const nextSlide = useCallback(() => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % news.length);
+  }, [news.length]);
+
+  const prevSlide = useCallback(() => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + news.length) % news.length);
+  }, [news.length]);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, [isPaused, nextSlide]);
+
+  const variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? "100%" : "-100%",
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      x: direction < 0 ? "100%" : "-100%",
+      opacity: 0,
+    }),
+  };
+
+  return (
+    <div
+      className="relative group focus-within:ring-2 focus-within:ring-accent outline-none"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocus={() => setIsPaused(true)}
+      onBlur={() => setIsPaused(false)}
+      tabIndex={0}
+      aria-label="News Carousel"
+      onKeyDown={(e) => {
+        if (e.key === "ArrowLeft") prevSlide();
+        if (e.key === "ArrowRight") nextSlide();
+      }}
+    >
+      <div className="relative border border-border bg-card">
+        <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden">
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.div
+              key={currentIndex}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="absolute inset-0"
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              onDragEnd={(_, info) => {
+                if (info.offset.x > 50) prevSlide();
+                else if (info.offset.x < -50) nextSlide();
+              }}
+            >
+              <Link href="/news" className="block w-full h-full relative cursor-pointer">
+                <img
+                  src={news[currentIndex].image}
+                  alt={news[currentIndex].title}
+                  className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent hidden md:block" />
+
+                <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12 hidden md:block text-white">
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="bg-accent text-accent-foreground text-[10px] font-mono font-bold uppercase tracking-widest px-2 py-1">
+                      {news[currentIndex].category}
+                    </span>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-white/60">
+                      {news[currentIndex].date} • {news[currentIndex].dept}
+                    </span>
+                  </div>
+                  <h4 className="font-serif text-3xl lg:text-4xl mb-4 max-w-3xl leading-tight">
+                    {news[currentIndex].title}
+                  </h4>
+                  <p className="text-white/70 text-sm max-w-2xl line-clamp-2 font-light italic">
+                    {news[currentIndex].excerpt}
+                  </p>
+                </div>
+              </Link>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Mobile Info (Below the image on mobile) */}
+        <div className="md:hidden p-6 border-t border-border">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="bg-accent text-accent-foreground text-[8px] font-mono font-bold uppercase tracking-widest px-2 py-0.5">
+              {news[currentIndex].category}
+            </span>
+            <span className="text-[8px] font-mono uppercase tracking-widest text-muted-foreground">
+              {news[currentIndex].date}
+            </span>
+          </div>
+          <h4 className="font-serif text-xl leading-tight text-primary mb-3">
+            {news[currentIndex].title}
+          </h4>
+          <p className="text-muted-foreground text-xs line-clamp-2 italic">
+            {news[currentIndex].excerpt}
+          </p>
+        </div>
+      </div>
+
+      {/* Manual Controls */}
+      <div className="absolute top-1/2 -translate-y-1/2 left-4 right-4 flex justify-between pointer-events-none">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={(e) => { e.stopPropagation(); prevSlide(); }}
+          className="w-10 h-10 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-md border border-white/10 text-white pointer-events-auto opacity-0 group-hover:opacity-100 transition-opacity"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </Button>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={(e) => { e.stopPropagation(); nextSlide(); }}
+          className="w-10 h-10 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-md border border-white/10 text-white pointer-events-auto opacity-0 group-hover:opacity-100 transition-opacity"
+          aria-label="Next slide"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </Button>
+      </div>
+
+      {/* Dot Indicators */}
+      <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
+        {news.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => {
+              setDirection(idx > currentIndex ? 1 : -1);
+              setCurrentIndex(idx);
+            }}
+            className={cn(
+              "w-2 h-2 rounded-full transition-all duration-300",
+              currentIndex === idx ? "bg-accent w-6" : "bg-border hover:bg-accent/40"
+            )}
+            aria-label={`Go to slide ${idx + 1}`}
+            aria-pressed={currentIndex === idx}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   const { t } = useLanguage();
@@ -46,6 +209,24 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Moving Announcement Bar */}
+      <div className="h-10 bg-accent text-accent-foreground dark:bg-card dark:text-accent border-y border-accent/20 overflow-hidden flex items-center relative z-20">
+        <div
+          className="flex whitespace-nowrap animate-marquee hover:[animation-play-state:paused]"
+        >
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="flex items-center">
+              {h.announcements.map((item: string, idx: number) => (
+                <span key={idx} className="mx-8 font-sans text-[10px] sm:text-xs font-bold uppercase tracking-wider flex items-center">
+                  <span className="w-1.5 h-1.5 bg-current rounded-full mr-3 opacity-50" />
+                  {item}
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Key Services Grid */}
       <section className="py-20 lg:py-32 bg-secondary border-b border-border">
         <div className="container mx-auto px-4 lg:px-8">
@@ -59,25 +240,25 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
-            {h.services.map((service, idx) => {
-              const Icon = icons[idx];
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[t.nav.about, t.nav.government, t.nav.royal, t.nav.tourism].map((title, idx) => {
+              const Icon = serviceIcons[idx];
               return (
                 <motion.div
-                  key={service.title}
+                  key={title}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                 >
-                  <Link href="/services" className="bg-background p-8 lg:p-10 flex flex-col h-full hover:bg-primary hover:text-primary-foreground transition-colors group cursor-pointer border border-transparent" data-testid={`card-service-${idx}`}>
-                    <Icon className="w-8 h-8 text-accent mb-8 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
-                    <h4 className="font-serif text-xl mb-4">{service.title}</h4>
-                    <p className="text-sm text-muted-foreground group-hover:text-primary-foreground/70 leading-relaxed mb-8 flex-1">
-                      {service.desc}
+                  <Link href={serviceLinks[idx]} className="bg-background p-8 border border-border flex flex-col h-full hover:scale-[1.02] hover:border-accent hover:bg-accent/5 dark:hover:bg-accent/10 transition-all duration-300 group cursor-pointer" data-testid={`card-service-${idx}`}>
+                    <Icon className="w-10 h-10 text-accent mb-6 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
+                    <h4 className="font-serif text-2xl text-primary mb-3">{title}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-8 flex-1">
+                      {h.services[idx].desc}
                     </p>
-                    <div className="mt-auto flex items-center text-xs font-mono uppercase tracking-widest text-primary group-hover:text-accent">
-                      {h.accessPortal} <ChevronRight className="w-3 h-3 ml-1" />
+                    <div className="mt-auto flex items-center text-xs font-mono uppercase tracking-widest text-accent font-bold">
+                      {h.accessPortal} <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </Link>
                 </motion.div>
@@ -120,51 +301,25 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Latest Announcements */}
-      <section className="py-20 lg:py-32 bg-background">
+      {/* Latest Announcements Carousel */}
+      <section className="py-20 lg:py-32 bg-background overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-            <div className="lg:col-span-1">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div>
               <h2 className="text-[10px] font-mono tracking-[0.2em] uppercase text-muted-foreground mb-4">{h.briefingsLabel}</h2>
-              <h3 className="font-serif text-4xl text-primary mb-6 whitespace-pre-line">{h.briefingsTitle}</h3>
-              <p className="text-muted-foreground text-sm mb-8 leading-relaxed">
-                {h.briefingsDesc}
-              </p>
-               <Button asChild variant="outline" className="rounded-none border-primary text-primary hover:bg-primary hover:text-primary-foreground uppercase font-mono tracking-widest text-xs h-12 px-6">
-                <Link href="/news" data-testid="btn-read-all-news">{h.readAllNews}</Link>
-              </Button>
+              <h3 className="font-serif text-3xl sm:text-4xl text-primary">{h.briefingsTitle}</h3>
             </div>
+            <p className="text-muted-foreground text-sm max-w-md md:text-right leading-relaxed">
+              {h.briefingsDesc}
+            </p>
+          </div>
 
-            <div className="lg:col-span-2 flex flex-col gap-8">
-              {h.latestNews.map((news: any, idx: number) => (
-                           <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                >
-                      <Link href="/news" className="group flex flex-col md:flex-row gap-6 pb-8 border-b border-border hover:border-accent transition-colors last:border-0 last:pb-0" data-testid={`link-news-${idx}`}>
-                        <div className="md:w-1/3 aspect-[16/9] overflow-hidden border border-border">
-                          <img 
-                            src={news.image} 
-                            alt={news.title} 
-                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
-                          />
-                    </div>
-                                       <div className="md:w-2/3">
-                        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-3 gap-2">
-                          <div className="font-mono text-[10px] text-accent uppercase tracking-widest">{news.dept}</div>
-                          <div className="font-mono text-[10px] text-muted-foreground">{news.date}</div>
-                        </div>
-                        <h4 className="font-serif text-xl lg:text-2xl text-primary group-hover:text-accent transition-colors leading-snug">
-                      {news.title}
-                    </h4>
-                                         </div>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
+          <NewsCarousel news={h.latestNews} />
+
+          <div className="mt-12 flex justify-center">
+            <Button asChild variant="outline" className="rounded-none border-primary text-primary hover:bg-primary hover:text-primary-foreground uppercase font-mono tracking-widest text-xs h-12 px-8">
+              <Link href="/news" data-testid="btn-read-all-news">{h.readAllNews}</Link>
+            </Button>
           </div>
         </div>
       </section>

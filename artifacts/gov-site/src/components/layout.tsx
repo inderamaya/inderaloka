@@ -134,8 +134,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <main className="flex-1 flex flex-col overflow-x-hidden">{children}</main>
       <footer className="bg-primary text-primary-foreground pt-16 pb-8 border-t-4 border-accent">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-            <div className="col-span-1 md:col-span-2 flex flex-col gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+            <div className="flex flex-col gap-6">
               <div className="flex items-center gap-4">
                 <Seal />
                 <div className="flex flex-col">
@@ -145,21 +145,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
               </div>
               <p className="text-sm text-primary-foreground/70 max-w-sm leading-relaxed">{t.siteDesc}</p>
             </div>
-            <div>
-              <h3 className="font-mono uppercase text-xs tracking-widest text-primary-foreground/50 mb-6">{t.footer.directory}</h3>
-              <ul className="flex flex-col gap-4 text-sm">
-                {navItems.map(item => (
-                  <li key={item.href}><Link href={item.href} className="hover:text-accent transition-colors hover:underline underline-offset-4 decoration-accent/50">{item.label}</Link></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-mono uppercase text-xs tracking-widest text-primary-foreground/50 mb-6">{t.footer.contact}</h3>
-              <ul className="flex flex-col gap-4 text-sm text-primary-foreground/80">
-                <li>1 Capital Plaza<br />Government District, 10001</li>
-                <li className="font-mono text-accent">1-800-GOV-INFO</li>
-                <li>contact@republic.gov</li>
-              </ul>
+            <div className="flex items-center">
+              <p className="text-sm leading-relaxed text-primary-foreground/80 border-l-2 border-accent pl-6 py-2 italic">
+                {t.footer.disclaimer}
+              </p>
             </div>
           </div>
           <div className="border-t border-primary-foreground/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-primary-foreground/50">
