@@ -140,7 +140,7 @@ export const translations = {
     services: {
       breadcrumbHome: "Utama",
       breadcrumbCurrent: "Perkhidmatan",
-      pageTitle: "Direktori Perkhidmatan",
+      pageTitle: "Perkhidmatan di Inderaloka",
       pageDesc:
         "Akses perkhidmatan dan sumber kerajaan rasmi. Cari mengikut kata kunci atau layari kategori di bawah.",
       searchPlaceholder: "Cari perkhidmatan (cth., 'Pasport', 'Cukai')",
@@ -224,7 +224,7 @@ export const translations = {
     news: {
       breadcrumbHome: "Utama",
       breadcrumbCurrent: "Berita",
-      pageTitle: "Pengumuman Rasmi",
+      pageTitle: "Berita Inderaloka",
       pageDesc:
         "Siaran akhbar, kemas kini dasar, dan kenyataan rasmi daripada kerajaan.",
       readStatement: "Baca Kenyataan",
@@ -287,8 +287,8 @@ export const translations = {
     },
     about: {
       breadcrumbHome: "Utama",
-      breadcrumbCurrent: "Mengenai Kerajaan",
-      pageTitle: "Mengenai Republik",
+      breadcrumbCurrent: "Mengenai",
+      pageTitle: "Mengenai Inderaloka",
       pageDesc:
         "Memahami struktur, misi, dan kepimpinan negara berdaulat kami.",
 
@@ -3949,7 +3949,7 @@ export const translations = {
     services: {
       breadcrumbHome: "Home",
       breadcrumbCurrent: "Services",
-      pageTitle: "Directory of Services",
+      pageTitle: "Services in Inderaloka",
       pageDesc:
         "Access official government services and resources. Search by keyword or browse categories below.",
       searchPlaceholder: "Search services (e.g., 'Passport', 'Taxes')",
@@ -4033,7 +4033,7 @@ export const translations = {
     news: {
       breadcrumbHome: "Home",
       breadcrumbCurrent: "News",
-      pageTitle: "Official Announcements",
+      pageTitle: "Inderalokan News",
       pageDesc:
         "Press releases, policy updates, and official statements from the government.",
       readStatement: "Read Statement",
@@ -4095,8 +4095,8 @@ export const translations = {
     },
     about: {
       breadcrumbHome: "Home",
-      breadcrumbCurrent: "About the Government",
-      pageTitle: "About the Republic",
+      breadcrumbCurrent: "About",
+      pageTitle: "About Inderaloka",
       pageDesc:
         "Understanding the structure, mission, and leadership of our sovereign state.",
       exploreLabel: "Explore Inderaloka",
